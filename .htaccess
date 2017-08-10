@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteRule ^inicio$                            index.php
+RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
+RewriteRule ^registro$                          index.php?c=user
+RewriteRule ^validar-email$                     index.php?c=user&a=validEmail
+RewriteRule ^iniciar$                           index.php?c=user&a=signIn
+RewriteRule ^cerrar$                            index.php?c=user&a=close
+RewriteRule ^crear-usuario$                     index.php?c=user&a=create
+RewriteRule ^eventos$                           index.php?c=event
+RewriteRule ^crear-evento$                      index.php?c=event&a=create
+RewriteRule ^delete-evento&token=(.*)$          index.php?c=event&a=delete&token=$1
+RewriteRule ^dias&token=(.*)$                   index.php?c=event&a=dias&token=$1
+RewriteRule ^crear-dia$                         index.php?c=event&a=createDias
