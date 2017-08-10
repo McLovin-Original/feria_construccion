@@ -84,26 +84,6 @@ $("#frm_eve").submit(function(e){
   }
 });
 
-$("#frm_dia").submit(function(e){
-  e.preventDefault();
-  if ($(this).parsley().isValid()) {
-    var jsonObj=[];
-    $("#frm_dia input,#frm_dia textarea").each(function(){
-      var structure = {};
-      structure = $(this).val();
-      jsonObj.push(structure);
-    });
-    $.post("crear-dia",{data:jsonObj},function(data){
-      var data = JSON.parse(data);
-      if (data[0]==true) {
-        alert(data[1]);
-        document.location.href=data[2];
-      }else{
-        alert(data[1]);
-      }
-    });
-  }
-});
 $("#frm_reg").submit(function(e){
   e.preventDefault();
     var jsonObj=[];
