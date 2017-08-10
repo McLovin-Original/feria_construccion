@@ -36,6 +36,11 @@ Class EventController{
       $data[6]=date('hms');
       $data[7]=$_SESSION["user"]["id"];
       $this->EventM->createEvent($data);
+      $event=$data[3];
+      for ($i=0; $i <$data[4] ; $i++) {
+          $rand=randomAlpha('30');
+          $this->EventM->createDay($rand,$event);
+      }
       $return = array(true,"Guardo Con Exito","eventos");
     }
     echo json_encode($return);
@@ -50,11 +55,10 @@ Class EventController{
     require_once("views/include/footer.php");
   }
 
-  public function createDias(){
+  public function updateDias(){
     $data = $_POST["data"];
-    $data[6]=randomAlpha('30');
-    $this->EventM->createDay($data);
-    header("Location: dias&token=$data[0]");
+    $this->EventM->updateDay($data);
+    header("Location: dias&token=$data[1]");
   }
 
   public function delete(){
