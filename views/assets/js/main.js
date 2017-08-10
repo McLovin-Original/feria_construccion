@@ -1,6 +1,20 @@
 var btnmenu = document.getElementById('btnmenu');
 var sidenav = document.getElementById('sidenav');
 var contentwelcome = document.getElementById('contentwelcome');
+var btnmenures = document.getElementById('btnmenures');
+
+function abrir(){
+  sidenav.classList.add("abrirmenu")
+  sidenav.classList.remove("cerrarmenu")
+  btnmenures.setAttribute("onclick","cerrar()")
+}
+
+function cerrar(){
+  sidenav.classList.remove("abrirmenu")
+  sidenav.classList.add("cerrarmenu")
+  btnmenures.setAttribute("onclick","abrir()")
+}
+
 
 // button.onmouseover = function()
 // element.classList.add("otherclass");
