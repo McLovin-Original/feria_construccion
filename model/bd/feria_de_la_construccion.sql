@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-08-2017 a las 16:03:03
+-- Tiempo de generación: 11-08-2017 a las 00:59:48
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -31,7 +31,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `crearUsuario` (IN `id` VARCHAR(60),
     INSERT INTO access VALUES(token,id,email,pass,est);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `readEmail` (IN `mail` VARCHAR(60))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `readEmail` (IN `mail` VARCHAR(60) CHARSET utf8)  BEGIN
 	SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE use_mail = mail;
 END$$
 
@@ -56,7 +56,11 @@ CREATE TABLE `access` (
 --
 
 INSERT INTO `access` (`acc_token`, `use_code`, `use_mail`, `password`, `acc_status`) VALUES
-('tFTVjQC7n54sl189qeapDzSVhH0reC', 'TdeA0peToJ49SmZIe8Crss83Iosziv', 'pablofrg98@gmail.com', '$2y$10$pdTIFGKxUvjyHr963dSlBOYqxVb8R4qomXGuN0aq2kz6Uss/jmIuy', 'Inactivo');
+('D6r4PAD34fyIeEUj2YkGFNkuEg9KEJ', 'RJxXqEsxEyZ983qBBdicbZsl20gdEs', 'pablo@gmail.com', '$2y$10$QBVr9hPDIS8c2DKmVY0dou.Z6s9F.lHylGVpAt6rp4ALxi40UTN9S', 'Activo'),
+('dCXGjQBYcoPOgDNiEDAqPFbVXkzPz5', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K', 'jprestrepo94@misena.edu.co', '$2y$10$2AqauzhZ3UrcJhNXuYOKKe26jam.G7aO/18cKwUbMVYsDShxVKYBy', 'Activo'),
+('tFTVjQC7n54sl189qeapDzSVhH0reC', 'TdeA0peToJ49SmZIe8Crss83Iosziv', 'pablofrg98@gmail.com', '$2y$10$pdTIFGKxUvjyHr963dSlBOYqxVb8R4qomXGuN0aq2kz6Uss/jmIuy', 'Inactivo'),
+('yFkznF4FDVDSKpfHUCvrgZbpGpAUCf', 'x1ddHU2zXHeMUoRZxfEZPELvQrDh0V', 'pablito98@gmail.com', '$2y$10$MiyfpldLDqW0dSY6LnOunejBxE9W2xiZ7fi1NUWLXlncQsO/uvYcG', 'Activo'),
+('ZI8AOa2miLexADZPKAhie3X7PevoqJ', '8f3n6u03Uk637Gyz6vE5edK9MQIaXV', 'paa@s.com', '$2y$10$RhMDzq6s6Y7/LsgTgJnplea8z.w.44RoCIUhZJIWia85ogc8M4vD2', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -80,12 +84,22 @@ CREATE TABLE `conference` (
   `con_code` varchar(60) NOT NULL,
   `day_code` varchar(60) NOT NULL,
   `con_name` char(50) NOT NULL,
+  `con_exhibitor` varchar(60) NOT NULL,
   `con_startime` time NOT NULL,
   `con_finishtime` time NOT NULL,
   `con_share` int(11) NOT NULL,
   `con_creationdate` date NOT NULL,
-  `con_creationtime` time NOT NULL
+  `con_creationtime` time NOT NULL,
+  `con_description` longtext NOT NULL,
+  `con_status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `conference`
+--
+
+INSERT INTO `conference` (`con_code`, `day_code`, `con_name`, `con_exhibitor`, `con_startime`, `con_finishtime`, `con_share`, `con_creationdate`, `con_creationtime`, `con_description`, `con_status`) VALUES
+('FcV2EIaHtLf2tH6eeT9bjT7t0vSkIl', 'eCdpeQpMdgARx1tu6nbu05zvNqURTP', 'Conferencia1', 'Labecerra', '12:59:00', '01:00:00', 12, '2017-08-11', '12:46:44', 'ssss', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -96,11 +110,32 @@ CREATE TABLE `conference` (
 CREATE TABLE `day` (
   `day_code` varchar(60) NOT NULL,
   `eve_code` varchar(60) NOT NULL,
+  `day_current` varchar(10) DEFAULT NULL,
   `day_date` date DEFAULT NULL,
   `day_startime` time DEFAULT NULL,
   `day_finishtime` time DEFAULT NULL,
   `day_descrip` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `day`
+--
+
+INSERT INTO `day` (`day_code`, `eve_code`, `day_current`, `day_date`, `day_startime`, `day_finishtime`, `day_descrip`) VALUES
+('3BMxQk1iMt1cfR0OsNBeesscJvBLpq', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
+('eCdpeQpMdgARx1tu6nbu05zvNqURTP', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA1', '2017-08-16', '01:05:00', '01:00:00', 'ss'),
+('FCOFaAMOAQmXZfukfeT1ce3Qx7r4zJ', 'um196aeYYCfN89rGTXbPtlhUer3Vy9', 'DIA1', '2017-08-16', '03:00:00', '01:00:00', 's'),
+('JN6qM7MARjnsdPO8esRQ1Gm0KFZN3y', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA2', '2017-08-31', '01:00:00', '03:00:00', 'j'),
+('joD9AdXjluYv22polGRQaTzdVES3Dj', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
+('LKQeaLghCvepUZH2nMmMOtLNaxRuDo', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
+('LOIcaBVesdsMvn1le7oBHZn2KArdyh', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
+('MKa7H5PJPmHhnbeyUeP0oQoTpTlkEp', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA6', '2017-08-17', '01:00:00', '04:00:00', 'l'),
+('nydLZDEBsiMnkH9AP7xCSteUdjsKIT', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
+('oH3qjpjSdXGj6KEAVeSpafIrIBcrzo', 'um196aeYYCfN89rGTXbPtlhUer3Vy9', NULL, NULL, NULL, NULL, NULL),
+('rXJMzON6F11lR0hBAxs4UADL0XtS1e', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
+('uB8xpFMlAOH1m8erZQPktk6DROtR27', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
+('XKriu6ffxTttaeb8gHznzhaBMM8g9P', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
+('xnvij5LR21cd1v8hTxboPB3kC6rRuB', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,6 +153,15 @@ CREATE TABLE `event` (
   `eve_creationtime` time NOT NULL,
   `use_code` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `event`
+--
+
+INSERT INTO `event` (`eve_code`, `eve_name`, `eve_startdate`, `eve_finishdate`, `eve_numday`, `eve_creationdate`, `eve_creationtime`, `use_code`) VALUES
+('9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'df', '2017-08-18', '2017-08-26', 9, '2017-08-10', '10:08:52', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K'),
+('bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', 'w', '2017-08-24', '2017-08-26', 3, '2017-08-10', '10:08:04', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K'),
+('um196aeYYCfN89rGTXbPtlhUer3Vy9', 'MARCHA', '2017-08-11', '2017-08-12', 2, '2017-08-10', '10:08:07', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K');
 
 -- --------------------------------------------------------
 
@@ -245,7 +289,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`use_code`, `rol_code`, `use_docu`, `use_firstname`, `use_lastname`, `use_cellphone`, `use_gender`, `use_birthdate`, `use_profession`, `use_institution`) VALUES
-('TdeA0peToJ49SmZIe8Crss83Iosziv', 'F34L2P7GPT9RHI37S306OFVI16TI47', '1036679990', 'Juan Pablo', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Aprendiz', 'CENA');
+('8f3n6u03Uk637Gyz6vE5edK9MQIaXV', 'F34L2P7GPT9RHI37S306OFVI16TI47', '999', 'mf', 'lol', '2222', 'MASCULINO', 12, 'Aprendiz', 's'),
+('RJxXqEsxEyZ983qBBdicbZsl20gdEs', 'OS7CX80C7QQBLGJV41MB3YY4ZA234O', '09988399483', 'JuanPAPITO', 'Respeto', '112', 'MASCULINO', 18, 'Aprendiz', 'SESENA'),
+('TdeA0peToJ49SmZIe8Crss83Iosziv', 'F34L2P7GPT9RHI37S306OFVI16TI47', '1036679990', 'Juan Pablo', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Aprendiz', 'CENA'),
+('x1ddHU2zXHeMUoRZxfEZPELvQrDh0V', 'OS7CX80C7QQBLGJV41MB3YY4ZA234O', '1036679991', 'Juan', 'Restrepo', '6134527', 'MASCULINO', 18, 'Instructor', 'SENA'),
+('Xy3IRO3b9sg94TVvCVuGo0zimJQR5K', 'F34L2P7GPT9RHI37S306OFVI16TI47', '98062003049', 'Juan Pablo ', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Aprendiz', 'SENA');
 
 -- --------------------------------------------------------
 
