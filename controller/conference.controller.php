@@ -14,6 +14,35 @@ Class ConferenceController{
     require_once("views/modules/conference_mod/conference.php");
     require_once("views/include/footer.php");
   }
+  public function create(){
+    $data = $_POST["data"];
+    for ($i=0; $i <count($data) ; $i++) {
+      if (empty($data[$i])) {
+        $p=1;
+        break;
+      }else{
+        $p=0;
+      }
+    }
+    if ($p==1) {
+      $return = array(false,"Campos Nulos","");
+    }else{
+      $data[7]=randomAlpha('30');
+      $data[8]=date('Ymd');
+      $data[9]=date('his');
+      $data[10]="Activo";
+      $this->ConferenceM->createConference($data);
+      $return = array(true,"Guardo Con Exito","conferencias");
+    }
+    echo json_encode($return);
+  }
+  public function event(){
+    $data[0] = $_POST["data"];
+    $result = $this->ConferenceM->readDiaByEvent($data);
+    foreach ($result as $row) {
+      echo "<option value='".$row["day_code"]."'>".$row["day_current"]."</option>";
+    }
+  }
 }
 
  ?>

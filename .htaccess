@@ -12,4 +12,6 @@ RewriteRule ^delete-evento&token=(.*)$          index.php?c=event&a=delete&token
 RewriteRule ^dias&token=(.*)$                   index.php?c=event&a=dias&token=$1
 RewriteRule ^update-dia$                        index.php?c=event&a=updateDias
 RewriteRule ^conferencias$                      index.php?c=conference
+RewriteRule ^crear-conferencia$                 index.php?c=conference&a=create
+RewriteRule ^con-eventos$                       index.php?c=conference&a=event
 RewriteRule ^stands$                            index.php?c=stand

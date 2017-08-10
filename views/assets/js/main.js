@@ -103,3 +103,29 @@ $("#frm_reg").submit(function(e){
       }
     });
 });
+
+$("#frm_con").submit(function(e){
+  e.preventDefault();
+  var jsonObj=[];
+  $("#frm_con input,#sel_dia,#frm_con textarea").each(function(){
+    var structure = {};
+    structure = $(this).val();
+    jsonObj.push(structure);
+  });
+  $.post("crear-conferencia",{data:jsonObj},function(data){
+    var data = JSON.parse(data);
+    if (data[0]==true) {
+      alert(data[1]);
+      document.location.href=data[2];
+    }else{
+      alert(data[1]);
+    }
+  });
+});
+
+$("#sel_evento").change(function(){
+  var evento = $(this).val();
+  $.post("con-eventos",{data:evento},function(data){
+    $("#sel_dia").html(data);
+  });
+});
