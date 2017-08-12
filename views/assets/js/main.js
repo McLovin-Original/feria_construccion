@@ -129,3 +129,48 @@ $("#sel_evento").change(function(){
     $("#sel_dia").html(data);
   });
 });
+
+$("#frm_pav").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var data = [$("#nam_pav").val(),
+                $("#sel_dia_p").val()];
+    $.post("crear-pabellon",{data:data},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#frm_sta").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_sta select,#frm_sta input,#frm_sta textarea").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    $.post("crear-stand",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#sel_evento_p").change(function(){
+  var evento = $(this).val();
+  $.post("con-pabellon",{data:evento},function(data){
+    $("#sel_dia_p").html(data);
+  });
+});

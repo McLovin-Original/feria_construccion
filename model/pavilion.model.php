@@ -1,6 +1,6 @@
 <?php
 
-Class ConferenceModel{
+Class PavilionModel{
   private $pdo;
 
   public function __CONSTRUCT(){
@@ -11,11 +11,11 @@ Class ConferenceModel{
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
     }
   }
-  public function createConference($data){
+  public function createPavilion($data){
       try {
-        $sql = "INSERT INTO conference VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO pavilion VALUES(?,?,?)";
         $query = $this->pdo->prepare($sql);
-        $query->execute(array($data[7],$data[2],$data[0],$data[1],$data[3],$data[4],$data[5],$data[8],$data[9],$data[6],$data[10]));
+        $query->execute(array($data[2],$data[1],$data[0]));
       } catch (PDOException $e) {
         die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
@@ -32,9 +32,9 @@ Class ConferenceModel{
        }
        return $result;
    }
-   public function readConference(){
+   public function readPavilion(){
        try {
-         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code)";
+         $sql="SELECT * FROM pavilion INNER JOIN day ON(pavilion.day_code=day.day_code)";
          $query = $this->pdo->prepare($sql);
          $query->execute();
          $result = $query->fetchALL(PDO::FETCH_BOTH);

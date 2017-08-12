@@ -22,7 +22,7 @@
         <a href="eventos"><li><i class="fa fa-calendar-check-o icon" aria-hidden="true"></i> EVENTOS</li></a>
         <a href="index.php?c=main&a=expositor"><li><i class="fa fa-male icon" aria-hidden="true"></i> EXPOSITORES</li></a>
         <a href="conferencias"><li><i class="fa fa-users icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
-        <a href="index.php?c=main&a=pabellones"><li><i class="fa fa-map-marker icon" aria-hidden="true"></i> PABELLONES</li></a>
+        <a href="pabellon"><li><i class="fa fa-map-marker icon" aria-hidden="true"></i> PABELLONES</li></a>
         <a href="stands"><li><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
         <a href="index.php?c=main&a=gestSeguridad"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
         <a href="#"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>

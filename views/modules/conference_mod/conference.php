@@ -10,6 +10,7 @@
               <th>#</th>
               <th>TITULO</th>
               <th>CONFERENCISTA</th>
+              <th>DIA</th>
               <th>HORA INICIAL</th>
               <th>HORA FINAL</th>
               <th>MAX PERSONAS</th>
@@ -26,6 +27,7 @@
               <td><?php echo $item++; ?></td>
               <td><?php echo $row["con_name"]; ?></td>
               <td><?php echo $row["con_exhibitor"]; ?></td>
+              <td><?php echo $row["day_current"]; ?></td>
               <td><?php echo $row["con_startime"]; ?></td>
               <td><?php echo $row["con_finishtime"]; ?></td>
               <td><?php echo $row["con_share"]; ?></td>

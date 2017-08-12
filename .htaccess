@@ -14,4 +14,8 @@ RewriteRule ^update-dia$                        index.php?c=event&a=updateDias
 RewriteRule ^conferencias$                      index.php?c=conference
 RewriteRule ^crear-conferencia$                 index.php?c=conference&a=create
 RewriteRule ^con-eventos$                       index.php?c=conference&a=event
+RewriteRule ^pabellon$                          index.php?c=pavilion
+RewriteRule ^con-pabellon$                      index.php?c=pavilion&a=event
+RewriteRule ^crear-pabellon$                    index.php?c=pavilion&a=create
 RewriteRule ^stands$                            index.php?c=stand
+RewriteRule ^crear-stand$                       index.php?c=stand&a=create
