@@ -34,7 +34,7 @@ Class ConferenceModel{
    }
    public function readConference(){
        try {
-         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code)";
+         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code) INNER JOIN user ON(conference.use_code=user.use_code)";
          $query = $this->pdo->prepare($sql);
          $query->execute();
          $result = $query->fetchALL(PDO::FETCH_BOTH);
@@ -49,6 +49,17 @@ Class ConferenceModel{
          $query = $this->pdo->prepare($sql);
          $query->execute(array($field));
          $result = $query->fetch(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
+   public function readConferenceUser(){
+       try {
+         $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE rol_code = 'ASEV4G5GVCG5A7O38DKS8W2EDDE42A' AND acc_status = 'Activo'";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array());
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
        } catch (PDOException $e) {
            die($e->getMessage()."".$e->getLine()."".$e->getFile());
        }

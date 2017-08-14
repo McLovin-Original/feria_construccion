@@ -26,7 +26,7 @@
             <tr>
               <td><?php echo $item++; ?></td>
               <td><?php echo $row["con_name"]; ?></td>
-              <td><?php echo $row["con_exhibitor"]; ?></td>
+              <td><?php echo $row["use_firstname"]; ?></td>
               <td><?php echo $row["day_current"]; ?></td>
               <td><?php echo $row["con_startime"]; ?></td>
               <td><?php echo $row["con_finishtime"]; ?></td>
@@ -57,7 +57,12 @@
             <input type="text" name="data" class="form-control inputmodal" placeholder="titulo" required="">
           </div>
           <div class="form-group">
-            <input type="text" name="data" class="form-control inputmodal" placeholder="nombre expositor" required="">
+            <select class="" id="con_user">
+              <option value="">SELECCIONE UN CONFERENCISTA</option>
+              <?php foreach ($this->ConferenceM->readConferenceUser() as $row){  ?>
+              <option value="<?php echo $row['use_code'] ?>"><?php echo $row["use_firstname"]; ?></option>
+            <?php } ?>
+            </select>
           </div>
           <div class="form-group">
             <select class="" id="sel_evento">

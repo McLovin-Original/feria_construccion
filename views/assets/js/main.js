@@ -107,7 +107,7 @@ $("#frm_reg").submit(function(e){
 $("#frm_con").submit(function(e){
   e.preventDefault();
   var jsonObj=[];
-  $("#frm_con input,#sel_dia,#frm_con textarea").each(function(){
+  $("#frm_con input,#sel_dia,#con_user,#frm_con textarea").each(function(){
     var structure = {};
     structure = $(this).val();
     jsonObj.push(structure);
