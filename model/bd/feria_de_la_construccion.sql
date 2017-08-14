@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-08-2017 a las 00:59:48
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Tiempo de generación: 14-08-2017 a las 04:50:22
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -99,7 +97,7 @@ CREATE TABLE `conference` (
 --
 
 INSERT INTO `conference` (`con_code`, `day_code`, `con_name`, `con_exhibitor`, `con_startime`, `con_finishtime`, `con_share`, `con_creationdate`, `con_creationtime`, `con_description`, `con_status`) VALUES
-('FcV2EIaHtLf2tH6eeT9bjT7t0vSkIl', 'eCdpeQpMdgARx1tu6nbu05zvNqURTP', 'Conferencia1', 'Labecerra', '12:59:00', '01:00:00', 12, '2017-08-11', '12:46:44', 'ssss', 'Activo');
+('FcV2EIaHtLf2tH6eeT9bjT7t0vSkIl', 'JN6qM7MARjnsdPO8esRQ1Gm0KFZN3y', 'Conferencia2', 'Guille', '23:59:00', '18:00:00', 30, '2017-08-11', '12:46:44', 'Prueba1', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -123,15 +121,15 @@ CREATE TABLE `day` (
 
 INSERT INTO `day` (`day_code`, `eve_code`, `day_current`, `day_date`, `day_startime`, `day_finishtime`, `day_descrip`) VALUES
 ('3BMxQk1iMt1cfR0OsNBeesscJvBLpq', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
+('DejZ8euEekgFjYJfc5s9ebBydcIczC', 'fd1eLBqLK13n2orOYgJemAuoCNPvyS', NULL, NULL, NULL, NULL, NULL),
 ('eCdpeQpMdgARx1tu6nbu05zvNqURTP', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA1', '2017-08-16', '01:05:00', '01:00:00', 'ss'),
-('FCOFaAMOAQmXZfukfeT1ce3Qx7r4zJ', 'um196aeYYCfN89rGTXbPtlhUer3Vy9', 'DIA1', '2017-08-16', '03:00:00', '01:00:00', 's'),
+('jjui40j2FgkyenpOg3ThZrBXUlUgbY', 'fd1eLBqLK13n2orOYgJemAuoCNPvyS', NULL, NULL, NULL, NULL, NULL),
 ('JN6qM7MARjnsdPO8esRQ1Gm0KFZN3y', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA2', '2017-08-31', '01:00:00', '03:00:00', 'j'),
 ('joD9AdXjluYv22polGRQaTzdVES3Dj', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
 ('LKQeaLghCvepUZH2nMmMOtLNaxRuDo', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
 ('LOIcaBVesdsMvn1le7oBHZn2KArdyh', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
 ('MKa7H5PJPmHhnbeyUeP0oQoTpTlkEp', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA6', '2017-08-17', '01:00:00', '04:00:00', 'l'),
 ('nydLZDEBsiMnkH9AP7xCSteUdjsKIT', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
-('oH3qjpjSdXGj6KEAVeSpafIrIBcrzo', 'um196aeYYCfN89rGTXbPtlhUer3Vy9', NULL, NULL, NULL, NULL, NULL),
 ('rXJMzON6F11lR0hBAxs4UADL0XtS1e', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
 ('uB8xpFMlAOH1m8erZQPktk6DROtR27', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
 ('XKriu6ffxTttaeb8gHznzhaBMM8g9P', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
@@ -161,7 +159,7 @@ CREATE TABLE `event` (
 INSERT INTO `event` (`eve_code`, `eve_name`, `eve_startdate`, `eve_finishdate`, `eve_numday`, `eve_creationdate`, `eve_creationtime`, `use_code`) VALUES
 ('9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'df', '2017-08-18', '2017-08-26', 9, '2017-08-10', '10:08:52', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K'),
 ('bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', 'w', '2017-08-24', '2017-08-26', 3, '2017-08-10', '10:08:04', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K'),
-('um196aeYYCfN89rGTXbPtlhUer3Vy9', 'MARCHA', '2017-08-11', '2017-08-12', 2, '2017-08-10', '10:08:07', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K');
+('fd1eLBqLK13n2orOYgJemAuoCNPvyS', 's', '2017-08-04', '2017-08-05', 2, '2017-08-14', '02:08:51', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K');
 
 -- --------------------------------------------------------
 
@@ -214,6 +212,13 @@ CREATE TABLE `pavilion` (
   `pav_name` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `pavilion`
+--
+
+INSERT INTO `pavilion` (`pav_code`, `day_code`, `pav_name`) VALUES
+('rrbeRjxH3iSNQkQfBTthbXpCSZKrzX', 'eCdpeQpMdgARx1tu6nbu05zvNqURTP', 'prueba');
+
 -- --------------------------------------------------------
 
 --
@@ -257,7 +262,7 @@ CREATE TABLE `stand` (
   `sta_code` varchar(60) NOT NULL,
   `pav_code` varchar(60) NOT NULL,
   `sta_name` char(50) NOT NULL,
-  `sta_web` varchar(60) NOT NULL,
+  `sta_web` varchar(60) DEFAULT NULL,
   `sta_mail` varchar(30) NOT NULL,
   `sta_numcontact` char(16) NOT NULL,
   `sta_descrip` longtext,
@@ -543,7 +548,6 @@ ALTER TABLE `use_day`
 ALTER TABLE `use_stand`
   ADD CONSTRAINT `fk_stand_cod` FOREIGN KEY (`sta_code`) REFERENCES `stand` (`sta_code`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_token` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
