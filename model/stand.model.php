@@ -42,6 +42,17 @@ Class StandModel{
       }
       return $result;
   }
+  public function readStandByPav($data){
+      try {
+        $sql="SELECT * FROM stand INNER JOIN pavilion ON(pavilion.pav_code=stand.pav_code) WHERE pavilion.pav_code != ?";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($data[0]));
+        $result = $query->fetchALL(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
   public function readPavilion(){
       try {
         $sql="SELECT * FROM pavilion";
@@ -52,6 +63,15 @@ Class StandModel{
           die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
       return $result;
+  }
+  public function updateStand($data){
+      try {
+          $sql = "UPDATE stand SET pav_code = ?, sta_name = ?,sta_web = ?,sta_mail = ?,sta_numcontact = ?,sta_descrip = ?  WHERE sta_code = ? ";
+          $query = $this->pdo->prepare($sql);
+          $query->execute(array($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6]));
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
   }
   public function deleteStand($field){
       try {

@@ -13,6 +13,7 @@
               <th>SITIO WEB</th>
               <th>CORREO</th>
               <th>CONTACTO</th>
+              <th>DESCRIPCION</th>
               <th>ACCIONES</th>
             </tr>
           </thead>
@@ -28,6 +29,7 @@
               <td><?php echo $row["sta_web"]; ?></td>
               <td><?php echo $row["sta_mail"]; ?></td>
               <td><?php echo $row["sta_numcontact"]; ?></td>
+              <td><?php echo $row["sta_descrip"]; ?></td>
               <td>
                 <a href="update-stand&token=<?php echo $row['sta_code']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a onclick="return confirm('Desea Eliminar?')" href="delete-stand&token=<?php echo $row['sta_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>

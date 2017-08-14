@@ -189,6 +189,7 @@ $("#frm_con_u").submit(function(e){
     });
   }
 });
+
 $("#frm_pav_u").submit(function(e){
   e.preventDefault();
   if ($(this).parsley().isValid()) {
@@ -200,6 +201,28 @@ $("#frm_pav_u").submit(function(e){
     });
     console.log(jsonObj);
     $.post("update-pavilion",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#frm_sta_u").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_sta_u select,#frm_sta_u input,#frm_sta_u textarea").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("update-stands",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
         alert(data[1]);
