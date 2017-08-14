@@ -22,7 +22,10 @@
               <td><?php echo $item++; ?></td>
               <td><?php echo $row["pav_name"]; ?></td>
               <td><?php echo $row["day_current"]; ?></td>
-              <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a> <a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+              <td>
+                <a href="update-pabellon&token=<?php echo $row['pav_code']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a onclick="return confirm('Desea Eliminar?');" href="delete-pabellon&token=<?php echo $row['pav_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
+               </td>
             </tr>
           <?php  }   ?>
           </tbody>

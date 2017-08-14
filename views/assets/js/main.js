@@ -168,6 +168,49 @@ $("#frm_sta").submit(function(e){
   }
 });
 
+$("#frm_con_u").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_con_u select,#frm_con_u input,#frm_con_u textarea").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("update-conference",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+$("#frm_pav_u").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_pav_u select,#frm_pav_u input").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("update-pavilion",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
 $("#sel_evento_p").change(function(){
   var evento = $(this).val();
   $.post("con-pabellon",{data:evento},function(data){

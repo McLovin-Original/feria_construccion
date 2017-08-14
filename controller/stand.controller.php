@@ -7,6 +7,12 @@ Class StandController{
   public function __CONSTRUCT(){
     $this->StandM = new StandModel();
   }
+  public function mainPage(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand.php");
+    require_once("views/include/footer.php");
+  }
   public function create(){
     $data = $_POST["data"];
     if (empty($data[2])) {
@@ -31,11 +37,17 @@ Class StandController{
     }
     echo json_encode($return);
   }
-  public function mainPage(){
+  public function updateData(){
+    $field = $_GET["token"];
     require_once("views/include/header.php");
-    require_once("views/include/dashboard.php");
-    require_once("views/modules/stand_mod/stand.php");
+    //require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand.update.php");
     require_once("views/include/footer.php");
+  }
+  public function delete(){
+    $field = $_GET["token"];
+    $this->StandM->deleteStand($field);
+    header("Location: stands");
   }
 }
 

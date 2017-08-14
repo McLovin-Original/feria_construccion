@@ -45,7 +45,6 @@ Class EventController{
     }
     echo json_encode($return);
   }
-
   public function dias(){
     $field = $_GET["token"];
     $event = $this->EventM->readEventByCode($field);

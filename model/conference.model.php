@@ -43,6 +43,17 @@ Class ConferenceModel{
        }
        return $result;
    }
+   public function readConferenceById($field){
+       try {
+         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code) WHERE conference.con_code = ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($field));
+         $result = $query->fetch(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
    public function readDiaByEvent($data){
        try {
          $sql="SELECT * FROM day INNER JOIN event ON(day.eve_code=event.eve_code) WHERE event.eve_code=?";
@@ -54,7 +65,35 @@ Class ConferenceModel{
        }
        return $result;
    }
-
+   public function readDiaByEventUpdate($data){
+       try {
+         $sql="SELECT * FROM day INNER JOIN event ON(day.eve_code=event.eve_code) WHERE event.eve_code = ? AND day_code != ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($data[0],$data[1]));
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
+   public function updateConference($data){
+       try {
+           $sql = "UPDATE conference SET day_code = ?,con_name = ?,con_exhibitor = ?,con_startime = ?,con_finishtime = ?,con_share = ?,con_description = ? WHERE con_code = ?";
+           $query = $this->pdo->prepare($sql);
+           $query->execute(array($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7]));
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+   }
+   public function deleteConference($field){
+       try {
+           $sql = "DELETE FROM conference WHERE con_code = ?";
+           $query = $this->pdo->prepare($sql);
+           $query->execute(array($field));
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+   }
    public function __DESTRUCT(){
        DataBase::disconnect();
    }

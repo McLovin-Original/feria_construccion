@@ -32,7 +32,10 @@
               <td><?php echo $row["con_finishtime"]; ?></td>
               <td><?php echo $row["con_share"]; ?></td>
               <td><?php echo $row["con_description"] ?></td>
-              <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a> <a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+              <td>
+                <a href="update-conferencia&token=<?php echo $row['con_code']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a onclick="return confirm('Dese Eliminar?')" href="delete-conferencia&token=<?php echo $row['con_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
             </tr>
           <?php  }   ?>
           </tbody>
