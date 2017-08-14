@@ -28,4 +28,5 @@ RewriteRule ^crear-stand$                       index.php?c=stand&a=create
 RewriteRule ^delete-stand&token=(.*)$           index.php?c=stand&a=delete&token=$1
 RewriteRule ^update-stand&token=(.*)$           index.php?c=stand&a=updateData&token=$1
 RewriteRule ^update-stands$                     index.php?c=stand&a=update
+RewriteRule ^expo-memorias$                     index.php?c=stand&a=gesMemories
 RewriteRule ^memorias$                          index.php?c=memories

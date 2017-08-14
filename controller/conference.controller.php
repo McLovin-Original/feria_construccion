@@ -27,7 +27,7 @@ Class ConferenceController{
     if ($p==1) {
       $return = array(false,"Campos Nulos","");
     }else{
-      $data[7]=randomAlpha('30');
+      $data[7]=randomAlpha('6');
       $data[8]=date('Ymd');
       $data[9]=date('his');
       $data[10]="Activo";

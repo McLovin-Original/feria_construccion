@@ -43,9 +43,20 @@ Class ConferenceModel{
        }
        return $result;
    }
+   public function readUserConference($data){
+       try {
+         $sql="SELECT * FROM conference INNER JOIN user ON(conference.use_code=user.use_code) WHERE user.use_code != ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($data[0]));
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
    public function readConferenceById($field){
        try {
-         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code) WHERE conference.con_code = ?";
+         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code) INNER JOIN user ON(conference.use_code=user.use_code) WHERE conference.con_code = ?";
          $query = $this->pdo->prepare($sql);
          $query->execute(array($field));
          $result = $query->fetch(PDO::FETCH_BOTH);
@@ -89,7 +100,7 @@ Class ConferenceModel{
    }
    public function updateConference($data){
        try {
-           $sql = "UPDATE conference SET day_code = ?,con_name = ?,con_exhibitor = ?,con_startime = ?,con_finishtime = ?,con_share = ?,con_description = ? WHERE con_code = ?";
+           $sql = "UPDATE conference SET day_code = ?,use_code = ?,con_name = ?,con_startime = ?,con_finishtime = ?,con_share = ?,con_description = ? WHERE con_code = ?";
            $query = $this->pdo->prepare($sql);
            $query->execute(array($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7]));
        } catch (PDOException $e) {

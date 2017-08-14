@@ -9,6 +9,14 @@
     <?php } ?>
   </select>
   <input type="text" name="" value="<?php echo $stand['sta_name']; ?>">
+  <select name="">
+    <option value="<?php echo $stand['use_code'] ?>"><?php echo $stand['use_firstname']; ?></option>
+    <?php
+    $data[0]=$stand['use_code'];
+    foreach ($this->StandM->readUserStand($data) as $row){ ?>
+      <option value="<?php echo $row['use_code'] ?>"><?php echo $row['use_firstname']; ?></option>
+    <?php } ?>
+  </select>
   <input type="text" name="" value="<?php echo $stand['sta_web']; ?>">
   <input type="text" name="" value="<?php echo $stand['sta_mail']; ?>">
   <input type="text" name="" value="<?php echo $stand['sta_numcontact']; ?>">

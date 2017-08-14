@@ -10,13 +10,23 @@ Class StandController{
   public function mainPage(){
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
-    require_once("views/modules/stand_mod/stand.php");
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+      require_once("views/modules/stand_mod/stand.php");
+    }else{
+      require_once("views/modules/stand_mod/stand.memories.php");
+    }
+    require_once("views/include/footer.php");
+  }
+  public function gesMemories(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand.memories.php");
     require_once("views/include/footer.php");
   }
   public function create(){
     $data = $_POST["data"];
     if (empty($data[2])) {
-      $data[2]="No tiene";
+      $data[3]="No tiene";
     }
     for ($i=0; $i <count($data) ; $i++) {
       if (empty($data[$i])) {
@@ -29,9 +39,9 @@ Class StandController{
     if ($p==1) {
       $return = array(false,"Campos Nulos","");
     }else{
-      $data[6]=randomAlpha('30');
-      $data[7]=date('Ymd');
-      $data[8]=date('his');
+      $data[7]=randomAlpha('6');
+      $data[8]=date('Ymd');
+      $data[9]=date('his');
       $this->StandM->createStand($data);
       $return = array(true,"Guardo Con Exito","stands");
     }
