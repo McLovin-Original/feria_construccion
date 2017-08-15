@@ -217,6 +217,17 @@ body{
 .btnuser a:hover,.btnuser a:focus{text-decoration: none}
 
 .btnlargo{transform: translateX(50px);}
+
+.licollapse{
+  cursor: pointer;
+}
+
+#collapsote{
+  background-color: #496179;
+  padding: 10px;
+  color: white;
+  padding-left: 22px;
+}
 /*TABLA*/
 .tabla{
   margin-top: 30px;
