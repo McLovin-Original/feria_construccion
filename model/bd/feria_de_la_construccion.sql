@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2017 a las 04:50:22
+-- Tiempo de generación: 15-08-2017 a las 07:36:14
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -54,23 +54,10 @@ CREATE TABLE `access` (
 --
 
 INSERT INTO `access` (`acc_token`, `use_code`, `use_mail`, `password`, `acc_status`) VALUES
-('D6r4PAD34fyIeEUj2YkGFNkuEg9KEJ', 'RJxXqEsxEyZ983qBBdicbZsl20gdEs', 'pablo@gmail.com', '$2y$10$QBVr9hPDIS8c2DKmVY0dou.Z6s9F.lHylGVpAt6rp4ALxi40UTN9S', 'Activo'),
-('dCXGjQBYcoPOgDNiEDAqPFbVXkzPz5', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K', 'jprestrepo94@misena.edu.co', '$2y$10$2AqauzhZ3UrcJhNXuYOKKe26jam.G7aO/18cKwUbMVYsDShxVKYBy', 'Activo'),
-('tFTVjQC7n54sl189qeapDzSVhH0reC', 'TdeA0peToJ49SmZIe8Crss83Iosziv', 'pablofrg98@gmail.com', '$2y$10$pdTIFGKxUvjyHr963dSlBOYqxVb8R4qomXGuN0aq2kz6Uss/jmIuy', 'Inactivo'),
-('yFkznF4FDVDSKpfHUCvrgZbpGpAUCf', 'x1ddHU2zXHeMUoRZxfEZPELvQrDh0V', 'pablito98@gmail.com', '$2y$10$MiyfpldLDqW0dSY6LnOunejBxE9W2xiZ7fi1NUWLXlncQsO/uvYcG', 'Activo'),
-('ZI8AOa2miLexADZPKAhie3X7PevoqJ', '8f3n6u03Uk637Gyz6vE5edK9MQIaXV', 'paa@s.com', '$2y$10$RhMDzq6s6Y7/LsgTgJnplea8z.w.44RoCIUhZJIWia85ogc8M4vD2', 'Activo');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `auth`
---
-
-CREATE TABLE `auth` (
-  `per_code` varchar(60) NOT NULL,
-  `rol_code` varchar(60) NOT NULL,
-  `status` char(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+('AhdrCA9qGY3j3d4QFXude900ygNzQI', 'e7eYlQoe3dMg1LMX0em5OFIiBAqoZL', 'jprestrepo94@misena.edu.co', '$2y$10$2c3ypvzWtANZA6senOt0G.2Lu11mjnmVjF6WXrgnaJbheMJTqGFqa', 'Activo'),
+('GVyiJ2zx31r5cBxoi2FtX0eMeJ0fHX', 'lkBJOYtJoasBqmExMACfLgs1fnMtzo', 'prueba@gmail.com', '$2y$10$eRs1LUyVgC5LEP5cBEA/V.yieKp3T1s3HuAdISgS7OyzibVM1Hq1.', 'Activo'),
+('MPgBsem4VXMzBVcHefCMUQKpyBTfE3', 'pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', 'labecerra01@yimail.com', '$2y$10$0uSiqAzv7ezEWtmoOI8cpuIfJuq93hqMuZ4YMymA7k7mnxwgCqAoy', 'Activo'),
+('O3jsvk9HykYuxjSVH7oCEmcbjI7sfO', 'GXS49Dqy6VveAerhPTpykzefN9ZqpQ', 'pablito@yimail.com', '$2y$10$L61AEGZGOPwTIOxKFoRnp.rjIICI8jWwWq9cfo9Q3Ez8dA5edt2ma', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -82,7 +69,7 @@ CREATE TABLE `conference` (
   `con_code` varchar(60) NOT NULL,
   `day_code` varchar(60) NOT NULL,
   `con_name` char(50) NOT NULL,
-  `con_exhibitor` varchar(60) NOT NULL,
+  `use_code` varchar(60) DEFAULT NULL,
   `con_startime` time NOT NULL,
   `con_finishtime` time NOT NULL,
   `con_share` int(11) NOT NULL,
@@ -96,8 +83,8 @@ CREATE TABLE `conference` (
 -- Volcado de datos para la tabla `conference`
 --
 
-INSERT INTO `conference` (`con_code`, `day_code`, `con_name`, `con_exhibitor`, `con_startime`, `con_finishtime`, `con_share`, `con_creationdate`, `con_creationtime`, `con_description`, `con_status`) VALUES
-('FcV2EIaHtLf2tH6eeT9bjT7t0vSkIl', 'JN6qM7MARjnsdPO8esRQ1Gm0KFZN3y', 'Conferencia2', 'Guille', '23:59:00', '18:00:00', 30, '2017-08-11', '12:46:44', 'Prueba1', 'Activo');
+INSERT INTO `conference` (`con_code`, `day_code`, `con_name`, `use_code`, `con_startime`, `con_finishtime`, `con_share`, `con_creationdate`, `con_creationtime`, `con_description`, `con_status`) VALUES
+('TNVt4a', '2hEIfnFx4jqQKQgO3oTBVMG92spzDj', 'COMO SE LOCA', 'pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', '01:00:00', '13:00:00', 12, '2017-08-15', '05:07:20', 'SSSS', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -120,20 +107,10 @@ CREATE TABLE `day` (
 --
 
 INSERT INTO `day` (`day_code`, `eve_code`, `day_current`, `day_date`, `day_startime`, `day_finishtime`, `day_descrip`) VALUES
-('3BMxQk1iMt1cfR0OsNBeesscJvBLpq', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
-('DejZ8euEekgFjYJfc5s9ebBydcIczC', 'fd1eLBqLK13n2orOYgJemAuoCNPvyS', NULL, NULL, NULL, NULL, NULL),
-('eCdpeQpMdgARx1tu6nbu05zvNqURTP', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA1', '2017-08-16', '01:05:00', '01:00:00', 'ss'),
-('jjui40j2FgkyenpOg3ThZrBXUlUgbY', 'fd1eLBqLK13n2orOYgJemAuoCNPvyS', NULL, NULL, NULL, NULL, NULL),
-('JN6qM7MARjnsdPO8esRQ1Gm0KFZN3y', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA2', '2017-08-31', '01:00:00', '03:00:00', 'j'),
-('joD9AdXjluYv22polGRQaTzdVES3Dj', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
-('LKQeaLghCvepUZH2nMmMOtLNaxRuDo', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
-('LOIcaBVesdsMvn1le7oBHZn2KArdyh', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
-('MKa7H5PJPmHhnbeyUeP0oQoTpTlkEp', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'DIA6', '2017-08-17', '01:00:00', '04:00:00', 'l'),
-('nydLZDEBsiMnkH9AP7xCSteUdjsKIT', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
-('rXJMzON6F11lR0hBAxs4UADL0XtS1e', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
-('uB8xpFMlAOH1m8erZQPktk6DROtR27', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL),
-('XKriu6ffxTttaeb8gHznzhaBMM8g9P', 'bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', NULL, NULL, NULL, NULL, NULL),
-('xnvij5LR21cd1v8hTxboPB3kC6rRuB', '9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', NULL, NULL, NULL, NULL, NULL);
+('2hEIfnFx4jqQKQgO3oTBVMG92spzDj', 'MbeDG1BIopReiEAnPT9U4fNNN9lD2b', 'DIA1', '2017-08-16', '01:00:00', '02:01:00', 'Juegos y mas'),
+('J2eEqGvGb441s02fxd59yAMacztGch', 'MbeDG1BIopReiEAnPT9U4fNNN9lD2b', 'DIA2', '2017-08-17', '05:00:00', '13:00:00', 'Hacermas'),
+('v6DhFeJUCGD2ZoeQlo6IMVYUQArQT2', 'MbeDG1BIopReiEAnPT9U4fNNN9lD2b', 'DIA3', '2017-08-18', '10:57:00', '13:59:00', 'Relajo'),
+('yF3P4Sen26FqhfJXRerpGve9luSQMT', 'MbeDG1BIopReiEAnPT9U4fNNN9lD2b', 'DIA4', '2017-08-19', '02:00:00', '15:00:00', 'DESPEDIDA');
 
 -- --------------------------------------------------------
 
@@ -157,48 +134,49 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`eve_code`, `eve_name`, `eve_startdate`, `eve_finishdate`, `eve_numday`, `eve_creationdate`, `eve_creationtime`, `use_code`) VALUES
-('9RKe1Fp4D70QhJVcEAgmJ2LN7aptsg', 'df', '2017-08-18', '2017-08-26', 9, '2017-08-10', '10:08:52', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K'),
-('bVBnSVj3NlBSQD5LDSceeb2cQ2Uq3z', 'w', '2017-08-24', '2017-08-26', 3, '2017-08-10', '10:08:04', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K'),
-('fd1eLBqLK13n2orOYgJemAuoCNPvyS', 's', '2017-08-04', '2017-08-05', 2, '2017-08-14', '02:08:51', 'Xy3IRO3b9sg94TVvCVuGo0zimJQR5K');
+('MbeDG1BIopReiEAnPT9U4fNNN9lD2b', 'Feria_Construccion', '2017-08-16', '2017-08-19', 4, '2017-08-14', '07:08:51', 'e7eYlQoe3dMg1LMX0em5OFIiBAqoZL');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `file`
+-- Estructura de tabla para la tabla `file_conference`
 --
 
-CREATE TABLE `file` (
-  `fil_code` varchar(60) NOT NULL,
-  `con_code` varchar(60) NOT NULL,
-  `fil_file` varchar(50) NOT NULL,
-  `fil_creationdate` date NOT NULL,
-  `fil_creationhour` time NOT NULL
+CREATE TABLE `file_conference` (
+  `fic_code` varchar(60) NOT NULL,
+  `con_code` varchar(60) DEFAULT NULL,
+  `fic_name` varchar(60) DEFAULT NULL,
+  `fic_file` varchar(120) DEFAULT NULL,
+  `fic_description` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `file_conference`
+--
+
+INSERT INTO `file_conference` (`fic_code`, `con_code`, `fic_name`, `fic_file`, `fic_description`) VALUES
+('iueitc', 'TNVt4a', 'kakakalalallala', 'PELOS.rar', 'sss');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `history`
+-- Estructura de tabla para la tabla `file_stand`
 --
 
-CREATE TABLE `history` (
-  `his_code` varchar(60) NOT NULL,
-  `mod_code` varchar(60) NOT NULL,
-  `user` varchar(30) NOT NULL,
-  `date` date DEFAULT NULL,
-  `time` time DEFAULT NULL
+CREATE TABLE `file_stand` (
+  `fis_code` varchar(60) NOT NULL,
+  `sta_code` varchar(60) NOT NULL,
+  `fis_nom` char(50) NOT NULL,
+  `fis_file` varchar(120) NOT NULL,
+  `fis_descripcion` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `module`
+-- Volcado de datos para la tabla `file_stand`
 --
 
-CREATE TABLE `module` (
-  `mod_code` varchar(60) NOT NULL,
-  `mod_name` char(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `file_stand` (`fis_code`, `sta_code`, `fis_nom`, `fis_file`, `fis_descripcion`) VALUES
+('Uyo5PV', 'tnOure', 'd', 'PELOS.rar', 'dd');
 
 -- --------------------------------------------------------
 
@@ -217,19 +195,7 @@ CREATE TABLE `pavilion` (
 --
 
 INSERT INTO `pavilion` (`pav_code`, `day_code`, `pav_name`) VALUES
-('rrbeRjxH3iSNQkQfBTthbXpCSZKrzX', 'eCdpeQpMdgARx1tu6nbu05zvNqURTP', 'prueba');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `permission`
---
-
-CREATE TABLE `permission` (
-  `per_code` varchar(60) NOT NULL,
-  `per_name` char(50) NOT NULL,
-  `mod_code` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+('0NsUhF1KhpFVtgn0J7ZfqyfCecl9EE', 'v6DhFeJUCGD2ZoeQlo6IMVYUQArQT2', 'Pabellon 1');
 
 -- --------------------------------------------------------
 
@@ -248,6 +214,7 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`rol_code`, `rol_name`, `rol_desc`) VALUES
+('ASEV4G5GVCG5A7O38DKS8W2EDDE42A', 'Conferencista', 'Pude adjuntar archivos a las conferencias'),
 ('E3HDKX3684UTA7DMHFOAA34HAK39PM', 'Expositor', 'Este rol puede gestionar la subida de memorias(archivos) e ingresar las personas que visitaron su stand'),
 ('F34L2P7GPT9RHI37S306OFVI16TI47', 'Administrativo', 'Este rol gestiona todo el aplicativo'),
 ('OS7CX80C7QQBLGJV41MB3YY4ZA234O', 'Visitante', 'usuario corriente usa la aplicacion mas no gestiona esta');
@@ -261,6 +228,7 @@ INSERT INTO `role` (`rol_code`, `rol_name`, `rol_desc`) VALUES
 CREATE TABLE `stand` (
   `sta_code` varchar(60) NOT NULL,
   `pav_code` varchar(60) NOT NULL,
+  `use_code` varchar(60) NOT NULL,
   `sta_name` char(50) NOT NULL,
   `sta_web` varchar(60) DEFAULT NULL,
   `sta_mail` varchar(30) NOT NULL,
@@ -269,6 +237,13 @@ CREATE TABLE `stand` (
   `sta_creationdate` date NOT NULL,
   `sta_creationtime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `stand`
+--
+
+INSERT INTO `stand` (`sta_code`, `pav_code`, `use_code`, `sta_name`, `sta_web`, `sta_mail`, `sta_numcontact`, `sta_descrip`, `sta_creationdate`, `sta_creationtime`) VALUES
+('tnOure', '0NsUhF1KhpFVtgn0J7ZfqyfCecl9EE', 'lkBJOYtJoasBqmExMACfLgs1fnMtzo', 'aaa', 'aaaa', 'aaa@ccc.com', '5555', 'sss', '2017-08-15', '03:00:16');
 
 -- --------------------------------------------------------
 
@@ -294,11 +269,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`use_code`, `rol_code`, `use_docu`, `use_firstname`, `use_lastname`, `use_cellphone`, `use_gender`, `use_birthdate`, `use_profession`, `use_institution`) VALUES
-('8f3n6u03Uk637Gyz6vE5edK9MQIaXV', 'F34L2P7GPT9RHI37S306OFVI16TI47', '999', 'mf', 'lol', '2222', 'MASCULINO', 12, 'Aprendiz', 's'),
-('RJxXqEsxEyZ983qBBdicbZsl20gdEs', 'OS7CX80C7QQBLGJV41MB3YY4ZA234O', '09988399483', 'JuanPAPITO', 'Respeto', '112', 'MASCULINO', 18, 'Aprendiz', 'SESENA'),
-('TdeA0peToJ49SmZIe8Crss83Iosziv', 'F34L2P7GPT9RHI37S306OFVI16TI47', '1036679990', 'Juan Pablo', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Aprendiz', 'CENA'),
-('x1ddHU2zXHeMUoRZxfEZPELvQrDh0V', 'OS7CX80C7QQBLGJV41MB3YY4ZA234O', '1036679991', 'Juan', 'Restrepo', '6134527', 'MASCULINO', 18, 'Instructor', 'SENA'),
-('Xy3IRO3b9sg94TVvCVuGo0zimJQR5K', 'F34L2P7GPT9RHI37S306OFVI16TI47', '98062003049', 'Juan Pablo ', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Aprendiz', 'SENA');
+('e7eYlQoe3dMg1LMX0em5OFIiBAqoZL', 'F34L2P7GPT9RHI37S306OFVI16TI47', '1036679990', 'Juan Pablo', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Instructor', 'SENA'),
+('GXS49Dqy6VveAerhPTpykzefN9ZqpQ', 'E3HDKX3684UTA7DMHFOAA34HAK39PM', '10394339229', 'Juan Pablo', 'Restrepo Garcia', '12345423', 'MASCULINO', 12, 'Instructor', 'SENA'),
+('lkBJOYtJoasBqmExMACfLgs1fnMtzo', 'E3HDKX3684UTA7DMHFOAA34HAK39PM', '255114555', 'Prueba Expo', 'lll', '5552455', 'MASCULINO', 13, 'Instructor', 'SSSENA'),
+('pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', 'ASEV4G5GVCG5A7O38DKS8W2EDDE42A', '10293473729', 'Labecerra', 'Alias', '63394995', 'MASCULINO', 69, 'Instructor', 'UDE');
 
 -- --------------------------------------------------------
 
@@ -354,18 +328,12 @@ ALTER TABLE `access`
   ADD KEY `fk_security` (`use_code`);
 
 --
--- Indices de la tabla `auth`
---
-ALTER TABLE `auth`
-  ADD PRIMARY KEY (`per_code`,`rol_code`),
-  ADD KEY `fk_id_rol` (`rol_code`);
-
---
 -- Indices de la tabla `conference`
 --
 ALTER TABLE `conference`
   ADD PRIMARY KEY (`con_code`),
-  ADD KEY `fk_day_cod` (`day_code`);
+  ADD KEY `fk_day_cod` (`day_code`),
+  ADD KEY `fk_usuconf` (`use_code`);
 
 --
 -- Indices de la tabla `day`
@@ -382,24 +350,18 @@ ALTER TABLE `event`
   ADD KEY `eve_creationuser` (`use_code`);
 
 --
--- Indices de la tabla `file`
+-- Indices de la tabla `file_conference`
 --
-ALTER TABLE `file`
-  ADD PRIMARY KEY (`fil_code`),
-  ADD KEY `fk_conf_token_file` (`con_code`);
+ALTER TABLE `file_conference`
+  ADD PRIMARY KEY (`fic_code`),
+  ADD KEY `fk_file_conference` (`con_code`);
 
 --
--- Indices de la tabla `history`
+-- Indices de la tabla `file_stand`
 --
-ALTER TABLE `history`
-  ADD PRIMARY KEY (`his_code`),
-  ADD KEY `fk_mod_cod_history` (`mod_code`);
-
---
--- Indices de la tabla `module`
---
-ALTER TABLE `module`
-  ADD PRIMARY KEY (`mod_code`);
+ALTER TABLE `file_stand`
+  ADD PRIMARY KEY (`fis_code`),
+  ADD KEY `fk_filsta` (`sta_code`);
 
 --
 -- Indices de la tabla `pavilion`
@@ -407,13 +369,6 @@ ALTER TABLE `module`
 ALTER TABLE `pavilion`
   ADD PRIMARY KEY (`pav_code`),
   ADD KEY `fk_day_cod_pavilion` (`day_code`);
-
---
--- Indices de la tabla `permission`
---
-ALTER TABLE `permission`
-  ADD PRIMARY KEY (`per_code`),
-  ADD KEY `fk_mod_cod` (`mod_code`);
 
 --
 -- Indices de la tabla `role`
@@ -426,7 +381,8 @@ ALTER TABLE `role`
 --
 ALTER TABLE `stand`
   ADD PRIMARY KEY (`sta_code`),
-  ADD KEY `fk_pavilion` (`pav_code`);
+  ADD KEY `fk_pavilion` (`pav_code`),
+  ADD KEY `use_code` (`use_code`);
 
 --
 -- Indices de la tabla `user`
@@ -468,17 +424,11 @@ ALTER TABLE `access`
   ADD CONSTRAINT `fk_security` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `auth`
---
-ALTER TABLE `auth`
-  ADD CONSTRAINT `fk_id_rol` FOREIGN KEY (`rol_code`) REFERENCES `role` (`rol_code`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_perm_cod` FOREIGN KEY (`per_code`) REFERENCES `permission` (`per_code`) ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `conference`
 --
 ALTER TABLE `conference`
-  ADD CONSTRAINT `fk_day_cod` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_day_cod` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_usuconf` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`);
 
 --
 -- Filtros para la tabla `day`
@@ -493,16 +443,16 @@ ALTER TABLE `event`
   ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `file`
+-- Filtros para la tabla `file_conference`
 --
-ALTER TABLE `file`
-  ADD CONSTRAINT `fk_conf_token_file` FOREIGN KEY (`con_code`) REFERENCES `conference` (`con_code`) ON UPDATE CASCADE;
+ALTER TABLE `file_conference`
+  ADD CONSTRAINT `fk_file_conference` FOREIGN KEY (`con_code`) REFERENCES `conference` (`con_code`);
 
 --
--- Filtros para la tabla `history`
+-- Filtros para la tabla `file_stand`
 --
-ALTER TABLE `history`
-  ADD CONSTRAINT `fk_mod_cod_history` FOREIGN KEY (`mod_code`) REFERENCES `module` (`mod_code`) ON UPDATE CASCADE;
+ALTER TABLE `file_stand`
+  ADD CONSTRAINT `fk_filsta` FOREIGN KEY (`sta_code`) REFERENCES `stand` (`sta_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `pavilion`
@@ -511,16 +461,11 @@ ALTER TABLE `pavilion`
   ADD CONSTRAINT `fk_day_cod_pavilion` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `permission`
---
-ALTER TABLE `permission`
-  ADD CONSTRAINT `fk_mod_cod` FOREIGN KEY (`mod_code`) REFERENCES `module` (`mod_code`) ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `stand`
 --
 ALTER TABLE `stand`
-  ADD CONSTRAINT `fk_pavilion` FOREIGN KEY (`pav_code`) REFERENCES `pavilion` (`pav_code`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_pavilion` FOREIGN KEY (`pav_code`) REFERENCES `pavilion` (`pav_code`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `stand_ibfk_1` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `user`
