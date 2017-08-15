@@ -63,6 +63,50 @@ $("#frm_log").submit(function(e){
   });
 });
 
+$("#reg_sex").focus(function(){
+    $("#reg_email").siblings("span").remove();
+    var data = $("#reg_email").val();
+    if (data.length > 0) {
+        $.post("validar-email",{data:data},function(response){
+            var response = JSON.parse(response);
+            if (response == true) {
+              $("#reg_email").after("<span>El Correo Ya Existe</span>")
+              $("#btn_reg").attr("disabled",true);
+            } else {
+              $("#btn_reg").attr("disabled",false);
+            }
+        });
+    }
+});
+
+
+$("#reg_email").focus(function(){
+   $(this).siblings("span").remove();
+   $("#btn_reg").attr("disabled",false);
+});
+
+$("#reg_email").focus(function(){
+  $("#reg_doc").siblings("span").remove();
+  var data = $("#reg_doc").val();
+  if (data.length > 0) {
+    $.post("validar-documento",{data:data},function(response){
+      var response = JSON.parse(response);
+      if (response == true) {
+        $("#reg_doc").after("<span>El Documento Ya Existe</span>")
+        $("#btn_reg").attr("disabled",true);
+      } else {
+        $("#btn_reg").attr("disabled",false);
+      }
+    });
+  }
+});
+
+
+$("#reg_doc").focus(function(){
+  $(this).siblings("span").remove();
+  $("#btn_reg").attr("disabled",false);
+});
+
 $("#frm_eve").submit(function(e){
   e.preventDefault();
   if ($(this).parsley().isValid()) {
@@ -240,3 +284,17 @@ $("#sel_evento_p").change(function(){
     $("#sel_dia_p").html(data);
   });
 });
+/*$("select[name=data]").change(function(){
+  var estado = [$(this).val(),
+                $("input[name=token]").val()];
+                console.log(estado);
+  $.post("update-user-status",{data:estado},function(data){
+    var data = JSON.parse(data);
+    if (data[0]==true) {
+      alert(data[1]);
+      document.location.href=data[2];
+    }else{
+      alert(data[1]);
+    }
+  });
+});*/

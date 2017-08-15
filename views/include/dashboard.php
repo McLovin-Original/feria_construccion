@@ -35,7 +35,7 @@
         <a href="stands"><li><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
-        <a href="index.php?c=main&a=gestSeguridad"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
+        <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
         <a href="#"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
       </ul>

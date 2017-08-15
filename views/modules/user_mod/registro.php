@@ -36,13 +36,13 @@
                 <?php } ?>
               </select>
               <label class="label4"><i class="fa fa-id-card" aria-hidden="true"></i> TIPO DE ROL</label>
-              <input type="number" class="form-control input3" required="" name="data">
+              <input id="reg_doc" type="number" class="form-control input3" required="" name="data">
               <label class="label3"><i class="fa fa-id-card" aria-hidden="true"></i> NUMERO DE DOCUMENTO</label>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control input2" required="" name="data">
+              <input id="reg_email" type="email" class="form-control input2" required="" name="data">
               <label class="label2"><i class="fa fa-envelope" aria-hidden="true"></i> EMAIL</label>
-              <select class="form-control input3" name="data" required="">
+              <select id="reg_sex" class="form-control input3" name="data" required="">
                 <option value="">SELECCIONE UNO</option>
                 <option value="MASCULINO">MASCULINO</option>
                 <option value="FEMENINO">FEMENINO</option>

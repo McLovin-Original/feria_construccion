@@ -2,10 +2,15 @@ RewriteEngine On
 RewriteRule ^inicio$                            index.php
 RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
 RewriteRule ^registro$                          index.php?c=user
+RewriteRule ^usuarios$                          index.php?c=user&a=gestUser
+RewriteRule ^usuarios&msn=(.*)$                 index.php?c=user&a=gestUser&msn=$1
 RewriteRule ^validar-email$                     index.php?c=user&a=validEmail
 RewriteRule ^iniciar$                           index.php?c=user&a=signIn
 RewriteRule ^cerrar$                            index.php?c=user&a=close
 RewriteRule ^crear-usuario$                     index.php?c=user&a=create
+RewriteRule ^validar-documento$                 index.php?c=user&a=documento
+RewriteRule ^update-user-status$                index.php?c=user&a=updateStatus
+RewriteRule ^delete-user&token=(.*)$            index.php?c=user&a=delete&token=$1
 RewriteRule ^eventos$                           index.php?c=event
 RewriteRule ^crear-evento$                      index.php?c=event&a=create
 RewriteRule ^delete-evento&token=(.*)$          index.php?c=event&a=delete&token=$1

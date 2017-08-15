@@ -12,9 +12,25 @@ Class UserController{
     require_once("views/modules/user_mod/registro.php");
     require_once("views/include/footer.php");
   }
+  public function gestUser(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/user_mod/user.manage.php");
+    require_once("views/include/footer.php");
+  }
   public function validEmail(){
       $data[0] = $_POST["data"];
       $result = $this->UserM->readUserbyEmail($data);
+      if(count($result[0])>=1){
+        $return = (true);
+      }else{
+        $return = (false);
+      }
+      echo json_encode($return);
+  }
+  public function documento(){
+      $data[0] = $_POST["data"];
+      $result = $this->UserM->readUserbyDocument($data);
       if(count($result[0])>=1){
         $return = (true);
       }else{
@@ -79,11 +95,26 @@ Class UserController{
       }
     echo json_encode($return);
   }
+  public function updateStatus(){
+    $data = $_POST["data"];
+    if (empty($data[0]) || empty($data[1])) {
+      $return = array(false,"Campo Nulo","");
+    }else{
+      $this->UserM->updateStatus($data);
+      $return = array(false,"Actualizado con exito","usuarios");
+    }
+    echo json_encode($return);
+  }
+  public function delete(){
+    $field = $_GET["token"];
+    $this->UserM->deleteUser($field);
+    $msn="Eliminado Con Exito";
+    header("Location: usuarios&msn=$msn");
+  }
   public function close(){
     session_destroy();
     header("Location: inicio");
   }
-
 }
 
  ?>
