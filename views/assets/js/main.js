@@ -77,6 +77,50 @@ $("#frm_log").submit(function(e){
   });
 });
 
+$("#reg_sex").focus(function(){
+    $("#reg_email").siblings("span").remove();
+    var data = $("#reg_email").val();
+    if (data.length > 0) {
+        $.post("validar-email",{data:data},function(response){
+            var response = JSON.parse(response);
+            if (response == true) {
+              $("#reg_email").after("<span>El Correo Ya Existe</span>")
+              $("#btn_reg").attr("disabled",true);
+            } else {
+              $("#btn_reg").attr("disabled",false);
+            }
+        });
+    }
+});
+
+
+$("#reg_email").focus(function(){
+   $(this).siblings("span").remove();
+   $("#btn_reg").attr("disabled",false);
+});
+
+$("#reg_email").focus(function(){
+  $("#reg_doc").siblings("span").remove();
+  var data = $("#reg_doc").val();
+  if (data.length > 0) {
+    $.post("validar-documento",{data:data},function(response){
+      var response = JSON.parse(response);
+      if (response == true) {
+        $("#reg_doc").after("<span>El Documento Ya Existe</span>")
+        $("#btn_reg").attr("disabled",true);
+      } else {
+        $("#btn_reg").attr("disabled",false);
+      }
+    });
+  }
+});
+
+
+$("#reg_doc").focus(function(){
+  $(this).siblings("span").remove();
+  $("#btn_reg").attr("disabled",false);
+});
+
 $("#frm_eve").submit(function(e){
   e.preventDefault();
   if ($(this).parsley().isValid()) {
@@ -117,3 +161,154 @@ $("#frm_reg").submit(function(e){
       }
     });
 });
+
+$("#frm_con").submit(function(e){
+  e.preventDefault();
+  var jsonObj=[];
+  $("#frm_con input,#sel_dia,#con_user,#frm_con textarea").each(function(){
+    var structure = {};
+    structure = $(this).val();
+    jsonObj.push(structure);
+  });
+  $.post("crear-conferencia",{data:jsonObj},function(data){
+    var data = JSON.parse(data);
+    if (data[0]==true) {
+      alert(data[1]);
+      document.location.href=data[2];
+    }else{
+      alert(data[1]);
+    }
+  });
+});
+
+$("#sel_evento").change(function(){
+  var evento = $(this).val();
+  $.post("con-eventos",{data:evento},function(data){
+    $("#sel_dia").html(data);
+  });
+});
+
+$("#frm_pav").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var data = [$("#nam_pav").val(),
+                $("#sel_dia_p").val()];
+    $.post("crear-pabellon",{data:data},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#frm_sta").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_sta select,#frm_sta input,#frm_sta textarea").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    $.post("crear-stand",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#frm_con_u").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_con_u select,#frm_con_u input,#frm_con_u textarea").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("update-conference",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#frm_pav_u").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_pav_u select,#frm_pav_u input").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("update-pavilion",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#frm_sta_u").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("#frm_sta_u select,#frm_sta_u input,#frm_sta_u textarea").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("update-stands",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+$("#sel_evento_p").change(function(){
+  var evento = $(this).val();
+  $.post("con-pabellon",{data:evento},function(data){
+    $("#sel_dia_p").html(data);
+  });
+});
+/*$("select[name=data]").change(function(){
+  var estado = [$(this).val(),
+                $("input[name=token]").val()];
+                console.log(estado);
+  $.post("update-user-status",{data:estado},function(data){
+    var data = JSON.parse(data);
+    if (data[0]==true) {
+      alert(data[1]);
+      document.location.href=data[2];
+    }else{
+      alert(data[1]);
+    }
+  });
+});*/

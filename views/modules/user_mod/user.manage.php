@@ -8,22 +8,46 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>PERSONA</th>
+              <th>NOMBRE</th>
+              <th>DOCUMENTO</th>
+              <th>ROL</th>
               <th>CORREO</th>
-              <th>UBICACION</th>
+              <th>CELULAR</th>
               <th>CARGO</th>
+              <th>INSTITUCION</th>
+              <th>ESTADO</th>
               <th>ACCIONES</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+            $item=1;
+            foreach ($this->UserM->readUser() as $row) {
+            ?>
             <tr>
-              <td>id</td>
-              <td>persona</td>
-              <td>correo</td>
-              <td>ubicacion</td>
-              <td>cargo</td>
-              <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a> <a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+              <td><?php echo $item++; ?></td>
+              <td><?php echo $row["use_firstname"]; ?></td>
+              <td><?php echo $row["use_docu"]; ?></td>
+              <td><?php echo $row["rol_name"]; ?></td>
+              <td><?php echo $row["use_mail"] ?></td>
+              <td><?php echo $row["use_cellphone"] ?></td>
+              <td><?php echo $row["use_profession"] ?></td>
+              <td><?php echo $row["use_institution"] ?></td>
+              <td><select name="data">
+                <?php
+                  $estado = $row["acc_status"]=="Activo" ? "Inactivo" : "Activo";
+                ?>
+                <option value="<?php echo $row["acc_status"] ?>"><?php echo $row["acc_status"] ?></option>
+                <option value="<?php echo $estado ?>"><?php echo $estado ?></option>
+              </select>
+              <input type="hidden" name="token" value="<?php echo $row['acc_token']; ?>">
+              </td>
+              <td>
+                <a href=""><span class="glyphicon glyphicon-pencil"></span></a>
+                <a onclick="return confirm('Desea Eliminar?')" href="delete-user&token=<?php echo $row['use_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
             </tr>
+          <?php  }  ?>
           </tbody>
         </table>
   </div>
