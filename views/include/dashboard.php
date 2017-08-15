@@ -19,13 +19,25 @@
       <div class="sidenav-line1"></div>
       <ul>
         <a href="dashboard"><li><i class="fa fa-home icon" aria-hidden="true"></i> INICIO</li></a>
-        <a href="eventos"><li><i class="fa fa-calendar-check-o icon" aria-hidden="true"></i> EVENTOS</li></a>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
+          <a href="eventos"><li><i class="fa fa-calendar-check-o icon" aria-hidden="true"></i> EVENTOS</li></a>
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="memorias"><li><i class="fa fa-male icon" aria-hidden="true"></i> EXPOSITORES</li></a>
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A" ){ ?>
         <a href="conferencias"><li><i class="fa fa-users icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="pabellon"><li><i class="fa fa-map-marker icon" aria-hidden="true"></i> PABELLONES</li></a>
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM" ){ ?>
         <a href="stands"><li><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="index.php?c=main&a=gestSeguridad"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
         <a href="#"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
+        <?php } ?>
       </ul>
     </div>
   </div>
