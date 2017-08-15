@@ -89,10 +89,14 @@ Class UserController{
         $data[11]=randomAlpha('30');
         $data[12]=randomAlpha('30');
         $data[13]=$estado;
-        $this->UserM->createUser($data);
-        $return = array(true,$msn,"inicio");
+        $result=$this->UserM->createUser($data);
+        if ($result==23000) {
+          $return = array(false,"El Documento ya existe","");
+        }else{
+          $return = array(true,$msn,"inicio");
         }
       }
+    }
     echo json_encode($return);
   }
   public function updateStatus(){

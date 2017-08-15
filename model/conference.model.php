@@ -67,7 +67,7 @@ Class ConferenceModel{
          $sql="SELECT * FROM conference WHERE use_code = ?";
          $query = $this->pdo->prepare($sql);
          $query->execute(array($code));
-         $result = $query->fetch(PDO::FETCH_BOTH);
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
        } catch (PDOException $e) {
            die($e->getMessage()."".$e->getLine()."".$e->getFile());
        }
