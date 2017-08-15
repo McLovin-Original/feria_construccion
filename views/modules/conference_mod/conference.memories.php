@@ -1,12 +1,3 @@
-<?php
-$code=$_SESSION["user"]["id"];
-$confe=$this->ConferenceM->readConferenceByUser($code);
-$field=$confe['con_code'];
-$result=$this->ConferenceM->readConferenceById($field);
-if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A"){
-  header("Location: invalid-conference");
-}
-?>
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
     <h1 class="text-center">GESTIONAR MEMORIAS</h1>
@@ -30,19 +21,15 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2E
           </thead>
           <tbody>
             <?php
-            if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
-              $method=$this->ConferenceM->readConferenceMemoriesAdmin();
-            }else{
-              $method=$this->ConferenceM->readConferenceMemories($code);
-            }
             $item=1;
-            foreach ($method as $row) {
+            $id=$_GET["token"];
+            foreach ($this->ConferenceM->readConferenceMemories($id) as $row) {
             ?>
             <tr>
               <td><?php echo $item++; ?></td>
               <td><?php echo $row["fic_name"]; ?></td>
               <td><?php echo $row["con_name"]; ?></td>
-              <td><a href="views/assets/conference/<?php echo $code ?>/<?php echo $row['fic_file'] ?>"><?php echo $row["fic_file"]; ?></a></td>
+              <td><a href="views/assets/conference/<?php echo $id ?>/<?php echo $row['fic_file'] ?>"><?php  $p=explode("-",$row["fic_file"]); echo $p[1] ?></a></td>
               <td><?php echo $row["fic_description"]; ?></td>
               <?php if ($_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A"){ ?>
                 <td>
@@ -74,6 +61,7 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2E
           <div class="form-group">
             <textarea name="data[]" rows="8" cols="80"></textarea>
           </div>
+          <input type="hidden" name="con_code" value="<?php echo $id ?>">
       </div>
       <div class="modal-footer">
         <button type="button" class="btncerrarmodal" data-dismiss="modal" name="button">CANCELAR</button>

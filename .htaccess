@@ -17,10 +17,11 @@ RewriteRule ^delete-evento&token=(.*)$          index.php?c=event&a=delete&token
 RewriteRule ^dias&token=(.*)$                   index.php?c=event&a=dias&token=$1
 RewriteRule ^update-dia$                        index.php?c=event&a=updateDias
 RewriteRule ^conferencias$                      index.php?c=conference
+RewriteRule ^invalid-conference$                index.php?c=conference&a=invalid
 RewriteRule ^con-memorias$                      index.php?c=conference&a=gesMemories
 RewriteRule ^con-memorias&msn=(.*)$             index.php?c=conference&a=gesMemories&msn=$1
 RewriteRule ^con-memorias&token=(.*)$           index.php?c=conference&a=gesMemories&token=$1
-RewriteRule ^con-memorias&token=(.*)$           index.php?c=conference&a=gesMemories&token=$1
+RewriteRule ^con-memorias&msn=(.*)&token=(.*)$  index.php?c=conference&a=gesMemories&msn=$1&token=$2
 RewriteRule ^select-conference$                 index.php?c=conference&a=select
 RewriteRule ^crear-conferencia$                 index.php?c=conference&a=create
 RewriteRule ^crear-conMemoria$                  index.php?c=conference&a=crearMemories

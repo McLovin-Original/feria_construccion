@@ -95,22 +95,11 @@ Class ConferenceModel{
        }
        return $result;
    }
-   public function readConferenceMemoriesAdmin(){
+   public function readConferenceMemories($id){
        try {
-         $sql="SELECT * FROM conference INNER JOIN file_conference ON(conference.con_code=file_conference.con_code)";
+         $sql="SELECT * FROM conference INNER JOIN file_conference ON(conference.con_code=file_conference.con_code) WHERE conference.con_code = ?";
          $query = $this->pdo->prepare($sql);
-         $query->execute();
-         $result = $query->fetchALL(PDO::FETCH_BOTH);
-       } catch (PDOException $e) {
-           die($e->getMessage()."".$e->getLine()."".$e->getFile());
-       }
-       return $result;
-   }
-   public function readConferenceMemories($code){
-       try {
-         $sql="SELECT * FROM conference INNER JOIN file_conference ON(conference.con_code=file_conference.con_code) WHERE use_code = ?";
-         $query = $this->pdo->prepare($sql);
-         $query->execute(array($code));
+         $query->execute(array($id));
          $result = $query->fetchALL(PDO::FETCH_BOTH);
        } catch (PDOException $e) {
            die($e->getMessage()."".$e->getLine()."".$e->getFile());
