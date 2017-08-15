@@ -11,7 +11,17 @@ Class ConferenceController{
   public function mainPage(){
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
-    require_once("views/modules/conference_mod/conference.php");
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+      require_once("views/modules/conference_mod/conference.php");
+    }else{
+      require_once("views/modules/conference_mod/conference.memories.php");
+    }
+    require_once("views/include/footer.php");
+  }
+  public function gesMemories(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference.memories.php");
     require_once("views/include/footer.php");
   }
   public function create(){
@@ -72,6 +82,60 @@ Class ConferenceController{
     $field = $_GET["token"];
     $this->ConferenceM->deleteConference($field);
     header("Location: conferencias");
+  }
+  public function invalid(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference.invalid.php");
+    require_once("views/include/footer.php");
+  }
+  public function crearMemories(){
+    $data = $_POST["data"];
+    $user=$_SESSION["user"]["id"];
+    $flag=false;
+    $tmp = $_FILES["conf"]["tmp_name"];
+    $ruta = "views/assets/conference/".$user."/";
+    $Ext  = pathinfo($_FILES["conf"]["name"],PATHINFO_EXTENSION);
+    if ($Ext!="rar" && $Ext!="zip") {
+      $msn = "Sube un Archivo Winrar O ZipRar";
+    }else{
+      if(!is_dir($ruta)){
+        mkdir($ruta,0777);
+      }
+      if ($tmp!="") {
+        $flag=true;
+        $evento = $ruta.$_FILES["conf"]["name"];
+      }else{
+        $flag=false;
+      }
+      if ($flag==true) {
+        if (move_uploaded_file($tmp,$evento)) {
+          $code=$_SESSION["user"]["id"];
+          $conf=$this->ConferenceM->readConferenceByUser($code);
+          $data[2]=$conf['con_code'];
+          $data[3]=$_FILES["conf"]["name"];
+          $data[4]=randomAlpha('6');
+          $this->ConferenceM->createMemories($data);
+          $msn = "Subio Correctamente";
+        }else{
+          $msn = "Error Al Subir";
+        }
+      }else{
+        $msn ="Error Al Subir";
+      }
+    }
+    header("Location: con-memorias&msn=$msn");
+  }
+  public function deleteMemories(){
+    $field = $_GET["token"];
+    $result = $this->ConferenceM->readConferenceMemoriesById($field);
+    $name=$result["fic_file"];
+    $user=$_SESSION["user"]["id"];
+    unlink("views/assets/conference/$user/$name");
+    rmdir("views/assets/conference/$user");
+    $this->ConferenceM->deleteMemories($field);
+    $msn="Elimino Correctamente";
+    header("Location: expo-memorias&msn=$msn");
   }
 }
 

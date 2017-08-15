@@ -130,7 +130,7 @@ Class StandController{
     rmdir("views/assets/expositor/$user");
     $this->StandM->deleteMemories($field);
     $msn="Elimino Correctamente";
-    header("Location: expo-memorias&token=$msn");
+    header("Location: expo-memorias&msn=$msn");
   }
 }
 

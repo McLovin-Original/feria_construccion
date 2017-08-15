@@ -20,7 +20,15 @@ Class ConferenceModel{
         die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
    }
-
+   public function createMemories($data){
+       try {
+         $sql = "INSERT INTO file_conference VALUES(?,?,?,?,?)";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($data[4],$data[2],$data[0],$data[3],$data[1]));
+       } catch (PDOException $e) {
+         die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+    }
    public function readEvent(){
        try {
          $sql="SELECT * FROM event";
@@ -54,6 +62,17 @@ Class ConferenceModel{
        }
        return $result;
    }
+   public function readConferenceByUser($code){
+       try {
+         $sql="SELECT * FROM conference WHERE use_code = ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($code));
+         $result = $query->fetch(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
    public function readConferenceById($field){
        try {
          $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code) INNER JOIN user ON(conference.use_code=user.use_code) WHERE conference.con_code = ?";
@@ -71,6 +90,39 @@ Class ConferenceModel{
          $query = $this->pdo->prepare($sql);
          $query->execute(array());
          $result = $query->fetchALL(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
+   public function readConferenceMemoriesAdmin(){
+       try {
+         $sql="SELECT * FROM conference INNER JOIN file_conference ON(conference.con_code=file_conference.con_code)";
+         $query = $this->pdo->prepare($sql);
+         $query->execute();
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
+   public function readConferenceMemories($code){
+       try {
+         $sql="SELECT * FROM conference INNER JOIN file_conference ON(conference.con_code=file_conference.con_code) WHERE use_code = ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($code));
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
+   public function readConferenceMemoriesById($field){
+       try {
+         $sql="SELECT * FROM file_conference WHERE fic_code = ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($field));
+         $result = $query->fetch(PDO::FETCH_BOTH);
        } catch (PDOException $e) {
            die($e->getMessage()."".$e->getLine()."".$e->getFile());
        }
@@ -110,6 +162,15 @@ Class ConferenceModel{
    public function deleteConference($field){
        try {
            $sql = "DELETE FROM conference WHERE con_code = ?";
+           $query = $this->pdo->prepare($sql);
+           $query->execute(array($field));
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+   }
+   public function deleteMemories($field){
+       try {
+           $sql = "DELETE FROM file_conference WHERE fic_code = ?";
            $query = $this->pdo->prepare($sql);
            $query->execute(array($field));
        } catch (PDOException $e) {

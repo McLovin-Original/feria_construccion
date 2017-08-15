@@ -42,7 +42,7 @@
         </table>
   </div>
 </div>
-
+<a href="con-memorias">ADMINISTRAR MEMORIAS</a>
 <!-- MODAL -->
 <div id="modalito" class="modal fade" role="dialog">
   <div class="modal-dialog">
