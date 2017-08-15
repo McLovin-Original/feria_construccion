@@ -32,7 +32,10 @@
         <a href="pabellon"><li><i class="fa fa-map-marker icon" aria-hidden="true"></i> PABELLONES</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM" ){ ?>
-        <a href="stands"><li><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
+        <a data-toggle="collapse" data-target="#collapsote"><li class="licollapse"><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
+        <div class="collapse" id="collapsote">
+          <li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR STAND</li>
+        </div>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
