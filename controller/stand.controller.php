@@ -75,7 +75,62 @@ Class StandController{
   public function delete(){
     $field = $_GET["token"];
     $this->StandM->deleteStand($field);
-    header("Location: stands");
+    $msn="Eliminado Con Exito";
+    header("Location: stands&msn=$msn");
+  }
+  public function invalid(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand.invalid.php");
+    require_once("views/include/footer.php");
+  }
+  public function crearMemories(){
+    $data = $_POST["data"];
+    $user=$_SESSION["user"]["id"];
+    $flag=false;
+    $tmp = $_FILES["stand"]["tmp_name"];
+    $ruta = "views/assets/expositor/".$user."/";
+    $Ext  = pathinfo($_FILES["stand"]["name"],PATHINFO_EXTENSION);
+    if ($Ext!="rar" && $Ext!="zip") {
+      $msn = "Sube un Archivo Winrar O ZipRar";
+    }else{
+      if(!is_dir($ruta)){
+        mkdir($ruta,0777);
+      }
+      if ($tmp!="") {
+        $flag=true;
+        $evento = $ruta.$_FILES["stand"]["name"];
+      }else{
+        $flag=false;
+      }
+      if ($flag==true) {
+        if (move_uploaded_file($tmp,$evento)) {
+          $code=$_SESSION["user"]["id"];
+          $stand=$this->StandM->readStandByUser($code);
+          $data[2]=$stand['sta_code'];
+          $data[3]=$_FILES["stand"]["name"];
+          $data[4]=randomAlpha('6');
+          $this->StandM->createMemories($data);
+          $msn = "Subio Correctamente";
+        }else{
+          $msn = "Error Al Subir";
+        }
+      }else{
+        $msn ="Error Al Subir";
+      }
+    }
+    header("Location: expo-memorias&msn=$msn");
+  }
+  public function deleteMemories(){
+    $field = $_GET["token"];
+    $result = $this->StandM->readStandMemoriesById($field);
+    $name=$result["fis_file"];
+    $user=$_SESSION["user"]["id"];
+    unlink("views/assets/expositor/$user/$name");
+    rmdir("views/assets/expositor/$user");
+    $this->StandM->deleteMemories($field);
+    $msn="Elimino Correctamente";
+    header("Location: expo-memorias&token=$msn");
   }
 }
 

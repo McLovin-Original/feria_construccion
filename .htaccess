@@ -24,9 +24,21 @@ RewriteRule ^delete-pabellon&token=(.*)$        index.php?c=pavilion&a=delete&to
 RewriteRule ^update-pabellon&token=(.*)$        index.php?c=pavilion&a=updateData&token=$1
 RewriteRule ^update-pavilion$                   index.php?c=pavilion&a=update
 RewriteRule ^stands$                            index.php?c=stand
+RewriteRule ^invalid-stand$                     index.php?c=stand&a=invalid
+RewriteRule ^stands&msn=(.*)$                   index.php?c=stand&msn=$1
 RewriteRule ^crear-stand$                       index.php?c=stand&a=create
 RewriteRule ^delete-stand&token=(.*)$           index.php?c=stand&a=delete&token=$1
 RewriteRule ^update-stand&token=(.*)$           index.php?c=stand&a=updateData&token=$1
 RewriteRule ^update-stands$                     index.php?c=stand&a=update
 RewriteRule ^expo-memorias$                     index.php?c=stand&a=gesMemories
+RewriteRule ^expo-memorias&msn=(.*)$            index.php?c=stand&a=gesMemories&msn=$1
+RewriteRule ^crear-expoMemoria$                 index.php?c=stand&a=crearMemories
+RewriteRule ^delete-memoristand&token=(.*)$     index.php?c=stand&a=deleteMemories&token=$1
 RewriteRule ^memorias$                          index.php?c=memories
+
+
+
+php_value upload_max_filesize 6400M
+php_value post_max_size 6400M
+php_value max_execution_time 300
+php_value max_input_time 300

@@ -1,9 +1,20 @@
+<?php
+$code=$_SESSION["user"]["id"];
+$stand=$this->StandM->readStandByUser($code);
+$field=$stand['sta_code'];
+$result=$this->StandM->readStandById($field);
+if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){
+  header("Location: invalid-stand");
+}
+?>
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
     <h1 class="text-center">GESTIONAR MEMORIAS</h1>
+    <?php if ($_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){ ?>
     <div class="col-xs-12 col-md-3 col-md-offset-9">
       <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA MEMORIA DE EXPOSICION</button>
     </div>
+    <?php } ?>
         <table id="dataTable" class="table table-striped table-bordered tabla">
           <thead>
             <tr>
@@ -12,26 +23,32 @@
               <th>STAND</th>
               <th>ARCHIVO</th>
               <th>DESCRIPCION</th>
+              <?php if ($_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){ ?>
               <th>ACCIONES</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
             <?php
             if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
-              $method=read
+              $method=$this->StandM->readStandMemoriesAdmin();
+            }else{
+              $method=$this->StandM->readStandMemories($code);
             }
             $item=1;
-            foreach ($this->StandM->readStandMemories() as $row) {
+            foreach ($method as $row) {
             ?>
             <tr>
               <td><?php echo $item++; ?></td>
-              <td><?php echo $row["fis_name"]; ?></td>
+              <td><?php echo $row["fis_nom"]; ?></td>
               <td><?php echo $row["sta_name"]; ?></td>
-              <td><?php echo $row["fis_file"]; ?></td>
-              <td><?php echo $row["fis_description"]; ?></td>
-              <td>
-                <a onclick="return confirm('Desea Eliminar?')" href="delete-memoristand&token=<?php echo $row['sta_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
-              </td>
+              <td><a href="views/assets/expositor/<?php echo $code ?>/<?php echo $row['fis_file'] ?>"><?php echo $row["fis_file"]; ?></a></td>
+              <td><?php echo $row["fis_descripcion"]; ?></td>
+              <?php if ($_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){ ?>
+                <td>
+                  <a onclick="return confirm('Desea Eliminar?')" href="delete-memoristand&token=<?php echo $row['fis_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              <?php } ?>
             </tr>
           <?php  }    ?>
           </tbody>
@@ -47,21 +64,15 @@
         <h1 class="text-center titulomodal">AGREGAR MEMORIA</h1>
       </div>
       <div class="modal-body">
-        <form id="frm_sta" class="" action="" method="post">
+        <form class="" action="crear-expoMemoria" method="post" enctype="multipart/form-data">
           <div class="form-group">
-            <input type="text" name="" class="form-control inputmodal" placeholder="nombre" required="">
+            <input type="text" name="data[]" class="form-control inputmodal" placeholder="Nombre" required="">
           </div>
           <div class="form-group">
-            <input type="text" name="" class="form-control inputmodal" placeholder="Sitio Web">
+            <input type="file" name="stand" class="form-control inputmodal" required="">
           </div>
           <div class="form-group">
-            <input type="email" name="" class="form-control inputmodal" placeholder="Correo" required="">
-          </div>
-          <div class="form-group">
-            <input type="number" name="" class="form-control inputmodal" placeholder="Numero Contacto" required="">
-          </div>
-          <div class="form-group">
-            <textarea name="" rows="8" cols="80"></textarea>
+            <textarea name="data[]" rows="8" cols="80"></textarea>
           </div>
       </div>
       <div class="modal-footer">

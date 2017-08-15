@@ -20,6 +20,15 @@ Class StandModel{
         die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
    }
+   public function createMemories($data){
+       try {
+         $sql = "INSERT INTO file_stand VALUES(?,?,?,?,?)";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($data[4],$data[2],$data[0],$data[3],$data[1]));
+       } catch (PDOException $e) {
+         die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+    }
   public function readStand(){
       try {
         $sql="SELECT * FROM stand INNER JOIN pavilion ON(pavilion.pav_code=stand.pav_code) INNER JOIN user ON(user.use_code=stand.use_code)";
@@ -86,12 +95,45 @@ Class StandModel{
       }
       return $result;
   }
+  public function readStandByUser($code){
+      try {
+        $sql="SELECT * FROM stand WHERE use_code = ?";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($code));
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
+  public function readStandMemoriesAdmin(){
+      try {
+        $sql="SELECT * FROM stand INNER JOIN file_stand ON(stand.sta_code=file_stand.sta_code)";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetchALL(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
   public function readStandMemories($code){
       try {
         $sql="SELECT * FROM stand INNER JOIN file_stand ON(stand.sta_code=file_stand.sta_code) WHERE use_code = ?";
         $query = $this->pdo->prepare($sql);
-        $query->execute($code);
+        $query->execute(array($code));
         $result = $query->fetchALL(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
+  public function readStandMemoriesById($field){
+      try {
+        $sql="SELECT * FROM file_stand WHERE fis_code = ?";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($field));
+        $result = $query->fetch(PDO::FETCH_BOTH);
       } catch (PDOException $e) {
           die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
@@ -109,6 +151,15 @@ Class StandModel{
   public function deleteStand($field){
       try {
           $sql = "DELETE FROM stand WHERE sta_code = ?";
+          $query = $this->pdo->prepare($sql);
+          $query->execute(array($field));
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+  }
+  public function deleteMemories($field){
+      try {
+          $sql = "DELETE FROM file_stand WHERE fis_code = ?";
           $query = $this->pdo->prepare($sql);
           $query->execute(array($field));
       } catch (PDOException $e) {
