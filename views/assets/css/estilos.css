@@ -510,3 +510,13 @@ tbody a{
 ::-webkit-scrollbar-thumb {
   background-color: #34495e;
 }
+.licollapse{
+  cursor: pointer;
+}
+
+#collapsote{
+  background-color: #496179;
+  padding: 10px;
+  color: white;
+  padding-left: 22px;
+}

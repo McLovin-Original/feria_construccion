@@ -4,30 +4,45 @@
     <div class="col-xs-12 col-md-3 col-md-offset-9">
       <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UN STAND</button>
     </div>
-        <table  id="dataTable" class="table table-striped table-bordered tabla">
+        <table id="dataTable" class="table table-striped table-bordered tabla">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>PERSONA</th>
+              <th>#</th>
+              <th>NOMBRE</th>
+              <th>PABELLON</th>
+              <th>EXPOSITOR</th>
+              <th>SITIO WEB</th>
               <th>CORREO</th>
-              <th>UBICACION</th>
-              <th>CARGO</th>
+              <th>CONTACTO</th>
+              <th>DESCRIPCION</th>
               <th>ACCIONES</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+            $item=1;
+            foreach ($this->StandM->readStand() as $row) {
+            ?>
             <tr>
-              <td>id</td>
-              <td>persona</td>
-              <td>correo</td>
-              <td>ubicacion</td>
-              <td>cargo</td>
-              <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a> <a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+              <td><?php echo $item++; ?></td>
+              <td><?php echo $row["sta_name"]; ?></td>
+              <td><?php echo $row["pav_name"]; ?></td>
+              <td><?php echo $row["use_firstname"]; ?></td>
+              <td><?php echo $row["sta_web"]; ?></td>
+              <td><?php echo $row["sta_mail"]; ?></td>
+              <td><?php echo $row["sta_numcontact"]; ?></td>
+              <td><?php echo $row["sta_descrip"]; ?></td>
+              <td>
+                <a href="update-stand&token=<?php echo $row['sta_code']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a onclick="return confirm('Desea Eliminar?')" href="delete-stand&token=<?php echo $row['sta_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
             </tr>
+          <?php  }    ?>
           </tbody>
         </table>
   </div>
 </div>
+<a href="expo-memorias">ADMINISTRAR MEMORIAS</a>
 
 <!-- MODAL -->
 <div id="modalito" class="modal fade" role="dialog">
@@ -38,17 +53,42 @@
         <h1 class="text-center titulomodal">AGREGAR STAND</h1>
       </div>
       <div class="modal-body">
-        <form class="" action="index.html" method="post">
+        <form id="frm_sta" class="" action="" method="post">
           <div class="form-group">
             <input type="text" name="" class="form-control inputmodal" placeholder="nombre" required="">
           </div>
           <div class="form-group">
-            <input type="text" name="" class="form-control inputmodal" placeholder="nombre" required="">
+            <select class="" name="" required>
+              <option value="">SELECCIONE UN PABELLON</option>
+              <?php foreach ($this->StandM->readPavilion() as $row){  ?>
+              <option value="<?php echo $row['pav_code'] ?>"><?php echo $row["pav_name"]; ?></option>
+            <?php } ?>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="" >
+              <option value="">SELECCIONE UN EXPOSITOR</option>
+              <?php foreach ($this->StandM->readStandUser() as $row){  ?>
+              <option value="<?php echo $row['use_code'] ?>"><?php echo $row["use_firstname"]; ?></option>
+            <?php } ?>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" name="" class="form-control inputmodal" placeholder="Sitio Web">
+          </div>
+          <div class="form-group">
+            <input type="email" name="" class="form-control inputmodal" placeholder="Correo" required="">
+          </div>
+          <div class="form-group">
+            <input type="number" name="" class="form-control inputmodal" placeholder="Numero Contacto" required="">
+          </div>
+          <div class="form-group">
+            <textarea name="" rows="8" cols="80"></textarea>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btncerrarmodal" data-dismiss="modal" name="button">CANCELAR</button>
-        <button type="button" class="btnmodal" name="button">AGREGAR</button>
+        <button type="submit" class="btnmodal" name="button">AGREGAR</button>
       </form>
       </div>
     </div>
