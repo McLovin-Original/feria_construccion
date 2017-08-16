@@ -40,6 +40,7 @@
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
+        <a href="stand-select-qr"><li><i class="fa fa-lock icon" aria-hidden="true"></i> STAND QR</li></a>
         <a href="index.php?c=main&a=reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
       </ul>

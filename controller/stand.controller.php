@@ -23,6 +23,18 @@ Class StandController{
     require_once("views/modules/stand_mod/stand.memories.php");
     require_once("views/include/footer.php");
   }
+  public function selectQr(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand_QR/stand.select.php");
+    require_once("views/include/footer.php");
+  }
+  public function qr(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand_QR/stand.qr.php");
+    require_once("views/include/footer.php");
+  }
   public function create(){
     $data = $_POST["data"];
     if (empty($data[2])) {
@@ -42,6 +54,10 @@ Class StandController{
       $data[7]=randomAlpha('6');
       $data[8]=date('Ymd');
       $data[9]=date('his');
+      $dir = "views/assets/qr/$data[7]/";
+      if (!file_exists($dir)) {
+        mkdir($dir);
+      }
       $this->StandM->createStand($data);
       $return = array(true,"Guardo Con Exito","stands");
     }
@@ -74,6 +90,11 @@ Class StandController{
   }
   public function delete(){
     $field = $_GET["token"];
+    $dir = "views/assets/qr/$field/";
+    $stand=$this->StandM->readStandById($field);
+    $name=$stand["sta_name"];
+    unlink("$dir/$name");
+    rmdir($dir);
     $this->StandM->deleteStand($field);
     $msn="Eliminado Con Exito";
     header("Location: stands&msn=$msn");
