@@ -29,12 +29,6 @@ Class StandController{
     require_once("views/modules/stand_mod/stand_QR/stand.select.php");
     require_once("views/include/footer.php");
   }
-  public function qr(){
-    require_once("views/include/header.php");
-    require_once("views/include/dashboard.php");
-    require_once("views/modules/stand_mod/stand_QR/stand.qr.php");
-    require_once("views/include/footer.php");
-  }
   public function select(){
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
