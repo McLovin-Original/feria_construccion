@@ -30,6 +30,7 @@ RewriteRule ^update-conference$                 index.php?c=conference&a=update
 RewriteRule ^delete-conferencia&token=(.*)$     index.php?c=conference&a=delete&token=$1
 RewriteRule ^delete-memoriconfe&token=(.*)$     index.php?c=conference&a=deleteMemories&token=$1
 RewriteRule ^con-eventos$                       index.php?c=conference&a=event
+RewriteRule ^conference-select-qr$              index.php?c=conference&a=selectQr
 RewriteRule ^pabellon$                          index.php?c=pavilion
 RewriteRule ^con-pabellon$                      index.php?c=pavilion&a=event
 RewriteRule ^crear-pabellon$                    index.php?c=pavilion&a=create
