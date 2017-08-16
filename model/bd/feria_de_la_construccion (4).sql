@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-08-2017 a las 07:06:40
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.23
+-- Tiempo de generación: 16-08-2017 a las 23:31:49
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -65,6 +67,20 @@ INSERT INTO `access` (`acc_token`, `use_code`, `use_mail`, `password`, `acc_stat
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `calification`
+--
+
+CREATE TABLE `calification` (
+  `cal_code` varchar(30) NOT NULL,
+  `use_code` varchar(60) NOT NULL,
+  `cal_conf` varchar(60) NOT NULL,
+  `cal_stand` varchar(60) NOT NULL,
+  `cal_comment` longtext NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `conference`
 --
 
@@ -82,6 +98,31 @@ CREATE TABLE `conference` (
   `con_status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `conference`
+--
+
+INSERT INTO `conference` (`con_code`, `day_code`, `con_name`, `use_code`, `con_startime`, `con_finishtime`, `con_share`, `con_creationdate`, `con_creationtime`, `con_description`, `con_status`) VALUES
+('vQxL4g', 'JcZCjr3ZJPRSpXqMrl2ezd4Slhm2s9', 'dddd', 'pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', '02:00:00', '01:00:00', 2, '2017-08-16', '11:08:43', 'dd', 'Activo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `conferencias`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `conferencias` (
+`codigo` varchar(60)
+,`dia` varchar(60)
+,`expositor` varchar(121)
+,`nombre` char(50)
+,`inicio` varchar(5)
+,`final` varchar(5)
+,`cupo` int(11)
+,`fecha_creacion` date
+,`hora_creacion` time
+);
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +138,15 @@ CREATE TABLE `day` (
   `day_finishtime` time DEFAULT NULL,
   `day_descrip` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `day`
+--
+
+INSERT INTO `day` (`day_code`, `eve_code`, `day_current`, `day_date`, `day_startime`, `day_finishtime`, `day_descrip`) VALUES
+('0JHQntenZE4B8yUuvkFQu1a3oT9xY8', 'RexBS32OgSB3mNTD5UNNjlTAZ1qT4N', 'DIA1', '2017-08-16', '13:00:00', '17:00:00', 'Introduccion '),
+('JcZCjr3ZJPRSpXqMrl2ezd4Slhm2s9', 'RexBS32OgSB3mNTD5UNNjlTAZ1qT4N', 'DIA2', '2017-08-17', '13:00:00', '15:00:00', 'Dia de conferencias'),
+('jlCeAOpSmqEOm6NdEE78KfXbrtK0Go', 'RexBS32OgSB3mNTD5UNNjlTAZ1qT4N', 'DIA3', '2017-08-18', '13:00:00', '20:00:00', 'clausula');
 
 -- --------------------------------------------------------
 
@@ -114,6 +164,13 @@ CREATE TABLE `event` (
   `eve_creationtime` time NOT NULL,
   `use_code` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `event`
+--
+
+INSERT INTO `event` (`eve_code`, `eve_name`, `eve_startdate`, `eve_finishdate`, `eve_numday`, `eve_creationdate`, `eve_creationtime`, `use_code`) VALUES
+('RexBS32OgSB3mNTD5UNNjlTAZ1qT4N', 'feria de la construccion', '2017-08-16', '2017-08-18', 3, '2017-08-16', '08:08:09', 'e7eYlQoe3dMg1LMX0em5OFIiBAqoZL');
 
 -- --------------------------------------------------------
 
@@ -146,6 +203,18 @@ CREATE TABLE `file_stand` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ing_eve`
+--
+
+CREATE TABLE `ing_eve` (
+  `use_day_code` varchar(60) NOT NULL,
+  `day_code` varchar(60) NOT NULL,
+  `use_code` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pavilion`
 --
 
@@ -154,6 +223,13 @@ CREATE TABLE `pavilion` (
   `day_code` varchar(60) NOT NULL,
   `pav_name` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pavilion`
+--
+
+INSERT INTO `pavilion` (`pav_code`, `day_code`, `pav_name`) VALUES
+('PEq2N1dnfikg4A707qqZu0zbjeet5h', 'JcZCjr3ZJPRSpXqMrl2ezd4Slhm2s9', 'Pav1');
 
 -- --------------------------------------------------------
 
@@ -180,6 +256,18 @@ INSERT INTO `role` (`rol_code`, `rol_name`, `rol_desc`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sal_eve`
+--
+
+CREATE TABLE `sal_eve` (
+  `use_day_code` varchar(60) NOT NULL,
+  `day_code` varchar(60) NOT NULL,
+  `use_code` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `stand`
 --
 
@@ -195,6 +283,26 @@ CREATE TABLE `stand` (
   `sta_creationdate` date NOT NULL,
   `sta_creationtime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `stands`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `stands` (
+`codigo` varchar(60)
+,`pabellon` varchar(60)
+,`nombre` char(50)
+,`expositor` varchar(121)
+,`web` varchar(60)
+,`email` varchar(30)
+,`contacto` char(16)
+,`descripcion` varchar(140)
+,`desc_original` longtext
+,`fecha_creacion` date
+,`hora_creacion` time
+);
 
 -- --------------------------------------------------------
 
@@ -235,24 +343,9 @@ INSERT INTO `user` (`use_code`, `rol_code`, `use_docu`, `use_firstname`, `use_la
 --
 
 CREATE TABLE `use_conference` (
-  `usc_code` varchar(60) NOT NULL,
+  `use_con_code` varchar(30) NOT NULL,
   `use_code` varchar(60) DEFAULT NULL,
   `con_code` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `use_day`
---
-
-CREATE TABLE `use_day` (
-  `use_code` varchar(60) NOT NULL,
-  `day_code` varchar(60) NOT NULL,
-  `usd_startime` time NOT NULL,
-  `usd_finishtime` time NOT NULL,
-  `usd_qualification` int(11) DEFAULT NULL,
-  `usd_opinion` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -262,11 +355,28 @@ CREATE TABLE `use_day` (
 --
 
 CREATE TABLE `use_stand` (
+  `use_sta_code` varchar(30) NOT NULL,
   `use_code` varchar(60) NOT NULL,
-  `sta_code` varchar(60) NOT NULL,
-  `sta_startime` time NOT NULL,
-  `sta_finishtime` time NOT NULL
+  `sta_code` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `conferencias`
+--
+DROP TABLE IF EXISTS `conferencias`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`mfappco`@`localhost` SQL SECURITY DEFINER VIEW `conferencias`  AS  select `conference`.`con_code` AS `codigo`,`conference`.`day_code` AS `dia`,concat(`user`.`use_firstname`,' ',`user`.`use_lastname`) AS `expositor`,`conference`.`con_name` AS `nombre`,date_format(`conference`.`con_startime`,'%h:%i') AS `inicio`,date_format(`conference`.`con_finishtime`,'%h:%i') AS `final`,`conference`.`con_share` AS `cupo`,`conference`.`con_creationdate` AS `fecha_creacion`,`conference`.`con_creationtime` AS `hora_creacion` from (`conference` join `user` on((`conference`.`use_code` = `user`.`use_code`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `stands`
+--
+DROP TABLE IF EXISTS `stands`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`mfappco`@`localhost` SQL SECURITY DEFINER VIEW `stands`  AS  select `stand`.`sta_code` AS `codigo`,`stand`.`pav_code` AS `pabellon`,`stand`.`sta_name` AS `nombre`,concat(`user`.`use_firstname`,' ',`user`.`use_lastname`) AS `expositor`,`stand`.`sta_web` AS `web`,lcase(`stand`.`sta_mail`) AS `email`,`stand`.`sta_numcontact` AS `contacto`,substr(`stand`.`sta_descrip`,1,140) AS `descripcion`,`stand`.`sta_descrip` AS `desc_original`,`stand`.`sta_creationdate` AS `fecha_creacion`,`stand`.`sta_creationtime` AS `hora_creacion` from (`stand` join `user` on((`user`.`use_code` = `stand`.`use_code`))) ;
 
 --
 -- Índices para tablas volcadas
@@ -279,6 +389,13 @@ ALTER TABLE `access`
   ADD PRIMARY KEY (`acc_token`),
   ADD UNIQUE KEY `use_mail` (`use_mail`),
   ADD KEY `fk_security` (`use_code`);
+
+--
+-- Indices de la tabla `calification`
+--
+ALTER TABLE `calification`
+  ADD PRIMARY KEY (`cal_code`),
+  ADD KEY `use_code` (`use_code`);
 
 --
 -- Indices de la tabla `conference`
@@ -317,6 +434,14 @@ ALTER TABLE `file_stand`
   ADD KEY `fk_filsta` (`sta_code`);
 
 --
+-- Indices de la tabla `ing_eve`
+--
+ALTER TABLE `ing_eve`
+  ADD PRIMARY KEY (`use_day_code`),
+  ADD KEY `day_code` (`day_code`),
+  ADD KEY `use_code` (`use_code`);
+
+--
 -- Indices de la tabla `pavilion`
 --
 ALTER TABLE `pavilion`
@@ -328,6 +453,14 @@ ALTER TABLE `pavilion`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`rol_code`);
+
+--
+-- Indices de la tabla `sal_eve`
+--
+ALTER TABLE `sal_eve`
+  ADD PRIMARY KEY (`use_day_code`),
+  ADD KEY `fk_ususal` (`use_code`),
+  ADD KEY `fk_daysal` (`day_code`);
 
 --
 -- Indices de la tabla `stand`
@@ -349,21 +482,17 @@ ALTER TABLE `user`
 -- Indices de la tabla `use_conference`
 --
 ALTER TABLE `use_conference`
-  ADD PRIMARY KEY (`usc_code`);
-
---
--- Indices de la tabla `use_day`
---
-ALTER TABLE `use_day`
-  ADD PRIMARY KEY (`use_code`,`day_code`),
-  ADD KEY `fk_day_cod_user` (`day_code`);
+  ADD PRIMARY KEY (`use_con_code`),
+  ADD KEY `use_code` (`use_code`),
+  ADD KEY `con_code` (`con_code`);
 
 --
 -- Indices de la tabla `use_stand`
 --
 ALTER TABLE `use_stand`
-  ADD PRIMARY KEY (`use_code`,`sta_code`),
-  ADD KEY `fk_stand_cod` (`sta_code`);
+  ADD PRIMARY KEY (`use_sta_code`),
+  ADD KEY `use_code` (`use_code`),
+  ADD KEY `sta_code` (`sta_code`);
 
 --
 -- Restricciones para tablas volcadas
@@ -407,10 +536,24 @@ ALTER TABLE `file_stand`
   ADD CONSTRAINT `fk_filsta` FOREIGN KEY (`sta_code`) REFERENCES `stand` (`sta_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `ing_eve`
+--
+ALTER TABLE `ing_eve`
+  ADD CONSTRAINT `ing_eve_ibfk_1` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `ing_eve_ibfk_2` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `pavilion`
 --
 ALTER TABLE `pavilion`
   ADD CONSTRAINT `fk_day_cod_pavilion` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `sal_eve`
+--
+ALTER TABLE `sal_eve`
+  ADD CONSTRAINT `fk_daysal` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`),
+  ADD CONSTRAINT `fk_ususal` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`);
 
 --
 -- Filtros para la tabla `stand`
@@ -426,18 +569,19 @@ ALTER TABLE `user`
   ADD CONSTRAINT `fk_id_rol_user` FOREIGN KEY (`rol_code`) REFERENCES `role` (`rol_code`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `use_day`
+-- Filtros para la tabla `use_conference`
 --
-ALTER TABLE `use_day`
-  ADD CONSTRAINT `fk_day_cod_user` FOREIGN KEY (`day_code`) REFERENCES `day` (`day_code`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_token_day` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE;
+ALTER TABLE `use_conference`
+  ADD CONSTRAINT `use_conference_ibfk_1` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `use_conference_ibfk_2` FOREIGN KEY (`con_code`) REFERENCES `conference` (`con_code`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `use_stand`
 --
 ALTER TABLE `use_stand`
-  ADD CONSTRAINT `fk_stand_cod` FOREIGN KEY (`sta_code`) REFERENCES `stand` (`sta_code`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_token` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `use_stand_ibfk_1` FOREIGN KEY (`use_code`) REFERENCES `user` (`use_code`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `use_stand_ibfk_2` FOREIGN KEY (`sta_code`) REFERENCES `stand` (`sta_code`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
