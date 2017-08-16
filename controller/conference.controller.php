@@ -80,6 +80,7 @@ Class ConferenceController{
   }
   public function delete(){
     $field = $_GET["token"];
+    rmdir("views/assets/conference/$field");
     $this->ConferenceM->deleteConference($field);
     header("Location: conferencias");
   }
