@@ -93,7 +93,7 @@ Class StandController{
     $dir = "views/assets/qr/$field/";
     $stand=$this->StandM->readStandById($field);
     $name=$stand["sta_name"];
-    unlink("$dir/$name");
+    unlink("$dir$name".".png");
     rmdir($dir);
     $this->StandM->deleteStand($field);
     $msn="Eliminado Con Exito";
