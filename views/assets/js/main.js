@@ -301,12 +301,13 @@ $("#sel_evento_p").change(function(){
 
 $("#document").keyup(function(){
   $(this).siblings("span").remove();
+  $("#inputdoc").remove();
   var doc = $(this).val();
   console.log(doc);
   $.post("validar-documento",{data:doc},function(data){
     var data = JSON.parse(data);
     if (data[0]==true) {
-      $("#document").after("<input type='hidden' name='data' value='"+data[1]+"'>");
+      $("#document").after("<input id='inputdoc' type='hidden' name='data' value='"+data[1]+"'>");
       $("#btn_doc").attr("disabled",false);
     }else{
       $("#document").after("<span>El documente no existe</span>");
@@ -326,6 +327,27 @@ $("#frm_stand_visit").submit(function(e){
     });
     console.log(jsonObj);
     $.post("crear-visita",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+$("#frm_conf_visit").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("input[name=data]").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("crear-visitc",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
         alert(data[1]);

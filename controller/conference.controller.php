@@ -30,10 +30,17 @@ Class ConferenceController{
     require_once("views/modules/conference_mod/conference_QR/conference.select.php");
     require_once("views/include/footer.php");
   }
-  public function select(){
+  public function selectVisit(){
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
     require_once("views/modules/conference_mod/conference_visit/conference.select.php");
+    require_once("views/include/footer.php");
+  }
+  public function visit(){
+    $field = $_GET["token"];
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference_visit/conference.visit.php");
     require_once("views/include/footer.php");
   }
   public function create(){
@@ -59,6 +66,25 @@ Class ConferenceController{
       $data[10]="Activo";
       $this->ConferenceM->createConference($data);
       $return = array(true,"Guardo Con Exito","conferencias");
+    }
+    echo json_encode($return);
+  }
+  public function createVisit(){
+    $data = $_POST["data"];
+    for ($i=0; $i <count($data) ; $i++) {
+      if (empty($data[$i])) {
+        $p=1;
+        break;
+      }else{
+        $p=0;
+      }
+    }
+    if ($p==1) {
+      $return = array(false,"Campos Nulos","");
+    }else{
+      $data[2]=randomAlpha('6');
+      $this->ConferenceM->createVisitConference($data);
+      $return = array(true,"Guardo Con Exito","conference-visit&token=$data[1]");
     }
     echo json_encode($return);
   }
