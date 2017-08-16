@@ -35,7 +35,7 @@
         <a data-toggle="collapse" data-target="#collapsote"><li class="licollapse"><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
         <div class="collapse" id="collapsote">
           <a href="stands"><li><i class="fa fa-user" aria-hidden="true"></i> GESTIONAR STANDS</li></a>
-          <a href="#"><li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR STAND</li></a>
+          <a href="stand-select"><li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR STAND</li></a>
         </div>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>

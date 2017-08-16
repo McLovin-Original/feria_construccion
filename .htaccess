@@ -49,6 +49,8 @@ RewriteRule ^crear-expoMemoria$                 index.php?c=stand&a=crearMemorie
 RewriteRule ^delete-memoristand&token=(.*)$     index.php?c=stand&a=deleteMemories&token=$1
 RewriteRule ^stand-select-qr$                   index.php?c=stand&a=selectQr
 RewriteRule ^stand-qr&token=(.*)$               index.php?c=stand&a=qr&token=$1
+RewriteRule ^stand-select$                      index.php?c=stand&a=select
+RewriteRule ^stand-visit&token=(.*)$            index.php?c=stand&a=visit&token=$1
 RewriteRule ^memorias$                          index.php?c=memories
 
 

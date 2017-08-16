@@ -298,6 +298,22 @@ $("#sel_evento_p").change(function(){
     $("#sel_dia_p").html(data);
   });
 });
+
+$("#document").keyup(function(){
+  $(this).siblings("span").remove();
+  var doc = $(this).val();
+  console.log(doc);
+  $.post("validar-documento",{data:doc},function(data){
+    var data = JSON.parse(data);
+    if (data==true) {
+      $("#document").after("<span>El documente ya existe</span>");
+      $("#btn_doc").attr("disabled",true);
+    }else{
+      $("#btn_doc").attr("disabled",false);
+    }
+  });
+});
+
 /*$("select[name=data]").change(function(){
   var estado = [$(this).val(),
                 $("input[name=token]").val()];

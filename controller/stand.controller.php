@@ -35,6 +35,19 @@ Class StandController{
     require_once("views/modules/stand_mod/stand_QR/stand.qr.php");
     require_once("views/include/footer.php");
   }
+  public function select(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand_visit/stand.select.php");
+    require_once("views/include/footer.php");
+  }
+  public function visit(){
+    $field = $_GET["token"];
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand_visit/stand.visit.php");
+    require_once("views/include/footer.php");
+  }
   public function create(){
     $data = $_POST["data"];
     if (empty($data[2])) {
