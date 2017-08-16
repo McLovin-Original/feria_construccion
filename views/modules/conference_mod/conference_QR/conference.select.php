@@ -12,6 +12,7 @@ foreach ($this->ConferenceM->readConference() as $row) {
 
   QRcode::png($contenido,$filename,$level,$size,$framaSize);
   ?>
+  <h1>NOMBRE CONFERENCIA: <?php echo strtoupper($row["con_name"]); ?></h1>
   <?php
   echo '<img src="'.$filename.'"/>';
   }
