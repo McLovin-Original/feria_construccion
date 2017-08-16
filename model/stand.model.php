@@ -20,6 +20,15 @@ Class StandModel{
         die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
    }
+  public function createVisitStand($data){
+      try {
+        $sql = "INSERT INTO use_stand VALUES(?,?,?)";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($data[2],$data[0],$data[1]));
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+   }
    public function createMemories($data){
        try {
          $sql = "INSERT INTO file_stand VALUES(?,?,?,?,?)";

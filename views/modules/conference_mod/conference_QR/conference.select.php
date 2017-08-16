@@ -1,9 +1,9 @@
 <?php
 require_once 'views/assets/phpqrcode/qrlib.php';
-foreach ($this->StandM->readStand() as $row) {
-  $code=$row["sta_code"];
-  $dir="views/assets/qr/$code/";
-  $filename = $dir.$row["sta_name"].".png";
+foreach ($this->ConferenceM->readConference() as $row) {
+  $code=$row["con_code"];
+  $dir="views/assets/qr_conf/$code/";
+  $filename = $dir.$row["con_name"].".png";
 
   $size = 10;
   $level = 'H';
@@ -12,7 +12,7 @@ foreach ($this->StandM->readStand() as $row) {
 
   QRcode::png($contenido,$filename,$level,$size,$framaSize);
   ?>
-  <h1>NOMBRE STAND: <?php echo strtoupper($row["sta_name"]); ?></h1>
+  <h1>NOMBRE CONFERENCIA: <?php echo strtoupper($row["con_name"]); ?></h1>
   <?php
   echo '<img src="'.$filename.'"/>';
   }

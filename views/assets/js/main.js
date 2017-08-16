@@ -298,6 +298,45 @@ $("#sel_evento_p").change(function(){
     $("#sel_dia_p").html(data);
   });
 });
+
+$("#document").keyup(function(){
+  $(this).siblings("span").remove();
+  var doc = $(this).val();
+  console.log(doc);
+  $.post("validar-documento",{data:doc},function(data){
+    var data = JSON.parse(data);
+    if (data[0]==true) {
+      $("#document").after("<input type='hidden' name='data' value='"+data[1]+"'>");
+      $("#btn_doc").attr("disabled",false);
+    }else{
+      $("#document").after("<span>El documente no existe</span>");
+      $("#btn_doc").attr("disabled",true);
+    }
+  });
+});
+
+$("#frm_stand_visit").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("input[name=data]").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("crear-visita",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
 /*$("select[name=data]").change(function(){
   var estado = [$(this).val(),
                 $("input[name=token]").val()];

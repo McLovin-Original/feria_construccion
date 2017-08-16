@@ -29,10 +29,17 @@ Class StandController{
     require_once("views/modules/stand_mod/stand_QR/stand.select.php");
     require_once("views/include/footer.php");
   }
-  public function qr(){
+  public function select(){
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
-    require_once("views/modules/stand_mod/stand_QR/stand.qr.php");
+    require_once("views/modules/stand_mod/stand_visit/stand.select.php");
+    require_once("views/include/footer.php");
+  }
+  public function visit(){
+    $field = $_GET["token"];
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/stand_mod/stand_visit/stand.visit.php");
     require_once("views/include/footer.php");
   }
   public function create(){
@@ -60,6 +67,25 @@ Class StandController{
       }
       $this->StandM->createStand($data);
       $return = array(true,"Guardo Con Exito","stands");
+    }
+    echo json_encode($return);
+  }
+  public function createVisit(){
+    $data = $_POST["data"];
+    for ($i=0; $i <count($data) ; $i++) {
+      if (empty($data[$i])) {
+        $p=1;
+        break;
+      }else{
+        $p=0;
+      }
+    }
+    if ($p==1) {
+      $return = array(false,"Campos Nulos","");
+    }else{
+      $data[2]=randomAlpha('6');
+      $this->StandM->createVisitStand($data);
+      $return = array(true,"Guardo Con Exito","stand-visit&token=$data[1]");
     }
     echo json_encode($return);
   }

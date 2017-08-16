@@ -24,6 +24,18 @@ Class ConferenceController{
     require_once("views/modules/conference_mod/conference.memories.php");
     require_once("views/include/footer.php");
   }
+  public function selectQr(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference_QR/conference.select.php");
+    require_once("views/include/footer.php");
+  }
+  public function select(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference_visit/conference.select.php");
+    require_once("views/include/footer.php");
+  }
   public function create(){
     $data = $_POST["data"];
     for ($i=0; $i <count($data) ; $i++) {
@@ -38,6 +50,10 @@ Class ConferenceController{
       $return = array(false,"Campos Nulos","");
     }else{
       $data[7]=randomAlpha('6');
+      $dir = "views/assets/qr_conf/$data[7]/";
+      if (!file_exists($dir)) {
+        mkdir($dir);
+      }
       $data[8]=date('Ymd');
       $data[9]=date('his');
       $data[10]="Activo";
@@ -80,6 +96,11 @@ Class ConferenceController{
   }
   public function delete(){
     $field = $_GET["token"];
+    $dir = "views/assets/qr_conf/$field/";
+    $conf=$this->ConferenceM->readConferenceById($field);
+    $name=$conf["con_name"];
+    unlink("$dir$name".".png");
+    rmdir($dir);
     rmdir("views/assets/conference/$field");
     $this->ConferenceM->deleteConference($field);
     header("Location: conferencias");
