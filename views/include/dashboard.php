@@ -23,7 +23,11 @@
           <a href="eventos"><li><i class="fa fa-calendar-check-o icon" aria-hidden="true"></i> EVENTOS</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A" ){ ?>
-        <a href="conferencias"><li><i class="fa fa-users icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
+        <a data-toggle="collapse" data-target="#collapsote2"><li class="licollapse"><i class="fa fa-bookmark icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
+        <div class="collapse" id="collapsote2">
+          <a href="conferencias"><li><i class="fa fa-users icon" aria-hidden="true"></i> GESTIONAR CONFERENCIAS</li></a>
+          <a href="conference-select"><li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR CONFERENCIA</li></a>
+        </div>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
           <a href="conference-select-qr"><li><i class="fa fa-qrcode icon" aria-hidden="true"></i> CONFERENCIA QR</li></a>

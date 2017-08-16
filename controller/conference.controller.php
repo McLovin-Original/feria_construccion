@@ -30,6 +30,12 @@ Class ConferenceController{
     require_once("views/modules/conference_mod/conference_QR/conference.select.php");
     require_once("views/include/footer.php");
   }
+  public function select(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference_visit/conference.select.php");
+    require_once("views/include/footer.php");
+  }
   public function create(){
     $data = $_POST["data"];
     for ($i=0; $i <count($data) ; $i++) {
