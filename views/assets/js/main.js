@@ -359,10 +359,8 @@ $("#frm_conf_visit").submit(function(e){
   }
 });
 
-$("select[name=data]").change(function(){
-  var estado = [$(this).val(),
-                $("input[name=token]").val()];
-                console.log(estado);
+function estado(id,val){
+    var estado = [id,val];
   $.post("update-user-status",{data:estado},function(data){
     var data = JSON.parse(data);
     if (data[0]==true) {
@@ -372,4 +370,4 @@ $("select[name=data]").change(function(){
       alert(data[1]);
     }
   });
-});
+}
