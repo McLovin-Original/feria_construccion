@@ -105,7 +105,7 @@ $("#reg_email").focus(function(){
   if (data.length > 0) {
     $.post("validar-documento",{data:data},function(response){
       var response = JSON.parse(response);
-      if (response == true) {
+      if (response[0] == true) {
         $("#reg_doc").after("<span>El Documento Ya Existe</span>")
         $("#btn_reg").attr("disabled",true);
       } else {
@@ -359,7 +359,7 @@ $("#frm_conf_visit").submit(function(e){
   }
 });
 
-/*$("select[name=data]").change(function(){
+$("select[name=data]").change(function(){
   var estado = [$(this).val(),
                 $("input[name=token]").val()];
                 console.log(estado);
@@ -372,4 +372,4 @@ $("#frm_conf_visit").submit(function(e){
       alert(data[1]);
     }
   });
-});*/
+});
