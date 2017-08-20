@@ -32,9 +32,9 @@ Class UserController{
       $data[0] = $_POST["data"];
       $result = $this->UserM->readUserbyDocument($data);
       if(count($result[0])>=1){
-        $return = (true);
+        $return = array(true,$result['use_code']);
       }else{
-        $return = (false);
+        $return = array(false,"");
       }
       echo json_encode($return);
   }
