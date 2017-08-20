@@ -22,11 +22,15 @@
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
           <a href="eventos"><li><i class="fa fa-calendar-check-o icon" aria-hidden="true"></i> EVENTOS</li></a>
         <?php } ?>
-        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
-        <a href="memorias"><li><i class="fa fa-male icon" aria-hidden="true"></i> EXPOSITORES</li></a>
-        <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A" ){ ?>
-        <a href="conferencias"><li><i class="fa fa-users icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
+        <a data-toggle="collapse" data-target="#collapsote2"><li class="licollapse"><i class="fa fa-bookmark icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
+        <div class="collapse" id="collapsote2">
+          <a href="conferencias"><li><i class="fa fa-users icon" aria-hidden="true"></i> GESTIONAR CONFERENCIAS</li></a>
+          <a href="conference-select"><li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR CONFERENCIA</li></a>
+        </div>
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
+          <a href="conference-select-qr"><li><i class="fa fa-qrcode icon" aria-hidden="true"></i> CONFERENCIA QR</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="pabellon"><li><i class="fa fa-map-marker icon" aria-hidden="true"></i> PABELLONES</li></a>
@@ -35,12 +39,12 @@
         <a data-toggle="collapse" data-target="#collapsote"><li class="licollapse"><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
         <div class="collapse" id="collapsote">
           <a href="stands"><li><i class="fa fa-user" aria-hidden="true"></i> GESTIONAR STANDS</li></a>
-          <a href="#"><li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR STAND</li></a>
+          <a href="stand-select"><li><i class="fa fa-user" aria-hidden="true"></i> VISITANTE POR STAND</li></a>
         </div>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
-        <a href="stand-select-qr"><li><i class="fa fa-lock icon" aria-hidden="true"></i> STAND QR</li></a>
+        <a href="stand-select-qr"><li><i class="fa fa-qrcode icon" aria-hidden="true"></i> STAND QR</li></a>
         <a href="index.php?c=main&a=reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
       </ul>

@@ -20,6 +20,15 @@ Class ConferenceModel{
         die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
    }
+   public function createVisitConference($data){
+       try {
+         $sql = "INSERT INTO use_conference VALUES(?,?,?)";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($data[2],$data[0],$data[1]));
+       } catch (PDOException $e) {
+         die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+    }
    public function createMemories($data){
        try {
          $sql = "INSERT INTO file_conference VALUES(?,?,?,?,?)";
