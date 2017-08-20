@@ -33,14 +33,13 @@
               <td><?php echo $row["use_cellphone"] ?></td>
               <td><?php echo $row["use_profession"] ?></td>
               <td><?php echo $row["use_institution"] ?></td>
-              <td><select name="data">
+              <td><select name="data" onchange="estado('<?php echo $row['acc_token'] ?>',this.value)">
                 <?php
                   $estado = $row["acc_status"]=="Activo" ? "Inactivo" : "Activo";
                 ?>
                 <option value="<?php echo $row["acc_status"] ?>"><?php echo $row["acc_status"] ?></option>
                 <option value="<?php echo $estado ?>"><?php echo $estado ?></option>
               </select>
-              <input type="hidden" name="token" value="<?php echo $row['acc_token']; ?>">
               </td>
               <td>
                 <a href=""><span class="glyphicon glyphicon-pencil"></span></a>

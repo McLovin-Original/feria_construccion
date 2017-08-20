@@ -70,7 +70,7 @@ Class UserModel{
     try {
       $sql="UPDATE access SET acc_status = ? WHERE acc_token = ? ";
       $query=$this->pdo->prepare($sql);
-      $query->execute(array($data[0],$data[1]));
+      $query->execute(array($data[1],$data[0]));
     } catch (PDOException $e) {
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
     }
