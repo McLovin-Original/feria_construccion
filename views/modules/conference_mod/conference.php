@@ -3,6 +3,7 @@
     <h1 class="text-center">GESTIONAR CONFERENCIAS</h1>
     <div class="col-xs-12 col-md-4 col-md-offset-8">
       <button type="button" class="btnprimario btnlargo" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA CONFERENCIA</button>
+      <a href="select-conference">ADMINISTRAR MEMORIAS</a>
     </div>
         <table  id="dataTable" class="table table-striped table-bordered tabla">
           <thead>
@@ -42,7 +43,6 @@
         </table>
   </div>
 </div>
-<a href="select-conference">ADMINISTRAR MEMORIAS</a>
 <!-- MODAL -->
 <div id="modalito" class="modal fade" role="dialog">
   <div class="modal-dialog">

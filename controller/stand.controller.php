@@ -92,7 +92,7 @@ Class StandController{
   public function updateData(){
     $field = $_GET["token"];
     require_once("views/include/header.php");
-    //require_once("views/include/dashboard.php");
+    require_once("views/include/dashboard.php");
     require_once("views/modules/stand_mod/stand.update.php");
     require_once("views/include/footer.php");
   }
