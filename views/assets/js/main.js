@@ -105,7 +105,7 @@ $("#reg_email").focus(function(){
   if (data.length > 0) {
     $.post("validar-documento",{data:data},function(response){
       var response = JSON.parse(response);
-      if (response == true) {
+      if (response[0] == true) {
         $("#reg_doc").after("<span>El Documento Ya Existe</span>")
         $("#btn_reg").attr("disabled",true);
       } else {
@@ -298,10 +298,69 @@ $("#sel_evento_p").change(function(){
     $("#sel_dia_p").html(data);
   });
 });
-/*$("select[name=data]").change(function(){
-  var estado = [$(this).val(),
-                $("input[name=token]").val()];
-                console.log(estado);
+
+$("#document").keyup(function(){
+  $(this).siblings("span").remove();
+  $("#inputdoc").remove();
+  var doc = $(this).val();
+  console.log(doc);
+  $.post("validar-documento",{data:doc},function(data){
+    var data = JSON.parse(data);
+    if (data[0]==true) {
+      $("#document").after("<input id='inputdoc' type='hidden' name='data' value='"+data[1]+"'>");
+      $("#btn_doc").attr("disabled",false);
+    }else{
+      $("#document").after("<span>El documente no existe</span>");
+      $("#btn_doc").attr("disabled",true);
+    }
+  });
+});
+
+$("#frm_stand_visit").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("input[name=data]").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("crear-visita",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+$("#frm_conf_visit").submit(function(e){
+  e.preventDefault();
+  if ($(this).parsley().isValid()) {
+    var jsonObj=[];
+    $("input[name=data]").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    console.log(jsonObj);
+    $.post("crear-visitc",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+  }
+});
+
+function estado(id,val){
+    var estado = [id,val];
   $.post("update-user-status",{data:estado},function(data){
     var data = JSON.parse(data);
     if (data[0]==true) {
@@ -311,4 +370,4 @@ $("#sel_evento_p").change(function(){
       alert(data[1]);
     }
   });
-});*/
+}
