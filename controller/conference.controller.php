@@ -24,6 +24,12 @@ Class ConferenceController{
     require_once("views/modules/conference_mod/conference.memories.php");
     require_once("views/include/footer.php");
   }
+  public function user(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/conference_mod/conference_user/conference.user.php");
+    require_once("views/include/footer.php");
+  }
   public function selectQr(){
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");

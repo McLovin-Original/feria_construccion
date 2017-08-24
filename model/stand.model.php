@@ -49,6 +49,17 @@ Class StandModel{
       }
       return $result;
   }
+  public function readStandVisit($field){
+      try {
+        $sql="SELECT * FROM stand INNER JOIN use_stand ON(stand.sta_code=use_stand.sta_code) INNER JOIN user ON(stand.use_code=user.use_code) WHERE use_stand.use_code = ?";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($field));
+        $result = $query->fetchALL(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
   public function readStandUser(){
       try {
         $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE rol_code = 'E3HDKX3684UTA7DMHFOAA34HAK39PM' AND acc_status = 'Activo'";
@@ -131,6 +142,17 @@ Class StandModel{
         $sql="SELECT * FROM stand INNER JOIN file_stand ON(stand.sta_code=file_stand.sta_code) WHERE use_code = ?";
         $query = $this->pdo->prepare($sql);
         $query->execute(array($code));
+        $result = $query->fetchALL(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
+  public function readStandMemoriesUser($campo){
+      try {
+        $sql="SELECT * FROM stand INNER JOIN file_stand ON(stand.sta_code=file_stand.sta_code) WHERE stand.sta_code = ?";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($campo));
         $result = $query->fetchALL(PDO::FETCH_BOTH);
       } catch (PDOException $e) {
           die($e->getMessage()."".$e->getLine()."".$e->getFile());

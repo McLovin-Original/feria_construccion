@@ -42,20 +42,20 @@ Class UserController{
       $data = $_POST["data"];
       $result = $this->UserM->readUserbyEmail($data);
       if (password_verify($data[1],$result["password"])) {
-        if ($result["rol_code"]!="OS7CX80C7QQBLGJV41MB3YY4ZA234O") {
-          if ($result["acc_status"]!="Inactivo") {
-            $_SESSION["user"]["id"]=$result["use_code"];
-            $_SESSION["user"]["rol"]=$result["rol_code"];
-            $_SESSION["user"]["name"]=$result["use_firstname"];
-            $_SESSION["user"]["cargo"]=$result["use_profession"];
-            $_SESSION["user"]["token"]=$result["acc_token"];
-            $_SESSION["user"]["email"]=$result["use_mail"];
+        if ($result["acc_status"]!="Inactivo") {
+          $_SESSION["user"]["id"]=$result["use_code"];
+          $_SESSION["user"]["rol"]=$result["rol_code"];
+          $_SESSION["user"]["name"]=$result["use_firstname"];
+          $_SESSION["user"]["cargo"]=$result["use_profession"];
+          $_SESSION["user"]["token"]=$result["acc_token"];
+          $_SESSION["user"]["email"]=$result["use_mail"];
+          if ($result["rol_code"]!="OS7CX80C7QQBLGJV41MB3YY4ZA234O") {
             $return = array(true,"dashboard");
           }else{
-            $return = array(false,"Su estado es inactivo");
+            $return = array(true,"stand-user");
           }
         }else{
-          $return = array(false,"No tienes permiso para ingresar");
+          $return = array(false,"Su estado es inactivo");
         }
       }else{
         $return = array(false,"Contraseña Incorrecta");
