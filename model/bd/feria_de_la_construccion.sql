@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-08-2017 a las 23:31:49
+-- Tiempo de generación: 24-08-2017 a las 23:49:20
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -59,9 +59,11 @@ INSERT INTO `access` (`acc_token`, `use_code`, `use_mail`, `password`, `acc_stat
 ('AhdrCA9qGY3j3d4QFXude900ygNzQI', 'e7eYlQoe3dMg1LMX0em5OFIiBAqoZL', 'jprestrepo94@misena.edu.co', '$2y$10$2c3ypvzWtANZA6senOt0G.2Lu11mjnmVjF6WXrgnaJbheMJTqGFqa', 'Activo'),
 ('GVyiJ2zx31r5cBxoi2FtX0eMeJ0fHX', 'lkBJOYtJoasBqmExMACfLgs1fnMtzo', 'prueba@gmail.com', '$2y$10$eRs1LUyVgC5LEP5cBEA/V.yieKp3T1s3HuAdISgS7OyzibVM1Hq1.', 'Activo'),
 ('kcJHu22fZS8C6b60HVx69zy9f6JSnX', 'myMSKDrQbL2yJ9kV0vJs6638BADnCe', 'pablofe@ss.com', '$2y$10$mdn.EDpTKtvAEfKKtkjlquAOsAAHEl9KmlFra2sBFSsmF5To4eFgm', 'Activo'),
+('kMel52s87Ng6ZELtyLVYFYGGVCaumv', 'fC2L4RuZbJgfu5GXKHL6ql3ezCee2q', 'decardona34@misena.edu.co', '$2y$10$FkeGKspB.3MtKfo5GZ6qPOikickWyCqddSJIm62qV9jSeOG68nPka', 'Activo'),
 ('MPgBsem4VXMzBVcHefCMUQKpyBTfE3', 'pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', 'labecerra01@yimail.com', '$2y$10$0uSiqAzv7ezEWtmoOI8cpuIfJuq93hqMuZ4YMymA7k7mnxwgCqAoy', 'Activo'),
 ('NPJ87zNhdK4k4ncdVcyTsAFJnrHSYN', 'nJibTg88m6Gf4yIQ1jTmFnrVbkT5lM', 'pacho@gmail.com', '$2y$10$C1U7oN5IGB6yRyfpS5dhme.sJ8y4h5t55v38lZpexVBiJKqKD8gu.', 'Activo'),
 ('O3jsvk9HykYuxjSVH7oCEmcbjI7sfO', 'GXS49Dqy6VveAerhPTpykzefN9ZqpQ', 'pablito@yimail.com', '$2y$10$L61AEGZGOPwTIOxKFoRnp.rjIICI8jWwWq9cfo9Q3Ez8dA5edt2ma', 'Activo'),
+('Xi7dfnelOs8L9fiE8xEDdt5F43pT71', '7x2KzCS91ffIDLhN4icJs8qJbmBrmR', 'jpmunoz344@misena.edu.co', '$2y$10$3tCPL2pc3lcVzSq7FSXume68r1bfMqkWHmrdITf.yWDKA1IPBUeBS', 'Activo'),
 ('yo5dD2xPu9hIvdp7xfvKSGHPotx6q8', 'sPEB1XJR6BelN2V1JVdkZvXg9yqiie', 'pablofrg98@gmail.com', '$2y$10$r3QIxdfErP8dIfHgQG.rBe4NbXlYkR9yQSfKG63FaXGLwfKSxxPZG', 'Activo');
 
 -- --------------------------------------------------------
@@ -103,6 +105,7 @@ CREATE TABLE `conference` (
 --
 
 INSERT INTO `conference` (`con_code`, `day_code`, `con_name`, `use_code`, `con_startime`, `con_finishtime`, `con_share`, `con_creationdate`, `con_creationtime`, `con_description`, `con_status`) VALUES
+('g9IYpe', 'JcZCjr3ZJPRSpXqMrl2ezd4Slhm2s9', 'Como ser hombre', 'pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', '06:08:00', '21:08:00', 200, '2017-08-24', '11:05:37', 'hoh', 'Activo'),
 ('vQxL4g', 'JcZCjr3ZJPRSpXqMrl2ezd4Slhm2s9', 'dddd', 'pMgDEXrA8C6RC8YpBaXqXX2F8ieZoe', '02:00:00', '01:00:00', 2, '2017-08-16', '11:08:43', 'dd', 'Activo');
 
 -- --------------------------------------------------------
@@ -284,6 +287,13 @@ CREATE TABLE `stand` (
   `sta_creationtime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `stand`
+--
+
+INSERT INTO `stand` (`sta_code`, `pav_code`, `use_code`, `sta_name`, `sta_web`, `sta_mail`, `sta_numcontact`, `sta_descrip`, `sta_creationdate`, `sta_creationtime`) VALUES
+('6sOqaA', 'PEq2N1dnfikg4A707qqZu0zbjeet5h', 'lkBJOYtJoasBqmExMACfLgs1fnMtzo', 'Pirrata', 'Pirrata.com', 'pirrata@gmail.com', '0394820293', 'dsfksdklfxcvsdfsdfsds', '2017-08-24', '11:26:47');
+
 -- --------------------------------------------------------
 
 --
@@ -328,7 +338,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`use_code`, `rol_code`, `use_docu`, `use_firstname`, `use_lastname`, `use_cellphone`, `use_gender`, `use_birthdate`, `use_profession`, `use_institution`) VALUES
+('7x2KzCS91ffIDLhN4icJs8qJbmBrmR', 'F34L2P7GPT9RHI37S306OFVI16TI47', '0987654321', 'Juan mf', 'mfff', '9002313', 'MASCULINO', 19, 'Aprendiz', 'SENA'),
 ('e7eYlQoe3dMg1LMX0em5OFIiBAqoZL', 'F34L2P7GPT9RHI37S306OFVI16TI47', '1036679990', 'Juan Pablo', 'Restrepo Garcia', '5881275', 'MASCULINO', 19, 'Instructor', 'SENA'),
+('fC2L4RuZbJgfu5GXKHL6ql3ezCee2q', 'F34L2P7GPT9RHI37S306OFVI16TI47', '1017265677', 'Harry', 'Nepotter', '5219322', 'MASCULINO', 18, 'Administrativo', 'Sena'),
 ('GXS49Dqy6VveAerhPTpykzefN9ZqpQ', 'E3HDKX3684UTA7DMHFOAA34HAK39PM', '10394339229', 'Juan Pablo', 'Restrepo Garcia', '12345423', 'MASCULINO', 12, 'Instructor', 'SENA'),
 ('lkBJOYtJoasBqmExMACfLgs1fnMtzo', 'E3HDKX3684UTA7DMHFOAA34HAK39PM', '255114555', 'Prueba Expo', 'lll', '5552455', 'MASCULINO', 13, 'Instructor', 'SSSENA'),
 ('myMSKDrQbL2yJ9kV0vJs6638BADnCe', 'OS7CX80C7QQBLGJV41MB3YY4ZA234O', '555555555', 'User', 'Current', '5514400', 'MASCULINO', 55, 'Aprendiz', 'AA'),
@@ -348,6 +360,15 @@ CREATE TABLE `use_conference` (
   `con_code` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `use_conference`
+--
+
+INSERT INTO `use_conference` (`use_con_code`, `use_code`, `con_code`) VALUES
+('', 'myMSKDrQbL2yJ9kV0vJs6638BADnCe', 'vQxL4g'),
+('dfsfdfgdfg', 'e7eYlQoe3dMg1LMX0em5OFIiBAqoZL', 'vQxL4g'),
+('xP2h0H', 'fC2L4RuZbJgfu5GXKHL6ql3ezCee2q', 'g9IYpe');
+
 -- --------------------------------------------------------
 
 --
@@ -359,6 +380,13 @@ CREATE TABLE `use_stand` (
   `use_code` varchar(60) NOT NULL,
   `sta_code` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `use_stand`
+--
+
+INSERT INTO `use_stand` (`use_sta_code`, `use_code`, `sta_code`) VALUES
+('tbDpA7', 'myMSKDrQbL2yJ9kV0vJs6638BADnCe', '6sOqaA');
 
 -- --------------------------------------------------------
 

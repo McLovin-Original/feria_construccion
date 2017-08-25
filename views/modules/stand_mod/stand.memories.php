@@ -32,6 +32,9 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34H
             <?php
             if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
               $method=$this->StandM->readStandMemoriesAdmin();
+            }elseif ($_SESSION["user"]["rol"]==="OS7CX80C7QQBLGJV41MB3YY4ZA234O") {
+              $campo = $_GET["token"];
+              $method=$this->StandM->readStandMemoriesUser($campo);
             }else{
               $method=$this->StandM->readStandMemories($code);
             }
