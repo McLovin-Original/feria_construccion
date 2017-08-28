@@ -72,7 +72,7 @@ body{
 }
 
 .side-nav ul{list-style: none;padding: 0px;}
-.side-nav ul a{color: white}
+.side-nav ul a{color: white;font-size: 13px}
 .side-nav ul a:hover,.side-nav ul a:focus{text-decoration: none}
 .side-nav ul a .icon{color: #bebebe}
 .side-nav ul a li{padding: 20px;transition: 0.1s}
@@ -274,6 +274,62 @@ body{
   width: 50%;
 }
 
+.content-event-dias{
+  height: 100vh;
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-secundario-event-dias{
+  width: 76vh;
+  height: 300px;
+  background-color: #e0e0e0;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.content-secundario-event-dias h2{
+  transform: translateY(-133px) translateX(33vh);
+}
+.content-secundario-event-dias h4{
+  position: absolute;
+}
+
+.content-secundario-event-dias input,
+.content-secundario-event-dias textarea,
+.content-secundario-event-dias button{
+  transform: translateX(-35px) translateY(25px);
+}
+
+.h41{
+  transform: translateY(-5px) translateX(35px);
+}
+
+.h42{
+  transform: translateY(-31px) translateX(144px);
+}
+
+.h43{
+  transform: translateY(-31px) translateX(257px);
+}
+
+.content-secundario-event-dias button{
+  border: none;
+  border-radius: 3px;
+  width: 20vw;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  background-color: #3498db;
+}
+
+.content-secundario-event-dias textarea{
+  margin-top: 10px;
+}
 @media screen and (max-width: 800px) {
   body{
     overflow-x: hidden;
