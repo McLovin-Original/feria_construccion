@@ -60,6 +60,17 @@ Class ConferenceModel{
        }
        return $result;
    }
+   public function readConferenceVisit($field){
+       try {
+         $sql="SELECT * FROM conference INNER JOIN day ON(conference.day_code=day.day_code) INNER JOIN use_conference ON(conference.con_code=use_conference.con_code) INNER JOIN user ON(conference.use_code=user.use_code) WHERE use_conference.use_code = ?";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($field));
+         $result = $query->fetchALL(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
    public function readUserConference($data){
        try {
          $sql="SELECT * FROM conference INNER JOIN user ON(conference.use_code=user.use_code) WHERE user.use_code != ?";
