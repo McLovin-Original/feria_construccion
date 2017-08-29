@@ -576,3 +576,55 @@ tbody a{
   color: white;
   padding-left: 22px;
 }
+#collapsote2{
+  background-color: #496179;
+  padding: 10px;
+  color: white;
+  padding-left: 22px;
+}
+
+.btnadminmemori{
+  background-color: #ff6d3f !important;
+  border-bottom: 3px solid #ff7d55 !important;
+  margin-left: 51px;
+}
+
+.btnadminmemori:hover,.btnadminmemori:focus{
+  color: white;
+  text-decoration: none;
+}
+
+.tablaconfe{
+  margin-top: 10px;
+}
+
+.selectconfe{
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  height: 10%;
+  font-weight: bold;
+  width: auto;
+  padding: 20px;
+  text-align: center;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.selectconfe a{
+  margin-bottom: 20px;
+}
+
+.flexible{
+  text-align: center;
+}
+
+.inputvisitas{
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.cuadritoqr{
+  width: 65vh!important;
+  margin-left: 83px;
+  padding-right: 20px;
+}

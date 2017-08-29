@@ -1,11 +1,11 @@
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
     <h1 class="text-center">GESTIONAR CONFERENCIAS</h1>
-    <div class="col-xs-12 col-md-4 col-md-offset-8">
+    <div class="col-xs-12 col-md-6 col-md-offset-6">
       <button type="button" class="btnprimario btnlargo" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA CONFERENCIA</button>
-      <a href="select-conference">ADMINISTRAR MEMORIAS</a>
+      <a href="select-conference" class="btnprimario btnlargo btnadminmemori">ADMINISTRAR MEMORIAS</a>
     </div>
-        <table  id="dataTable" class="table table-striped table-bordered tabla">
+        <table  id="dataTable" class="table table-striped table-bordered tabla tablaconfe">
           <thead>
             <tr>
               <th>#</th>
