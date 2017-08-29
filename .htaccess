@@ -1,6 +1,7 @@
 RewriteEngine On
 RewriteRule ^inicio$                            index.php
 RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
+RewriteRule ^reportes$                          index.php?c=report
 RewriteRule ^registro$                          index.php?c=user
 RewriteRule ^usuarios$                          index.php?c=user&a=gestUser
 RewriteRule ^usuarios&msn=(.*)$                 index.php?c=user&a=gestUser&msn=$1
