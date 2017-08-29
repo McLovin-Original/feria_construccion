@@ -53,6 +53,13 @@ Class EventController{
     require_once("views/modules/event_mod/dias.php");
     require_once("views/include/footer.php");
   }
+  public function event_qr(){
+    $field = $_GET["token"];
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/event_mod/event_qr.php");
+    require_once("views/include/footer.php");
+  }
 
   public function updateDias(){
     $data = $_POST["data"];
