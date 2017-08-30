@@ -37,9 +37,13 @@ Class EventController{
       $data[7]=$_SESSION["user"]["id"];
       $this->EventM->createEvent($data);
       $event=$data[3];
+      $dir = "views/assets/event_qr/$event/";
+      if (!file_exists($dir)) {
+        mkdir($dir);
+      }
       for ($i=0; $i <$data[4] ; $i++) {
-          $rand=randomAlpha('30');
-          $this->EventM->createDay($rand,$event);
+        $rand=randomAlpha('30');
+        $this->EventM->createDay($rand,$event);
       }
       $return = array(true,"Guardo Con Exito","eventos");
     }
@@ -64,11 +68,16 @@ Class EventController{
   public function updateDias(){
     $data = $_POST["data"];
     $this->EventM->updateDay($data);
-    header("Location: dias&token=$data[1]");
+    $msn="Dia Actualizado Correctamente";
+    header("Location: dias&token=$data[1]&msn=$msn");
   }
 
   public function delete(){
     $field = $_GET["token"];
+    $result = $this->EventM->readEventByCode($field);
+    $name=$result["eve_name"].".png";
+    unlink("views/assets/event_qr/$field/$name");
+    rmdir("views/assets/event_qr/$field");
     $this->EventM->deleteEvent($field);
     header("Location: eventos");
   }

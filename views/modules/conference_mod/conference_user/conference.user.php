@@ -1,3 +1,5 @@
+<div class="container-fluid" id="main-content">
+  <div class="content-welcome" id="contentwelcome">
 <?php
 
 $field = $_SESSION["user"]["id"];
@@ -13,3 +15,5 @@ if (!isset($p)) {
   echo "NO HAS REGISTRADO NINGUNA VISITA";
 }
 ?>
+</div>
+</div>

@@ -11,14 +11,38 @@ Class ReportModel{
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
     }
   }
-  public function createEvent($data){
+  public function countStand(){
       try {
-        $sql = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?)";
+        $sql = "SELECT COUNT(*) FROM stand";
         $query = $this->pdo->prepare($sql);
-        $query->execute(array($data[3],$data[0],$data[1],$data[2],$data[4],$data[5],$data[6],$data[7]));
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
       } catch (PDOException $e) {
         die($e->getMessage()."".$e->getLine()."".$e->getFile());
       }
+      return $result;
+   }
+  public function countConference(){
+      try {
+        $sql = "SELECT COUNT(*) FROM conference";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+   }
+  public function countUser(){
+      try {
+        $sql = "SELECT COUNT(*) FROM user WHERE rol_code = 'OS7CX80C7QQBLGJV41MB3YY4ZA234O'";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
    }
    public function __DESTRUCT(){
        DataBase::disconnect();

@@ -60,6 +60,17 @@ Class EventModel{
        }
        return $result;
    }
+   public function readEventQr($field){
+       try {
+         $sql="SELECT * FROM event INNER JOIN day ON(event.eve_code=day.eve_code) WHERE event.eve_code = ? LIMIT 1";
+         $query = $this->pdo->prepare($sql);
+         $query->execute(array($field));
+         $result = $query->fetch(PDO::FETCH_BOTH);
+       } catch (PDOException $e) {
+           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+       }
+       return $result;
+   }
    public function readEventByCode($field){
        try {
           $sql="SELECT * FROM event WHERE eve_code = ?";
@@ -73,6 +84,9 @@ Class EventModel{
    }
    public function deleteEvent($field){
        try {
+           $sql = "DELETE FROM day WHERE eve_code = ?";
+           $query = $this->pdo->prepare($sql);
+           $query->execute(array($field));
            $sql = "DELETE FROM event WHERE eve_code = ?";
            $query = $this->pdo->prepare($sql);
            $query->execute(array($field));

@@ -181,6 +181,9 @@ Class StandModel{
   }
   public function deleteStand($field){
       try {
+          $sql = "DELETE FROM use_stand WHERE sta_code = ?";
+          $query = $this->pdo->prepare($sql);
+          $query->execute(array($field));
           $sql = "DELETE FROM stand WHERE sta_code = ?";
           $query = $this->pdo->prepare($sql);
           $query->execute(array($field));

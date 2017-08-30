@@ -170,6 +170,9 @@ Class ConferenceModel{
    }
    public function deleteConference($field){
        try {
+           $sql = "DELETE FROM use_conference WHERE con_code = ?";
+           $query = $this->pdo->prepare($sql);
+           $query->execute(array($field));
            $sql = "DELETE FROM conference WHERE con_code = ?";
            $query = $this->pdo->prepare($sql);
            $query->execute(array($field));
