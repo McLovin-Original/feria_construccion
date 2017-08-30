@@ -3,6 +3,7 @@
     <h1 class="text-center">GESTIONAR STAND'S</h1>
     <div class="col-xs-12 col-md-3 col-md-offset-9">
       <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UN STAND</button>
+      <a href="expo-memorias">ADMINISTRAR MEMORIAS</a>
     </div>
         <table id="dataTable" class="table table-striped table-bordered tabla">
           <thead>
@@ -42,8 +43,6 @@
         </table>
   </div>
 </div>
-<a href="expo-memorias">ADMINISTRAR MEMORIAS</a>
-
 <!-- MODAL -->
 <div id="modalito" class="modal fade" role="dialog">
   <div class="modal-dialog">

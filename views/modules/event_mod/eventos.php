@@ -13,6 +13,7 @@
               <th>FECHA FIN</th>
               <th>DIAS</th>
               <th>USUARIO</th>
+              <th>QR</th>
               <th>GESTIONAR DIAS</th>
               <th>ACCIONES</th>
             </tr>
@@ -29,6 +30,7 @@
               <td><?php echo $row["eve_finishdate"]; ?></td>
               <td><?php echo $row["eve_numday"]; ?></td>
               <td><?php echo $row["use_firstname"]; ?></td>
+              <td><a href="event_qr&token=<?php echo $row['eve_code']; ?>"><span class="glyphicon glyphicon-qrcode"></span></a></td>
               <td><a href="dias&token=<?php echo $row['eve_code']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
               <td>
                 <a onclick="return confirm('Desea Eliminar?');" href="delete-evento&token=<?php echo $row['eve_code'] ?>"><span class="glyphicon glyphicon-trash"></span></a></td>

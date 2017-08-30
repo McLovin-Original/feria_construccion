@@ -1,6 +1,7 @@
 RewriteEngine On
 RewriteRule ^inicio$                            index.php
 RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
+RewriteRule ^reportes$                          index.php?c=report
 RewriteRule ^registro$                          index.php?c=user
 RewriteRule ^usuarios$                          index.php?c=user&a=gestUser
 RewriteRule ^usuarios&msn=(.*)$                 index.php?c=user&a=gestUser&msn=$1
@@ -15,8 +16,11 @@ RewriteRule ^eventos$                           index.php?c=event
 RewriteRule ^crear-evento$                      index.php?c=event&a=create
 RewriteRule ^delete-evento&token=(.*)$          index.php?c=event&a=delete&token=$1
 RewriteRule ^dias&token=(.*)$                   index.php?c=event&a=dias&token=$1
+RewriteRule ^dias&token=(.*)&msn=(.*)$          index.php?c=event&a=dias&token=$1&msn=$2
+RewriteRule ^event_qr&token=(.*)$               index.php?c=event&a=event_qr&token=$1
 RewriteRule ^update-dia$                        index.php?c=event&a=updateDias
 RewriteRule ^conferencias$                      index.php?c=conference
+RewriteRule ^conference-user$                   index.php?c=conference&a=user
 RewriteRule ^invalid-conference$                index.php?c=conference&a=invalid
 RewriteRule ^con-memorias$                      index.php?c=conference&a=gesMemories
 RewriteRule ^con-memorias&msn=(.*)$             index.php?c=conference&a=gesMemories&msn=$1
@@ -41,6 +45,7 @@ RewriteRule ^delete-pabellon&token=(.*)$        index.php?c=pavilion&a=delete&to
 RewriteRule ^update-pabellon&token=(.*)$        index.php?c=pavilion&a=updateData&token=$1
 RewriteRule ^update-pavilion$                   index.php?c=pavilion&a=update
 RewriteRule ^stands$                            index.php?c=stand
+RewriteRule ^stand-user$                        index.php?c=stand&a=user
 RewriteRule ^invalid-stand$                     index.php?c=stand&a=invalid
 RewriteRule ^stands&msn=(.*)$                   index.php?c=stand&msn=$1
 RewriteRule ^crear-stand$                       index.php?c=stand&a=create
@@ -49,6 +54,7 @@ RewriteRule ^update-stand&token=(.*)$           index.php?c=stand&a=updateData&t
 RewriteRule ^update-stands$                     index.php?c=stand&a=update
 RewriteRule ^expo-memorias$                     index.php?c=stand&a=gesMemories
 RewriteRule ^expo-memorias&msn=(.*)$            index.php?c=stand&a=gesMemories&msn=$1
+RewriteRule ^expo-memorias&token=(.*)$          index.php?c=stand&a=gesMemories&token=$1
 RewriteRule ^crear-expoMemoria$                 index.php?c=stand&a=crearMemories
 RewriteRule ^delete-memoristand&token=(.*)$     index.php?c=stand&a=deleteMemories&token=$1
 RewriteRule ^stand-select-qr$                   index.php?c=stand&a=selectQr

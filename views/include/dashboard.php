@@ -18,7 +18,9 @@
       <h4 class="text-center title-menu"> MENÚ </h4>
       <div class="sidenav-line1"></div>
       <ul>
-        <a href="dashboard"><li><i class="fa fa-home icon" aria-hidden="true"></i> INICIO</li></a>
+        <?php if ($_SESSION["user"]["rol"]!="OS7CX80C7QQBLGJV41MB3YY4ZA234O"){ ?>
+          <a href="dashboard"><li><i class="fa fa-home icon" aria-hidden="true"></i> INICIO</li></a>
+        <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
           <a href="eventos"><li><i class="fa fa-calendar-check-o icon" aria-hidden="true"></i> EVENTOS</li></a>
         <?php } ?>
@@ -45,7 +47,11 @@
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
         <a href="stand-select-qr"><li><i class="fa fa-qrcode icon" aria-hidden="true"></i> STAND QR</li></a>
-        <a href="index.php?c=main&a=reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
+        <!--<a href="reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>-->
+        <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]==="OS7CX80C7QQBLGJV41MB3YY4ZA234O"){  ?>
+          <a href="stand-user"><li><i class="fa fa-user icon" aria-hidden="true"></i> STANDS</li></a>
+          <a href="conference-user"><li><i class="fa fa-bookmark icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
         <?php } ?>
       </ul>
     </div>
