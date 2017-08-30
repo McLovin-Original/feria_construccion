@@ -4,25 +4,25 @@
     <div class="contenedor-infos">
       <div class="contenedor-total-personas">
         <h1>TOTAL PERSONAS</h1>
-        <h4>54</h4>
+        <h4><?php echo $user[0]; ?></h4>
       </div>
       <div class="contenedor-total-stands">
         <h1>TOTAL STAND'S</h1>
-        <h4>15</h4>
+        <h4><?php echo $stand[0]; ?></h4>
       </div>
       <div class="contenedor-total-conferencias">
         <h1>TOTAL CONFERENCIAS</h1>
-        <h4>8</h4>
+        <h4><?php echo $confe[0]; ?></h4>
       </div>
     </div>
-    <div class="contenedor-graficas">
+    <!--<div class="contenedor-graficas">
       <div class="grafica1">
         <canvas id="myChart" class="grafica"></canvas>
       </div>
       <div class="grafica2">
         <canvas id="myChart2" class="grafica"></canvas>
       </div>
-    </div>
+    </div>-->
     <div class="col-xs-12 col-md-3 col-md-offset-9 btnclassdiv">
       <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UN PABELLON</button>
     </div>
