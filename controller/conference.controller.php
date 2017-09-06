@@ -9,14 +9,18 @@ Class ConferenceController{
   }
 
   public function mainPage(){
-    require_once("views/include/header.php");
-    require_once("views/include/dashboard.php");
-    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
-      require_once("views/modules/conference_mod/conference.php");
+    if (isset($_SESSION["user"]) && ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A")) {
+      require_once("views/include/header.php");
+      require_once("views/include/dashboard.php");
+      if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+        require_once("views/modules/conference_mod/conference.php");
+      }else{
+        require_once("views/modules/conference_mod/conference.select.php");
+      }
+      require_once("views/include/footer.php");
     }else{
-      require_once("views/modules/conference_mod/conference.select.php");
+      header("Location: inicio");
     }
-    require_once("views/include/footer.php");
   }
   public function gesMemories(){
     require_once("views/include/header.php");
