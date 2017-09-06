@@ -21,7 +21,6 @@ RewriteRule ^event_qr&token=(.*)$               index.php?c=event&a=event_qr&tok
 RewriteRule ^update-dia$                        index.php?c=event&a=updateDias
 RewriteRule ^conferencias$                      index.php?c=conference
 RewriteRule ^conference-user$                   index.php?c=conference&a=user
-RewriteRule ^invalid-conference$                index.php?c=conference&a=invalid
 RewriteRule ^con-memorias$                      index.php?c=conference&a=gesMemories
 RewriteRule ^con-memorias&msn=(.*)$             index.php?c=conference&a=gesMemories&msn=$1
 RewriteRule ^con-memorias&token=(.*)$           index.php?c=conference&a=gesMemories&token=$1
