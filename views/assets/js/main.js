@@ -299,22 +299,22 @@ $("#sel_evento_p").change(function(){
   });
 });
 
-$("#document").keyup(function(){
-  $(this).siblings("span").remove();
-  $("#inputdoc").remove();
-  var doc = $(this).val();
-  console.log(doc);
-  $.post("validar-documento",{data:doc},function(data){
-    var data = JSON.parse(data);
-    if (data[0]==true) {
-      $("#document").after("<input id='inputdoc' type='hidden' name='data' value='"+data[1]+"'>");
-      $("#btn_doc").attr("disabled",false);
-    }else{
-      $("#document").after("<span>El documente no existe</span>");
-      $("#btn_doc").attr("disabled",true);
-    }
-  });
-});
+// $("#document").keyup(function(){
+//   $(this).siblings("span").remove();
+//   $("#inputdoc").remove();
+//   var doc = $(this).val();
+//   console.log(doc);
+//   $.post("validar-documento",{data:doc},function(data){
+//     var data = JSON.parse(data);
+//     if (data[0]==true) {
+//       $("#document").after("<input id='inputdoc' type='hidden' name='data' value='"+data[1]+"'>");
+//       $("#btn_doc").attr("disabled",false);
+//     }else{
+//       $("#document").after("<span>El documente no existe</span>");
+//       $("#btn_doc").attr("disabled",true);
+//     }
+//   });
+// });
 
 $("#frm_stand_visit").submit(function(e){
   e.preventDefault();
