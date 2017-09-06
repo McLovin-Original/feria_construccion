@@ -13,7 +13,9 @@
     }
     foreach ($method as $row) {
       ?>
-      <a href="con-memorias&token=<?php echo $row['con_code']; ?>"><?php echo $row['con_name']; ?></a>
+      <div class="selectconfe">
+        <a href="con-memorias&token=<?php echo $row['con_code']; ?>"><?php echo $row['con_name']; ?></a>
+      </div>
     <?php } ?>
   </div>
 </div>

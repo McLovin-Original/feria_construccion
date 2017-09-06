@@ -44,10 +44,10 @@
       <div class="modal-body">
         <form id="frm_pav" action="" method="post" data-parsley-validate>
           <div class="form-group">
-            <input id="nam_pav" type="text" name="" class="form-control inputmodal" placeholder="nombre" required="">
+            <input id="nam_pav" type="text" name="" class="form-control inputmodal" placeholder="Nombre" required="">
           </div>
           <div class="form-group">
-            <select class="" id="sel_evento_p">
+            <select class="form-control inputmodal" id="sel_evento_p">
               <option value="">SELECCIONE UN EVENTO</option>
               <?php foreach ($this->PavilionM->readEvent() as $row){  ?>
               <option value="<?php echo $row['eve_code'] ?>"><?php echo $row["eve_name"]; ?></option>
@@ -55,7 +55,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="" name="data" id="sel_dia_p" required>
+            <select class="form-control inputmodal" name="data" id="sel_dia_p" required>
               <option value="">AUN NO HA SELECCIONADO UN EVENTO</option>
             </select>
           </div>

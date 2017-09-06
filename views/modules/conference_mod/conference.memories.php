@@ -3,7 +3,7 @@
     <h1 class="text-center">GESTIONAR MEMORIAS</h1>
     <?php if ($_SESSION["user"]["rol"]==="ASEV4G5GVCG5A7O38DKS8W2EDDE42A"){ ?>
     <div class="col-xs-12 col-md-3 col-md-offset-9">
-      <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA MEMORIA DE CONFERENCIA</button>
+      <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA MEMORIA</button>
     </div>
     <?php } ?>
         <table id="dataTable" class="table table-striped table-bordered tabla">
@@ -59,7 +59,7 @@
             <input type="file" name="conf" class="form-control inputmodal" required="">
           </div>
           <div class="form-group">
-            <textarea name="data[]" rows="8" cols="80"></textarea>
+            <textarea name="data[]" class="form-control inputmodal textareamodal"></textarea>
           </div>
           <input type="hidden" name="con_code" value="<?php echo $id ?>">
       </div>
