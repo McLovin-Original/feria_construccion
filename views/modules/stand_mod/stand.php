@@ -12,7 +12,6 @@
               <th>NOMBRE</th>
               <th>PABELLON</th>
               <th>EXPOSITOR</th>
-              <th>SITIO WEB</th>
               <th>CORREO</th>
               <th>CONTACTO</th>
               <th>ACCIONES</th>
@@ -28,7 +27,6 @@
               <td><?php echo $row["sta_name"]; ?></td>
               <td><?php echo $row["pav_name"]; ?></td>
               <td><?php echo $row["use_firstname"]; ?></td>
-              <td><?php echo $row["sta_web"]; ?></td>
               <td><?php echo $row["sta_mail"]; ?></td>
               <td><?php echo $row["sta_numcontact"]; ?></td>
               <td>
