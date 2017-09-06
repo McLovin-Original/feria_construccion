@@ -4,7 +4,13 @@
     <div class="content-qr-dad">
     <?php
     require_once 'views/assets/phpqrcode/qrlib.php';
-    foreach ($this->ConferenceM->readConference() as $row) {
+    if ($_SESSION["user"]["rol"]=="F34L2P7GPT9RHI37S306OFVI16TI47") {
+      $method=$this->ConferenceM->readConference();
+    }else{
+      $code=$_SESSION["user"]["id"];
+      $method=$this->ConferenceM->readConferenceByUser($code);
+    }
+    foreach ($method as $row) {
       ?><div class="content-qr-son">
           <h2><?php echo $row["con_name"]; ?></h2>
         <?php
