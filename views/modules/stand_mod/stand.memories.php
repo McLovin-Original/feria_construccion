@@ -12,7 +12,7 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34H
     <h1 class="text-center">GESTIONAR MEMORIAS</h1>
     <?php if ($_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){ ?>
     <div class="col-xs-12 col-md-3 col-md-offset-9">
-      <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA MEMORIA DE EXPOSICION</button>
+      <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UNA MEMORIA</button>
     </div>
     <?php } ?>
         <table id="dataTable" class="table table-striped table-bordered tabla">
@@ -22,7 +22,6 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34H
               <th>NOMBRE</th>
               <th>STAND</th>
               <th>ARCHIVO</th>
-              <th>DESCRIPCION</th>
               <?php if ($_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){ ?>
               <th>ACCIONES</th>
               <?php } ?>
@@ -46,7 +45,6 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34H
               <td><?php echo $row["fis_nom"]; ?></td>
               <td><?php echo $row["sta_name"]; ?></td>
               <td><a href="views/assets/expositor/<?php echo $code ?>/<?php echo $row['fis_file'] ?>"><?php echo $row["fis_file"]; ?></a></td>
-              <td><?php echo $row["fis_descripcion"]; ?></td>
               <?php if ($_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM"){ ?>
                 <td>
                   <a onclick="return confirm('Desea Eliminar?')" href="delete-memoristand&token=<?php echo $row['fis_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
@@ -75,7 +73,7 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34H
             <input type="file" name="stand" class="form-control inputmodal" required="">
           </div>
           <div class="form-group">
-            <textarea name="data[]" rows="8" cols="80"></textarea>
+            <textarea name="data[]" class="form-control inputmodal textareamodal"></textarea>
           </div>
       </div>
       <div class="modal-footer">

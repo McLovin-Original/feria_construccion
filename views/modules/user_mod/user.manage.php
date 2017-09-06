@@ -1,9 +1,6 @@
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
     <h1 class="text-center">GESTIONAR SEGURIDAD</h1>
-    <div class="col-xs-12 col-md-3 col-md-offset-9">
-      <button type="button" class="btnprimario" data-target="#modalito" data-toggle="modal">+ AGREGAR UN USUARIO</button>
-    </div>
         <table  id="dataTable" class="table table-striped table-bordered tabla">
           <thead>
             <tr>
@@ -42,7 +39,6 @@
               </select>
               </td>
               <td>
-                <a href=""><span class="glyphicon glyphicon-pencil"></span></a>
                 <a onclick="return confirm('Desea Eliminar?')" href="delete-user&token=<?php echo $row['use_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
               </td>
             </tr>
