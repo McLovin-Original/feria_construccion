@@ -78,20 +78,32 @@ Class StandController{
   }
   public function createVisit(){
     $data = $_POST["data"];
-    for ($i=0; $i <count($data) ; $i++) {
-      if (empty($data[$i])) {
-        $p=1;
-        break;
-      }else{
-        $p=0;
-      }
-    }
-    if ($p==1) {
-      $return = array(false,"Campos Nulos","");
+    $documento = $data[0];
+    $user = $this->StandM->readUserbyDocument($documento);
+    if (count($user[0])<=0) {
+      $return = array(false,"El documento no existe","");
     }else{
-      $data[2]=randomAlpha('6');
-      $this->StandM->createVisitStand($data);
-      $return = array(true,"Guardo Con Exito","stand-visit&token=$data[1]");
+      $data[0]=$user['use_code'];
+      $repetido=$this->StandM->readUseStandByConUser($data);
+      if (count($repetido[0])>=1) {
+        $return = array(false,"El Usuario ya registro visita");
+      }else{
+        for ($i=0; $i <count($data) ; $i++) {
+          if (empty($data[$i])) {
+            $p=1;
+            break;
+          }else{
+            $p=0;
+          }
+        }
+        if ($p==1) {
+          $return = array(false,"Campos Nulos","");
+        }else{
+          $data[2]=randomAlpha('6');
+          $this->StandM->createVisitStand($data);
+          $return = array(true,"Guardo Con Exito","stand-visit&token=$data[1]");
+        }
+      }
     }
     echo json_encode($return);
   }

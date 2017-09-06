@@ -38,6 +38,28 @@ Class StandModel{
          die($e->getMessage()."".$e->getLine()."".$e->getFile());
        }
     }
+    public function readUserbyDocument($documento){
+      try {
+        $sql="SELECT * FROM user WHERE use_docu = ?";
+        $query=$this->pdo->prepare($sql);
+        $query->execute(array($documento));
+        $result=$query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+      }
+      return $result;
+    }
+    public function readUseStandByConUser($data){
+        try {
+          $sql="SELECT * FROM use_stand WHERE sta_code = ? AND use_code = ?";
+          $query = $this->pdo->prepare($sql);
+          $query->execute(array($data[1],$data[0]));
+          $result = $query->fetch(PDO::FETCH_BOTH);
+        } catch (PDOException $e) {
+            die($e->getMessage()."".$e->getLine()."".$e->getFile());
+        }
+        return $result;
+    }
   public function readStand(){
       try {
         $sql="SELECT * FROM stand INNER JOIN pavilion ON(pavilion.pav_code=stand.pav_code) INNER JOIN user ON(user.use_code=stand.use_code)";

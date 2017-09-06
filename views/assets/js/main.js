@@ -235,7 +235,6 @@ $("#frm_con_u").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    console.log(jsonObj);
     $.post("update-conference",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
@@ -257,7 +256,6 @@ $("#frm_pav_u").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    console.log(jsonObj);
     $.post("update-pavilion",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
@@ -279,7 +277,6 @@ $("#frm_sta_u").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    console.log(jsonObj);
     $.post("update-stands",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
@@ -325,7 +322,6 @@ $("#frm_stand_visit").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    console.log(jsonObj);
     $.post("crear-visita",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
@@ -346,7 +342,6 @@ $("#frm_conf_visit").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    console.log(jsonObj);
     $.post("crear-visitc",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
