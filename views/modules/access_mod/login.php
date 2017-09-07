@@ -22,12 +22,15 @@
           <h1 class="text-center">¡ENTRAR!</h1>
           <form id="frm_log" class="" method="post">
             <div class="form-group">
-              <input id="ema_log" type="text" class="form-control input1" required="">
-              <label class="label1"><i class="fa fa-envelope" aria-hidden="true"></i> EMAIL</label>
+              <input id="ema_log" type="number" class="form-control input1" required="">
+              <label class="label1"><i class="fa fa-envelope" aria-hidden="true"></i> DOCUMENTO</label>
             </div>
             <div class="form-group">
               <input id="pas_log" type="password" class="form-control input1" required="">
               <label class="label1"><i class="fa fa-lock" aria-hidden="true"></i> CONTRASEÑA</label>
+            </div>
+            <div class="form-group">
+              <input id="chek" type="checkbox" name="" value="1">
             </div>
             <button id="btn_log" type="submit" class="btn-log">INGRESAR</button>
             <a href="registro"><button type="button" class="btn-reg" onclick="abrir()">¡REGISTRATE!</button></a>

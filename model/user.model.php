@@ -35,9 +35,20 @@ Class UserModel{
   }
   public function readUserbyDocument($data){
     try {
-      $sql="SELECT * FROM user WHERE use_docu = ?";
+      $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE use_docu = ?";
       $query=$this->pdo->prepare($sql);
       $query->execute(array($data[0]));
+      $result=$query->fetch(PDO::FETCH_BOTH);
+    } catch (PDOException $e) {
+      die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+    }
+    return $result;
+  }
+  public function readUserbyId($field){
+    try {
+      $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE user.use_code = ?";
+      $query=$this->pdo->prepare($sql);
+      $query->execute(array($field));
       $result=$query->fetch(PDO::FETCH_BOTH);
     } catch (PDOException $e) {
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
@@ -71,6 +82,18 @@ Class UserModel{
       $sql="UPDATE access SET acc_status = ? WHERE acc_token = ? ";
       $query=$this->pdo->prepare($sql);
       $query->execute(array($data[1],$data[0]));
+    } catch (PDOException $e) {
+      die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+    }
+  }
+  public function updateUser($data){
+    try {
+      $sql="UPDATE user SET use_firstname = ?, use_lastname = ?,use_cellphone = ?,use_gender = ?,use_institution = ?,use_profession = ? WHERE use_code = ? ";
+      $query=$this->pdo->prepare($sql);
+      $query->execute(array($data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7]));
+      $sql="UPDATE access SET use_mail = ? WHERE use_code = ? ";
+      $query=$this->pdo->prepare($sql);
+      $query->execute(array($data[0],$data[7]));
     } catch (PDOException $e) {
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
     }

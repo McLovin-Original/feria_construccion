@@ -48,7 +48,7 @@ $("#pas_log").focus(function(){
         $.post("validar-email",{data:data},function(response){
             var response = JSON.parse(response);
             if (response == false) {
-              $("#ema_log").after("<span>El Correo No Existe</span>")
+              $("#ema_log").after("<span>El Documento No Existe</span>")
               $("#btn_log").attr("disabled",true);
             } else {
               $("#btn_log").attr("disabled",false);
@@ -65,16 +65,17 @@ $("#ema_log").focus(function(){
 
 $("#frm_log").submit(function(e){
   e.preventDefault();
-  var data = [$("#ema_log").val(),
-              $("#pas_log").val()];
-  $.post("iniciar",{data:data},function(data){
-    var data = JSON.parse(data);
-    if (data[0]==true) {
-      document.location.href=data[1];
-    }else{
-      alert(data[1]);
-    }
-  });
+      var data = [$("#ema_log").val(),
+                  $("#pas_log").val(),
+                  $("#chek").val()];
+      $.post("iniciar",{data:data},function(data){
+        var data = JSON.parse(data);
+        if (data[0]==true) {
+          document.location.href=data[1];
+        }else{
+          alert(data[1]);
+        }
+      });
 });
 
 $("#reg_sex").focus(function(){
@@ -150,8 +151,25 @@ $("#frm_reg").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    //console.log(jsonObj);
     $.post("crear-usuario",{data:jsonObj},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1]);
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
+});
+$("#frm_user_up").submit(function(e){
+  e.preventDefault();
+    var jsonObj=[];
+    $("#frm_user_up input,#frm_user_up select").each(function(){
+      var structure = {};
+      structure = $(this).val();
+      jsonObj.push(structure);
+    });
+    $.post("update-user",{data:jsonObj},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
         alert(data[1]);

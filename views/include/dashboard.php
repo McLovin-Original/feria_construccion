@@ -45,12 +45,16 @@
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
-        <!--<a href="reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>-->
+        <a href="reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="OS7CX80C7QQBLGJV41MB3YY4ZA234O"){  ?>
           <a href="stand-user"><li><i class="fa fa-user icon" aria-hidden="true"></i> STANDS</li></a>
           <a href="conference-user"><li><i class="fa fa-bookmark icon" aria-hidden="true"></i> CONFERENCIAS</li></a>
         <?php } ?>
+        <?php if ($_SESSION["user"]["rol"]!=="F34L2P7GPT9RHI37S306OFVI16TI47") {
+        ?>
+        <a href="cuenta"><li><i class="fa fa-user icon" aria-hidden="true"></i>MI CUENTA</li></a>
+      <?php  } ?>
       </ul>
     </div>
   </div>

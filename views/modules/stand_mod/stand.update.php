@@ -1,6 +1,6 @@
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
-    <h1 class="text-center">ACTUALIZAR CONFERENCIA</h1>
+    <h1 class="text-center">ACTUALIZAR STAND</h1>
     <?php $stand = $this->StandM->readStandById($field); ?>
     <form id="frm_sta_u" class="" action="" method="post">
       <div class="modal-body content-update" style="width: 50%;">
@@ -23,11 +23,11 @@
         <div class="form-group">
           <input type="text" class="form-control inputmodal" name="" value="<?php echo $stand['sta_name']; ?>">
         </div>
-        <div class="">
-          <label for="">Actualizar expositor</label>
+		  <div class="">
+          <label for="">Expositor</label>
         </div>
         <div class="form-group">
-          <select class="form-control inputmodal" name="">
+          <select class="form-control inputmodal" name="" style="visiility:hidden;">
             <option value="<?php echo $stand['use_code'] ?>"><?php echo $stand['use_firstname']; ?></option>
             <?php
             $data[0]=$stand['use_code'];

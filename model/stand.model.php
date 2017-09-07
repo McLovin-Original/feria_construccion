@@ -84,7 +84,7 @@ Class StandModel{
   }
   public function readStandUser(){
       try {
-        $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE rol_code = 'E3HDKX3684UTA7DMHFOAA34HAK39PM' AND acc_status = 'Activo' AND user.use_code != (SELECT use_code FROM stand)";
+        $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE user.rol_code = 'E3HDKX3684UTA7DMHFOAA34HAK39PM' AND acc_status = 'Activo' AND user.use_code NOT IN (SELECT use_code FROM stand)";
         $query = $this->pdo->prepare($sql);
         $query->execute();
         $result = $query->fetchALL(PDO::FETCH_BOTH);

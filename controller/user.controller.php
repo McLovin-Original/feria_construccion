@@ -20,7 +20,7 @@ Class UserController{
   }
   public function validEmail(){
       $data[0] = $_POST["data"];
-      $result = $this->UserM->readUserbyEmail($data);
+      $result = $this->UserM->readUserbyDocument($data);
       if(count($result[0])>=1){
         $return = (true);
       }else{
@@ -40,7 +40,10 @@ Class UserController{
   }
   public function signIn(){
       $data = $_POST["data"];
-      $result = $this->UserM->readUserbyEmail($data);
+      if (!isset($data[2])) {
+        $return = array(false,"Debe aceptar los terminos y condiciones");
+      }else{
+      $result = $this->UserM->readUserbyDocument($data);
       if (password_verify($data[1],$result["password"])) {
         if ($result["acc_status"]!="Inactivo") {
           $_SESSION["user"]["id"]=$result["use_code"];
@@ -60,6 +63,7 @@ Class UserController{
       }else{
         $return = array(false,"Contraseña Incorrecta");
       }
+    }
       echo json_encode($return);
   }
   public function create(){
@@ -106,6 +110,31 @@ Class UserController{
     }else{
       $this->UserM->updateStatus($data);
       $return = array(false,"Actualizado con exito","usuarios");
+    }
+    echo json_encode($return);
+  }
+  public function updateData(){
+    require_once("views/include/header.php");
+    require_once("views/include/dashboard.php");
+    require_once("views/modules/user_mod/user.update.php");
+    require_once("views/include/footer.php");
+  }
+  public function update(){
+    $data = $_POST["data"];
+    for ($i=0; $i <count($data) ; $i++) {
+      if (empty($data[$i])) {
+        $p=1;
+        break;
+      }else{
+        $p=0;
+      }
+    }
+    if ($p==1) {
+      $return = array(false,"Campos Nulos","");
+    }else{
+      $data[7] = $_SESSION["user"]["id"];
+      $this->UserM->updateUser($data);
+      $return = array(true,"Guardo Con Exito","cuenta");
     }
     echo json_encode($return);
   }
