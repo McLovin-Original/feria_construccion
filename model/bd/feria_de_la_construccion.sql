@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2017 a las 21:16:35
+-- Tiempo de generación: 09-09-2017 a las 01:10:17
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -54,7 +54,7 @@ CREATE TABLE `access` (
 --
 
 INSERT INTO `access` (`acc_token`, `use_code`, `use_mail`, `password`, `acc_status`) VALUES
-('HmrKCYv4PylaHB5h46g9et3X7LZp0m', '7BTNeqjvoiDZIqH7JzPnASTNP8eNBu', 'prueba@gmail.com', '$2y$10$AzWsi44EGYFJ8Bk8xCowi.FEM.W8gg9Yny9yGVhMJE0./e9Won/qm', 'Activo');
+('Hpt7AMXiy936A6uR9JxpeGR8d0HPch', 'yxKgMb7eTFMZCndIaapZfiQR7Ir0rH', 'admin@feriadelaconstruccion.co', '$2y$10$g3iQ30xkxmYbt84pHA1Zs.elXYr1LkzWc27gLdiqF.eDi35rLuDqe', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,8 @@ CREATE TABLE `conference` (
   `con_creationdate` date NOT NULL,
   `con_creationtime` time NOT NULL,
   `con_description` longtext NOT NULL,
-  `con_status` varchar(20) NOT NULL
+  `con_status` varchar(20) NOT NULL,
+  `con_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -290,7 +291,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`use_code`, `rol_code`, `use_docu`, `use_firstname`, `use_lastname`, `use_cellphone`, `use_gender`, `use_birthdate`, `use_profession`, `use_institution`) VALUES
-('7BTNeqjvoiDZIqH7JzPnASTNP8eNBu', 'F34L2P7GPT9RHI37S306OFVI16TI47', '00000000', 'Prueba', 'Prueba', '00000', 'MASCULINO', 0, 'Aprendiz', 'PRUEBA');
+('yxKgMb7eTFMZCndIaapZfiQR7Ir0rH', 'F34L2P7GPT9RHI37S306OFVI16TI47', '000000', 'Admin', 'Feria', '0000000', 'MASCULINO', 30, 'Otro', 'Ninguna');
 
 -- --------------------------------------------------------
 
