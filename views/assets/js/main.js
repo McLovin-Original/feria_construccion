@@ -65,17 +65,29 @@ $("#ema_log").focus(function(){
 
 $("#frm_log").submit(function(e){
   e.preventDefault();
-      var data = [$("#ema_log").val(),
-                  $("#pas_log").val(),
-                  $("#chek").val()];
-      $.post("iniciar",{data:data},function(data){
-        var data = JSON.parse(data);
-        if (data[0]==true) {
-          document.location.href=data[1];
-        }else{
-          alert(data[1]);
-        }
-      });
+    var data = [$("#ema_log").val(),
+              $("#pas_log").val()];
+    $.post("iniciar",{data:data},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        document.location.href=data[1];
+      }else{
+        alert(data[1]);
+      }
+    });
+});
+$("#frm_recuperar").submit(function(e){
+  e.preventDefault();
+    var data = $("#rec_doc").val();
+    $.post("recuperar-pass",{data:data},function(data){
+      var data = JSON.parse(data);
+      if (data[0]==true) {
+        alert(data[1])
+        document.location.href=data[2];
+      }else{
+        alert(data[1]);
+      }
+    });
 });
 
 $("#reg_sex").focus(function(){
@@ -146,6 +158,7 @@ $("#frm_eve").submit(function(e){
 $("#frm_reg").submit(function(e){
   e.preventDefault();
     var jsonObj=[];
+    if( $('#chek').prop('checked') ) {
     $("#frm_reg input,#frm_reg select").each(function(){
       var structure = {};
       structure = $(this).val();
@@ -160,6 +173,9 @@ $("#frm_reg").submit(function(e){
         alert(data[1]);
       }
     });
+  }else{
+    alert("No has aceptado los terminos y condiciones");
+  }
 });
 $("#frm_user_up").submit(function(e){
   e.preventDefault();

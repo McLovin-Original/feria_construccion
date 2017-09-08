@@ -3,6 +3,8 @@ RewriteRule ^inicio$                            index.php
 RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
 RewriteRule ^reportes$                          index.php?c=report
 RewriteRule ^registro$                          index.php?c=user
+RewriteRule ^recuperar$                         index.php?c=user&a=recover
+RewriteRule ^recuperar-pass$                    index.php?c=user&a=recuperarPass
 RewriteRule ^cuenta$                            index.php?c=user&a=updateData
 RewriteRule ^usuarios$                          index.php?c=user&a=gestUser
 RewriteRule ^usuarios&msn=(.*)$                 index.php?c=user&a=gestUser&msn=$1

@@ -98,6 +98,15 @@ Class UserModel{
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
     }
   }
+  public function updateUserByDoc($data){
+    try {
+      $sql="UPDATE access SET password = ? WHERE use_code = ? ";
+      $query=$this->pdo->prepare($sql);
+      $query->execute(array($data[0],$data[1]));
+    } catch (PDOException $e) {
+      die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+    }
+  }
   public function deleteUser($field){
       try {
           $sql = "DELETE FROM user WHERE use_code = ?";

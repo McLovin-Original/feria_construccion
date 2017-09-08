@@ -18,6 +18,10 @@ Class UserController{
     require_once("views/modules/user_mod/user.manage.php");
     require_once("views/include/footer.php");
   }
+  public function recover(){
+    require_once("views/modules/user_mod/recuperar.php");
+    require_once("views/include/footer.php");
+  }
   public function validEmail(){
       $data[0] = $_POST["data"];
       $result = $this->UserM->readUserbyDocument($data);
@@ -25,6 +29,19 @@ Class UserController{
         $return = (true);
       }else{
         $return = (false);
+      }
+      echo json_encode($return);
+  }
+  public function recuperarPass(){
+      $data[0] = $_POST["data"];
+      $result = $this->UserM->readUserbyDocument($data);
+      $data[1]=$result['use_code'];
+      if(count($result[0])<1){
+        $return = array(false,"El documento no existe","");
+      }else{
+        $data[0]=password_hash($data[0],PASSWORD_DEFAULT);
+        $this->UserM->updateUserByDoc($data);
+        $return = array(true,"La contraseña fue cambiada por el numero de documento","inicio");
       }
       echo json_encode($return);
   }
@@ -40,9 +57,6 @@ Class UserController{
   }
   public function signIn(){
       $data = $_POST["data"];
-      if (!isset($data[2])) {
-        $return = array(false,"Debe aceptar los terminos y condiciones");
-      }else{
       $result = $this->UserM->readUserbyDocument($data);
       if (password_verify($data[1],$result["password"])) {
         if ($result["acc_status"]!="Inactivo") {
@@ -63,7 +77,6 @@ Class UserController{
       }else{
         $return = array(false,"Contraseña Incorrecta");
       }
-    }
       echo json_encode($return);
   }
   public function create(){

@@ -74,6 +74,10 @@
               <input type="password" class="form-control input3" required="" name="data">
               <label class="label3"><i class="fa fa-lock" aria-hidden="true"></i> REPETIR CONTRASEÑA</label>
             </div>
+            <div class="form-group">
+              <a href="http://portal.senasofiaplus.edu.co/index.php/seguridad/politica-de-confidencialidad"><h2 class="text-center">Terminos & Condiciones</h2></a>
+              <input class="form-control" id="chek" type="checkbox" name="" value="1">
+            </div>
             <button id="btn_reg" type="submit" class="btn-addreg">!LISTO¡</button>
             <a href="inicio"><button type="button" class="btn-reg1" onclick="cerrar()">¡INGRESAR!</button></a>
           </form>
