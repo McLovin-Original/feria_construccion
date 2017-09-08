@@ -11,6 +11,9 @@ Class ReportController{
     $stand = $this->ReportM->countStand();
     $confe = $this->ReportM->countConference();
     $user = $this->ReportM->countUser();
+    $tConferencistas = $this->ReportM->countConferencista();
+    $useStand = $this->ReportM->countUseStand();
+    $useConfe = $this->ReportM->countUseConference();
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
     require_once("views/modules/mod_reportes/reportes.php");

@@ -50,7 +50,7 @@
               <label class="label5"><i class="fa fa-neuter" aria-hidden="true"></i> GENERO</label>
             </div>
             <div class="form-group">
-              <input type="number" class="form-control input2" required="" name="data">
+              <input min="12" max="99" type="number" class="form-control input2" required="" name="data">
               <label class="label2"><i class="fa fa-user-o" aria-hidden="true"></i> EDAD</label>
               <input type="number" class="form-control input3" required="" name="data">
               <label class="label3"><i class="fa fa-phone" aria-hidden="true"></i> TELEFONO</label>
@@ -61,6 +61,8 @@
                 <option value="Aprendiz">Aprendiz</option>
                 <option value="Instructor">Instructor</option>
                 <option value="Administrativo">Administrativo</option>
+                <option value="Empresario">Empresario</option>
+                <option value="Otro">Otro</option>
               </select>
               <label class="label4"><i class="fa fa-vcard" aria-hidden="true"></i> CARGO</label>
               <input type="text" class="form-control input2" required="" name="data">
@@ -71,6 +73,10 @@
               <label class="label2"><i class="fa fa-lock" aria-hidden="true"></i> CONTRASEÑA</label>
               <input type="password" class="form-control input3" required="" name="data">
               <label class="label3"><i class="fa fa-lock" aria-hidden="true"></i> REPETIR CONTRASEÑA</label>
+            </div>
+            <div class="form-group">
+              <a href="http://portal.senasofiaplus.edu.co/index.php/seguridad/politica-de-confidencialidad"><h2 class="text-center">Terminos & Condiciones</h2></a>
+              <input class="form-control" id="chek" type="checkbox" name="" value="1">
             </div>
             <button id="btn_reg" type="submit" class="btn-addreg">!LISTO¡</button>
             <a href="inicio"><button type="button" class="btn-reg1" onclick="cerrar()">¡INGRESAR!</button></a>

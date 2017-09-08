@@ -1,4 +1,3 @@
-
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
     <h1 class="text-center">QR STAND</h1>
@@ -30,7 +29,10 @@
     }else{
       $code=$_SESSION["user"]["id"];
       $row=$this->StandM->readStandByUser($code);
-        ?><div class="content-qr-son">
+		if(count($row[0])<1){ 
+			echo "<p>AUN NO TIENES QR</p>";
+		}else{
+		  ?><div class="content-qr-son">
           <h2><?php echo $row["sta_name"]; ?></h2>
           <?php
           $code=$row["sta_code"];
@@ -46,6 +48,7 @@
           ?>
           <?php
           echo '<img src="'.$filename.'"/>';
+		}
     } ?>
       </div>
     </div>

@@ -44,6 +44,39 @@ Class ReportModel{
       }
       return $result;
    }
+   public function countConferencista(){
+     try {
+       $sql="SELECT COUNT(*) FROM  user INNER JOIN access ON(user.use_code=access.use_code) WHERE rol_code = 'ASEV4G5GVCG5A7O38DKS8W2EDDE42A'";
+       $query=$this->pdo->prepare($sql);
+       $query->execute();
+       $result=$query->fetch(PDO::FETCH_BOTH);
+     } catch (PDOException $e) {
+       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+     }
+     return $result;
+   }
+   public function countUseStand(){
+     try {
+       $sql="SELECT COUNT(*) FROM use_stand";
+       $query=$this->pdo->prepare($sql);
+       $query->execute();
+       $result=$query->fetch(PDO::FETCH_BOTH);
+     } catch (PDOException $e) {
+       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+     }
+     return $result;
+   }
+   public function countUseConference(){
+     try {
+       $sql="SELECT COUNT(*) FROM use_conference";
+       $query=$this->pdo->prepare($sql);
+       $query->execute();
+       $result=$query->fetch(PDO::FETCH_BOTH);
+     } catch (PDOException $e) {
+       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
+     }
+     return $result;
+   }
    public function __DESTRUCT(){
        DataBase::disconnect();
    }

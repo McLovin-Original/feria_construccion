@@ -64,7 +64,7 @@
             <select class="form-control inputmodal" >
               <option value="">SELECCIONE UN EXPOSITOR</option>
               <?php foreach ($this->StandM->readStandUser() as $row){  ?>
-              <option value="<?php echo $row['use_code'] ?>"><?php echo $row["use_firstname"]; ?></option>
+              <option value="<?php echo $row['use_code'] ?>"><?php echo $row["use_firstname"]." ".$row["use_lastname"]; ?></option>
             <?php } ?>
             </select>
           </div>

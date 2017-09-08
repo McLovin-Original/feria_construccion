@@ -3,6 +3,9 @@ RewriteRule ^inicio$                            index.php
 RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
 RewriteRule ^reportes$                          index.php?c=report
 RewriteRule ^registro$                          index.php?c=user
+RewriteRule ^recuperar$                         index.php?c=user&a=recover
+RewriteRule ^recuperar-pass$                    index.php?c=user&a=recuperarPass
+RewriteRule ^cuenta$                            index.php?c=user&a=updateData
 RewriteRule ^usuarios$                          index.php?c=user&a=gestUser
 RewriteRule ^usuarios&msn=(.*)$                 index.php?c=user&a=gestUser&msn=$1
 RewriteRule ^validar-email$                     index.php?c=user&a=validEmail
@@ -11,6 +14,7 @@ RewriteRule ^cerrar$                            index.php?c=user&a=close
 RewriteRule ^crear-usuario$                     index.php?c=user&a=create
 RewriteRule ^validar-documento$                 index.php?c=user&a=documento
 RewriteRule ^update-user-status$                index.php?c=user&a=updateStatus
+RewriteRule ^update-user$                       index.php?c=user&a=update
 RewriteRule ^delete-user&token=(.*)$            index.php?c=user&a=delete&token=$1
 RewriteRule ^eventos$                           index.php?c=event
 RewriteRule ^crear-evento$                      index.php?c=event&a=create

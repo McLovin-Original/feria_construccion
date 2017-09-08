@@ -14,26 +14,19 @@
         <!-- IMAGEN DEL LOGIN -->
         <div class="hidden-xs col-md-6 imglogin" id="imglog">
           <div class="filtrologin"></div>
-          <h2 class="text-center">¿NO TIENES CUENTA AÚN?</h2>
-          <a href="registro"><button type="button" name="button" id="btn-reg">¡REGISTRATE!</button></a>
+          <h2 class="text-center">¿YA TIENES CUENTA?</h2>
+          <a href="inicio"><button type="button" name="button" id="btn-reg">INICIA</button></a>
         </div>
         <!-- FORMULARIO LOGIN-->
         <div class="col-xs-12 col-md-6 col-md-offset-6 secformlogin" id="secformlogin">
-          <h1 class="text-center">¡ENTRAR!</h1>
-          <form id="frm_log" class="" method="post">
+          <h1 class="text-center">RECUPERAR CONTRASEÑA!</h1>
+          <form id="frm_recuperar" class="" method="post">
             <div class="form-group">
-              <input id="ema_log" type="number" class="form-control input1" required="">
+              <input id="rec_doc" type="number" class="form-control input1" required="">
               <label class="label1"><i class="fa fa-envelope" aria-hidden="true"></i> DOCUMENTO</label>
             </div>
-            <div class="form-group">
-              <input id="pas_log" type="password" class="form-control input1" required="">
-              <label class="label1"><i class="fa fa-lock" aria-hidden="true"></i> CONTRASEÑA</label>
-            </div>
-            <div class="form-group">
-              <a style="text-decoration:none;" href="recuperar"><h3 class="text-center">Olvidaste tu contraseña?</h3></a>
-            </div>
-            <button id="btn_log" type="submit" class="btn-log">INGRESAR</button>
-            <a href="registro"><button type="button" class="btn-reg" onclick="abrir()">¡REGISTRATE!</button></a>
+            <button id="btn_log" type="submit" class="btn-log">RECUPERAR</button>
+
           </form>
           <!-- nombre,apellido,tipo doc,num id,email,contraseña,repcontra,cargo(rol) -->
         </div>
