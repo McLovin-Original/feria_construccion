@@ -700,3 +700,7 @@ tbody a{
   width: 40%;
   margin: 0 auto;
 }
+
+input:focus{
+  outline: 0 !important;
+}
