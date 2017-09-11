@@ -145,9 +145,14 @@ Class UserController{
     if ($p==1) {
       $return = array(false,"Campos Nulos","");
     }else{
-      $data[7] = $_SESSION["user"]["id"];
-      $this->UserM->updateUser($data);
-      $return = array(true,"Guardo Con Exito","cuenta");
+      if ($data[7]!=$data[8]) {
+        $return = array(false,"Las contraseñas no coinciden","");
+      }else{
+        $data[7] = password_hash($data[7],PASSWORD_DEFAULT);
+        $data[8] = $_SESSION["user"]["id"];
+        $this->UserM->updateUser($data);
+        $return = array(true,"Guardo Con Exito","cuenta");
+      }
     }
     echo json_encode($return);
   }

@@ -7,6 +7,26 @@ Class ReportController{
   public function __CONSTRUCT(){
     $this->ReportM = new ReportModel();
   }
+  public function chart(){
+    $stand = $this->ReportM->countStand();
+    $conferencia = $this->ReportM->countConference();
+    $aprendiz = $this->ReportM->countUserAprendiz();
+    $instructor = $this->ReportM->countUserInstructor();
+    $administrativo= $this->ReportM->countUserAdministrativo();
+    $empresario = $this->ReportM->countUserEmpresario();
+    $otro = $this->ReportM->countUserOtro();
+    $total = $aprendiz[0]+$instructor[0]+$administrativo[0]+$empresario[0]+$otro[0];
+    $data = array($stand[0],
+                  $conferencia[0],
+                  $aprendiz[0],
+                  $instructor[0],
+                  $administrativo[0],
+                  $empresario[0],
+                  $otro[0],
+                  $total
+                  );
+    echo json_encode($data);
+  }
   public function mainPage(){
     $stand = $this->ReportM->countStand();
     $confe = $this->ReportM->countConference();

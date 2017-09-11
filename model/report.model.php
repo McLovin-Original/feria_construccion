@@ -44,6 +44,61 @@ Class ReportModel{
       }
       return $result;
    }
+  public function countUserAprendiz(){
+      try {
+        $sql = "SELECT COUNT(*) FROM user WHERE use_profession = 'Aprendiz'";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+   }
+  public function countUserInstructor(){
+      try {
+        $sql = "SELECT COUNT(*) FROM user WHERE use_profession = 'Instructor'";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+   }
+  public function countUserAdministrativo(){
+      try {
+        $sql = "SELECT COUNT(*) FROM user WHERE use_profession = 'Administrativo'";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+   }
+  public function countUserEmpresario(){
+      try {
+        $sql = "SELECT COUNT(*) FROM user WHERE use_profession = 'Empresario'";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+   }
+  public function countUserOtro(){
+      try {
+        $sql = "SELECT COUNT(*) FROM user WHERE use_profession = 'Otro'";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+        die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+   }
    public function countConferencista(){
      try {
        $sql="SELECT COUNT(*) FROM  user INNER JOIN access ON(user.use_code=access.use_code) WHERE rol_code = 'ASEV4G5GVCG5A7O38DKS8W2EDDE42A'";

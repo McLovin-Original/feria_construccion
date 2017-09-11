@@ -2,6 +2,7 @@ RewriteEngine On
 RewriteRule ^inicio$                            index.php
 RewriteRule ^dashboard$                         index.php?c=main&a=dashboard
 RewriteRule ^reportes$                          index.php?c=report
+RewriteRule ^inicio-grafica$                    index.php?c=report&a=chart
 RewriteRule ^registro$                          index.php?c=user
 RewriteRule ^recuperar$                         index.php?c=user&a=recover
 RewriteRule ^recuperar-pass$                    index.php?c=user&a=recuperarPass
