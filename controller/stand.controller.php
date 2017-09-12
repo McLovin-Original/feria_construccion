@@ -5,7 +5,7 @@ Class StandController{
   private $StandM;
 
   public function __CONSTRUCT(){
-    if ($_SESSION["user"]["rol"]!="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]!="E3HDKX3684UTA7DMHFOAA34HAK39PM"){
+    if (!isset($_SESSION["user"])){
       header("Location: inicio");
     }
     $this->StandM = new StandModel();

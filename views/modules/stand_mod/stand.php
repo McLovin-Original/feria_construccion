@@ -49,8 +49,14 @@
       </div>
       <div class="modal-body">
         <form id="frm_sta" class="" action="" method="post">
+          <div class="">
+            <label>Nombre</label>
+          </div>
           <div class="form-group">
             <input type="text" name="" class="form-control inputmodal" placeholder="Nombre" required="">
+          </div>
+          <div class="">
+            <label>Pabellon</label>
           </div>
           <div class="form-group">
             <select class="form-control inputmodal" name="" required>
@@ -60,6 +66,9 @@
             <?php } ?>
             </select>
           </div>
+          <div class="">
+            <label>Expositor</label>
+          </div>
           <div class="form-group">
             <select class="form-control inputmodal" >
               <option value="">SELECCIONE UN EXPOSITOR</option>
@@ -68,14 +77,26 @@
             <?php } ?>
             </select>
           </div>
+          <div class="">
+            <label>Sitio Web</label>
+          </div>
           <div class="form-group">
             <input type="text" name="" class="form-control inputmodal" placeholder="Sitio Web">
+          </div>
+          <div class="">
+            <label>Correo</label>
           </div>
           <div class="form-group">
             <input type="email" name="" class="form-control inputmodal" placeholder="Correo" required="">
           </div>
+          <div class="">
+            <label>Numero de contacto</label>
+          </div>
           <div class="form-group">
             <input type="number" name="" class="form-control inputmodal" placeholder="Número Contacto" required="">
+          </div>
+          <div class="">
+            <label>Descripcion</label>
           </div>
           <div class="form-group">
             <textarea class="form-control inputmodal textareamodal" name="" placeholder="Descripción"></textarea>

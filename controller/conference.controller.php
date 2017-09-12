@@ -5,7 +5,7 @@ Class ConferenceController{
   private $ConferenceM;
 
   public function __CONSTRUCT(){
-    if ($_SESSION["user"]["rol"]!="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]!="ASEV4G5GVCG5A7O38DKS8W2EDDE42A"){
+    if (!isset($_SESSION["user"])){
       header("Location: inicio");
     }
     $this->ConferenceM = new ConferenceModel();
