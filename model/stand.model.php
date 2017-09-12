@@ -82,6 +82,17 @@ Class StandModel{
       }
       return $result;
   }
+  public function readStandVisit2($field){
+      try {
+        $sql="SELECT * FROM use_stand INNER JOIN user ON(use_stand.use_code=user.use_code) WHERE use_stand.sta_code = ?";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($field));
+        $result = $query->fetchALL(PDO::FETCH_BOTH);
+      } catch (PDOException $e) {
+          die($e->getMessage()."".$e->getLine()."".$e->getFile());
+      }
+      return $result;
+  }
   public function readStandUser(){
       try {
         $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE user.rol_code = 'E3HDKX3684UTA7DMHFOAA34HAK39PM' AND acc_status = 'Activo' AND user.use_code NOT IN (SELECT use_code FROM stand)";

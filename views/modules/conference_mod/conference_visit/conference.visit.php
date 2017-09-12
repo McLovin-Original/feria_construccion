@@ -15,7 +15,7 @@
         <th>#</th>
         <th>USUARIO</th>
         <th>DOCUMENTO</th>
-        <th>CORREO</th>
+        <th>CELULAR</th>
       </thead>
       <tbody>
         <?php

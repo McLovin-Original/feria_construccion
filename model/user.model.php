@@ -90,10 +90,10 @@ Class UserModel{
     try {
       $sql="UPDATE user SET use_firstname = ?, use_lastname = ?,use_cellphone = ?,use_gender = ?,use_institution = ?,use_profession = ? WHERE use_code = ? ";
       $query=$this->pdo->prepare($sql);
-      $query->execute(array($data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7]));
-      $sql="UPDATE access SET use_mail = ? WHERE use_code = ? ";
+      $query->execute(array($data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[8]));
+      $sql="UPDATE access SET use_mail = ?,password = ? WHERE use_code = ? ";
       $query=$this->pdo->prepare($sql);
-      $query->execute(array($data[0],$data[7]));
+      $query->execute(array($data[0],$data[7],$data[8]));
     } catch (PDOException $e) {
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());
     }

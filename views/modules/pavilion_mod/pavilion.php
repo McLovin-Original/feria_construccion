@@ -43,8 +43,14 @@
       </div>
       <div class="modal-body">
         <form id="frm_pav" action="" method="post" data-parsley-validate>
+          <div class="">
+            <label>Nombre</label>
+          </div>
           <div class="form-group">
             <input id="nam_pav" type="text" name="" class="form-control inputmodal" placeholder="Nombre" required="">
+          </div>
+          <div class="">
+            <label>Evento</label>
           </div>
           <div class="form-group">
             <select class="form-control inputmodal" id="sel_evento_p">
@@ -53,6 +59,9 @@
               <option value="<?php echo $row['eve_code'] ?>"><?php echo $row["eve_name"]; ?></option>
             <?php } ?>
             </select>
+          </div>
+          <div class="">
+            <label>Dia</label>
           </div>
           <div class="form-group">
             <select class="form-control inputmodal" name="data" id="sel_dia_p" required>

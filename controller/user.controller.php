@@ -13,14 +13,22 @@ Class UserController{
     require_once("views/include/footer.php");
   }
   public function gestUser(){
-    require_once("views/include/header.php");
-    require_once("views/include/dashboard.php");
-    require_once("views/modules/user_mod/user.manage.php");
-    require_once("views/include/footer.php");
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+      require_once("views/include/header.php");
+      require_once("views/include/dashboard.php");
+      require_once("views/modules/user_mod/user.manage.php");
+      require_once("views/include/footer.php");
+    }else{
+      header("Location: inicio");
+    }
   }
   public function recover(){
-    require_once("views/modules/user_mod/recuperar.php");
-    require_once("views/include/footer.php");
+    if (!isset($_SESSION["user"])) {
+      require_once("views/modules/user_mod/recuperar.php");
+      require_once("views/include/footer.php");
+    }else{
+      header("Location: dashboard");
+    }
   }
   public function validEmail(){
       $data[0] = $_POST["data"];
@@ -145,9 +153,14 @@ Class UserController{
     if ($p==1) {
       $return = array(false,"Campos Nulos","");
     }else{
-      $data[7] = $_SESSION["user"]["id"];
-      $this->UserM->updateUser($data);
-      $return = array(true,"Guardo Con Exito","cuenta");
+      if ($data[7]!=$data[8]) {
+        $return = array(false,"Las contraseñas no coinciden","");
+      }else{
+        $data[7] = password_hash($data[7],PASSWORD_DEFAULT);
+        $data[8] = $_SESSION["user"]["id"];
+        $this->UserM->updateUser($data);
+        $return = array(true,"Guardo Con Exito","cuenta");
+      }
     }
     echo json_encode($return);
   }

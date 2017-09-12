@@ -63,6 +63,18 @@
             <option value="Otro">Otro</option>
           </select>
         </div>
+        <div class="">
+          <label for="">Contraseña</label>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control inputmodal" name="data" value="" required>
+        </div>
+        <div class="">
+          <label for="">Repita su contraseña</label>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control inputmodal" name="data" value="" required>
+        </div>
         <button type="submit" class="btnmodal" style="width: 100%;">ACTUALIZAR</button>
       </div>
     </form>

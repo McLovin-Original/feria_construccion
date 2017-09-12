@@ -51,11 +51,20 @@
       </div>
       <div class="modal-body">
         <form id="frm_eve" class="" action="" method="post" data-parsley-validate>
+          <div class="">
+            <label for="">Nombre</label>
+          </div>
           <div class="form-group">
             <input type="text" name="data" class="form-control inputmodal" placeholder="Nombre" required="">
           </div>
+          <div class="">
+            <label for="">Fecha de inicio</label>
+          </div>
           <div class="form-group">
             <input type="date" name="data" class="form-control inputmodal" placeholder="fecha inicio" required="">
+          </div>
+          <div class="">
+            <label for="">Fecha de finalización</label>
           </div>
           <div class="form-group">
             <input type="date" name="data" class="form-control inputmodal" placeholder="fecha fin" required="">

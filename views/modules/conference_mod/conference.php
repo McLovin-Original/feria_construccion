@@ -51,8 +51,14 @@
       </div>
       <div class="modal-body">
         <form id="frm_con" method="post">
+          <div class="">
+            <label for="">Titulo</label>
+          </div>
           <div class="form-group">
             <input type="text" name="data" class="form-control inputmodal" placeholder="Titulo" required="">
+          </div>
+          <div class="">
+            <label>Conferencista</label>
           </div>
           <div class="form-group">
             <select class="form-control inputmodal" id="con_user">
@@ -62,6 +68,9 @@
             <?php } ?>
             </select>
           </div>
+          <div class="">
+            <label>Evento</label>
+          </div>
           <div class="form-group">
             <select class="form-control inputmodal" id="sel_evento">
               <option value="">SELECCIONE UN EVENTO</option>
@@ -70,19 +79,34 @@
             <?php } ?>
             </select>
           </div>
+          <div class="">
+            <label>Dia</label>
+          </div>
           <div class="form-group">
             <select class="form-control inputmodal" name="data" id="sel_dia">
               <option value="">AUN NO HA SELECCIONADO UN EVENTO</option>
             </select>
           </div>
-          <div class="form-group">
-            <input type="text" name="data" class="form-control inputmodal" placeholder="FORMATO HH:MM" required="">
+          <div class="">
+            <label>Hora Inicio</label>
           </div>
           <div class="form-group">
             <input type="text" name="data" class="form-control inputmodal" placeholder="FORMATO HH:MM" required="">
+          </div>
+          <div class="">
+            <label>Hora Finalizacion</label>
+          </div>
+          <div class="form-group">
+            <input type="text" name="data" class="form-control inputmodal" placeholder="FORMATO HH:MM" required="">
+          </div>
+          <div class="">
+            <label>Cantidad Asistentes</label>
           </div>
           <div class="form-group">
             <input type="number" name="data" class="form-control inputmodal" placeholder="Cantidad máxima de personas" required="">
+          </div>
+          <div class="">
+            <label>Descripcion</label>
           </div>
           <div class="form-group">
             <textarea name="data" class="form-control inputmodal textareamodal" placeholder="Descripción"></textarea>

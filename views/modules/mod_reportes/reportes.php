@@ -14,10 +14,6 @@
         <h1>TOTAL CONFERENCIAS</h1>
         <h4><?php echo $confe[0]; ?></h4>
       </div>
-      <div class="contenedor-total-stands">
-        <h1>STAND MAS VISITADO</h1>
-        <h4><?php echo 'FALTA'; ?></h4>
-      </div>
       <div class="contenedor-total-conferencias">
         <h1>TOTAL CONFERENCISTAS</h1>
         <h4><?php echo $tConferencistas[0]; ?></h4>

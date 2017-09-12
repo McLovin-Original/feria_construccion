@@ -5,6 +5,9 @@ Class StandController{
   private $StandM;
 
   public function __CONSTRUCT(){
+    if (!isset($_SESSION["user"])){
+      header("Location: inicio");
+    }
     $this->StandM = new StandModel();
   }
   public function mainPage(){

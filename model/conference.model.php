@@ -84,7 +84,7 @@ Class ConferenceModel{
    }
    public function readUseConference($field){
        try {
-         $sql="SELECT * FROM conference INNER JOIN use_conference ON(conference.con_code=use_conference.con_code) INNER JOIN user ON(conference.use_code=user.use_code) WHERE use_conference.con_code = ?";
+         $sql="SELECT * FROM use_conference INNER JOIN user ON(use_conference.use_code=user.use_code) WHERE use_conference.con_code = ?";
          $query = $this->pdo->prepare($sql);
          $query->execute(array($field));
          $result = $query->fetchALL(PDO::FETCH_BOTH);

@@ -11,15 +11,19 @@
         <th>#</th>
         <th>USUARIO</th>
         <th>DOCUMENTO</th>
-        <th>CORREO</th>
+        <th>CELULAR</th>
       </thead>
       <tbody>
+        <?php $item=1;
+            foreach ($this->StandM->readStandVisit2($field) as $row) {
+              ?>
         <tr>
-          <td>1</td>
-          <td>ss</td>
-          <td>d</td>
-          <td>d</td>
+          <td><?php echo $item++; ?></td>
+          <td><?php echo $row["use_firstname"]." ".$row["use_lastname"]; ?></td>
+          <td><?php echo $row["use_docu"]; ?></td>
+          <td><?php echo $row["use_cellphone"]; ?></td>
         </tr>
+      <?php  } ?>
       </tbody>
     </table>
   </div>
