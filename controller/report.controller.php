@@ -5,6 +5,9 @@ Class ReportController{
   private $ReportM;
 
   public function __CONSTRUCT(){
+    if ($_SESSION["user"]["rol"]!="F34L2P7GPT9RHI37S306OFVI16TI47") {
+      header("Location: inicio");
+    }
     $this->ReportM = new ReportModel();
   }
   public function chart(){
