@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <?php $item=1;
-            foreach ($this->UserM->readUserIngreso($field) as $row) {
+            foreach ($this->UserM->readUserSalida($field) as $row) {
               ?>
         <tr>
           <td><?php echo $item++; ?></td>

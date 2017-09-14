@@ -37,6 +37,10 @@ Class ReportController{
     $tConferencistas = $this->ReportM->countConferencista();
     $useStand = $this->ReportM->countUseStand();
     $useConfe = $this->ReportM->countUseConference();
+    $promEntrada = $this->ReportM->promEntrada();
+    $promEntrada[0] = substr($promEntrada[0],11,5);
+    $promSalida = $this->ReportM->promSalida();
+    $promSalida[0] = substr($promSalida[0],11,5);
     require_once("views/include/header.php");
     require_once("views/include/dashboard.php");
     require_once("views/modules/mod_reportes/reportes.php");

@@ -179,8 +179,42 @@ Class UserController{
           $return = array(false,"Campos Nulos","");
         }else{
           $data[2]=randomAlpha('6');
+          $data[3]=date('his');
+          $data[4]=date('ymd');
           $this->UserM->createIngreso($data);
           $return = array(true,"Guardo Con Exito","ingreso&token=$data[1]");
+        }
+      }
+    }
+    echo json_encode($return);
+  }
+  public function createSalida(){
+    $data = $_POST["data"];
+    $user = $this->UserM->readUserbyDocument($data);
+    if (count($user[0])<=0) {
+      $return = array(false,"El documento no existe","");
+    }else{
+      $data[0]=$user['use_code'];
+      $repetido=$this->UserM->readSalidaRepetido($data);
+      if (count($repetido[0])>=1) {
+        $return = array(false,"El Usuario ya registro salida");
+      }else{
+        for ($i=0; $i <count($data) ; $i++) {
+          if (empty($data[$i])) {
+            $p=1;
+            break;
+          }else{
+            $p=0;
+          }
+        }
+        if ($p==1) {
+          $return = array(false,"Campos Nulos","");
+        }else{
+          $data[2]=randomAlpha('6');
+          $data[3]=date('his');
+          $data[4]=date('ymd');
+          $this->UserM->createSalida($data);
+          $return = array(true,"Guardo Con Exito","salida&token=$data[1]");
         }
       }
     }
