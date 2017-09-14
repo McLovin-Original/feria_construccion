@@ -43,8 +43,8 @@
         </div>
         <a href="stand-select-qr"><li><i class="fa fa-qrcode icon" aria-hidden="true"></i> STAND QR</li></a>
         <?php } ?>
-        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk"){ ?>
-        <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR USUARIOS</li></a>
+        <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
+        <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR SEGURIDAD</li></a>
         <a href="reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="OS7CX80C7QQBLGJV41MB3YY4ZA234O"){  ?>

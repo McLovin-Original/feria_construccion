@@ -347,26 +347,6 @@ $("#sel_evento_p").change(function(){
 //   });
 // });
 
-$("#frm_ingreso").submit(function(e){
-  e.preventDefault();
-  if ($(this).parsley().isValid()) {
-    var jsonObj=[];
-    $("input[name=data]").each(function(){
-      var structure = {};
-      structure = $(this).val();
-      jsonObj.push(structure);
-    });
-    $.post("crear-ingreso",{data:jsonObj},function(data){
-      var data = JSON.parse(data);
-      if (data[0]==true) {
-        alert(data[1]);
-        document.location.href=data[2];
-      }else{
-        alert(data[1]);
-      }
-    });
-  }
-});
 $("#frm_stand_visit").submit(function(e){
   e.preventDefault();
   if ($(this).parsley().isValid()) {
