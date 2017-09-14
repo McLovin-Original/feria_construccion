@@ -43,6 +43,17 @@ Class UserController{
       header("Location: inicio");
     }
   }
+  public function salida(){
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk") {
+      $field=$_GET["token"];
+      require_once("views/include/header.php");
+      require_once("views/include/dashboard.php");
+      require_once("views/modules/user_mod/user.egreso.php");
+      require_once("views/include/footer.php");
+    }else{
+      header("Location: inicio");
+    }
+  }
   public function recover(){
     if (!isset($_SESSION["user"])) {
       require_once("views/modules/user_mod/recuperar.php");
@@ -66,7 +77,7 @@ Class UserController{
       $result = $this->UserM->readUserbyDocument($data);
       $data[1]=$result['use_code'];
       if(count($result[0])<1){
-        $return = array(false,"El documento no existe","");
+        $return = array(falsEe,"El documento no existe","");
       }else{
         $data[0]=password_hash($data[0],PASSWORD_DEFAULT);
         $this->UserM->updateUserByDoc($data);
@@ -147,8 +158,7 @@ Class UserController{
   }
   public function createIngreso(){
     $data = $_POST["data"];
-    $documento = $data[0];
-    $user = $this->UserM->readUserbyDocument($documento);
+    $user = $this->UserM->readUserbyDocument($data);
     if (count($user[0])<=0) {
       $return = array(false,"El documento no existe","");
     }else{

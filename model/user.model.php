@@ -75,11 +75,11 @@ Class UserModel{
     }
     return $result;
   }
-  public function readUserbyDocument($documento){
+  public function readUserbyDocument($data){
     try {
-      $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE use_docu = ?";
+      $sql="SELECT * FROM user INNER JOIN access ON(user.use_code=access.use_code) WHERE user.use_docu = ?";
       $query=$this->pdo->prepare($sql);
-      $query->execute(array($documento));
+      $query->execute(array($data[0]));
       $result=$query->fetch(PDO::FETCH_BOTH);
     } catch (PDOException $e) {
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());

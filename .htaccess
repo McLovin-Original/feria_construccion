@@ -5,8 +5,10 @@ RewriteRule ^reportes$                          index.php?c=report
 RewriteRule ^inicio-grafica$                    index.php?c=report&a=chart
 RewriteRule ^registro$                          index.php?c=user
 RewriteRule ^ingreso&token=(.*)$                index.php?c=user&a=ingresos&token=$1
+RewriteRule ^salida&token=(.*)$                 index.php?c=user&a=salida&token=$1
 RewriteRule ^crear-ingreso$                     index.php?c=user&a=createIngreso
-RewriteRule ^seleccion-evento$                  index.php?c=user&a=selectEvent
+RewriteRule ^crear-salida$                      index.php?c=user&a=createSalida
+RewriteRule ^seleccion-evento&token=(.*)$       index.php?c=user&a=selectEvent&token=$1
 RewriteRule ^recuperar$                         index.php?c=user&a=recover
 RewriteRule ^recuperar-pass$                    index.php?c=user&a=recuperarPass
 RewriteRule ^cuenta$                            index.php?c=user&a=updateData
