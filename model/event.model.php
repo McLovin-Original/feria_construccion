@@ -91,7 +91,8 @@ Class EventModel{
            $query = $this->pdo->prepare($sql);
            $query->execute(array($field));
        } catch (PDOException $e) {
-           die($e->getMessage()."".$e->getLine()."".$e->getFile());
+           $msn=$e->getCode();
+           return $msn;
        }
    }
    public function __DESTRUCT(){
