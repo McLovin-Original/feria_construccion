@@ -34,6 +34,7 @@
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
         <a href="pabellon"><li><i class="fa fa-map-marker icon" aria-hidden="true"></i> PABELLONES</li></a>
+        <a href="reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34HAK39PM" ){ ?>
         <a data-toggle="collapse" data-target="#collapsote"><li class="licollapse"><i class="fa fa-bookmark icon" aria-hidden="true"></i> STAND'S</li></a>
@@ -45,7 +46,6 @@
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk"){ ?>
         <a href="usuarios"><li><i class="fa fa-lock icon" aria-hidden="true"></i> GESTIONAR USUARIOS</li></a>
-        <a href="reportes"><li><i class="fa fa-file-text-o icon" aria-hidden="true"></i> REPORTES</li></a>
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]==="OS7CX80C7QQBLGJV41MB3YY4ZA234O"){  ?>
           <a href="stand-user"><li><i class="fa fa-user icon" aria-hidden="true"></i> STANDS</li></a>
@@ -53,7 +53,7 @@
         <?php } ?>
         <?php if ($_SESSION["user"]["rol"]!=="F34L2P7GPT9RHI37S306OFVI16TI47") {
         ?>
-        <a href="cuenta"><li><i class="fa fa-user icon" aria-hidden="true"></i>MI CUENTA</li></a>
+        <a href="cuenta"><li><i class="fa fa-user icon" aria-hidden="true"></i> MI CUENTA</li></a>
       <?php  } ?>
       </ul>
     </div>

@@ -164,7 +164,9 @@ $("#frm_reg").submit(function(e){
       structure = $(this).val();
       jsonObj.push(structure);
     });
-    $.post("crear-usuario",{data:jsonObj},function(data){
+    var cod = $("#eventocod").val();
+    var check = $("#chek").val();
+    $.post("crear-usuario",{data:jsonObj,check:check,cod:cod},function(data){
       var data = JSON.parse(data);
       if (data[0]==true) {
         alert(data[1]);

@@ -122,7 +122,7 @@
             <label>Contraseña</label>
           </div>
           <div class="form-group">
-            <input type="password" name="data" class="form-control inputmodal" placeholder="Nombre" required="Contraseña">
+            <input type="password" name="data" class="form-control inputmodal" placeholder="Contraseñass" required="Contraseña">
           </div>
           <div class="">
             <label>Repetir Contraseña</label>
@@ -130,10 +130,8 @@
           <div class="form-group">
             <input type="password" name="data" class="form-control inputmodal" placeholder="Repetir Contraseña" required="">
           </div>
-          <div class="form-group">
-            <a href="http://portal.senasofiaplus.edu.co/index.php/seguridad/politica-de-confidencialidad"><h2 class="text-center">Terminos & Condiciones</h2></a>
-            <input class="form-control" id="chek" type="checkbox" name="" value="1">
-          </div>
+          <input id="chek" type="checkbox" hidden="hidden" checked name="" value="2">
+          <input type="hidden" id="eventocod" value="<?php echo $field ?>">
       </div>
       <div class="modal-footer">
         <button type="button" class="btncerrarmodal" data-dismiss="modal" name="button">CANCELAR</button>

@@ -121,6 +121,9 @@ Class UserController{
   }
   public function create(){
     $data = $_POST["data"];
+    $check = $_POST["check"];
+    $event = $_POST["cod"];
+    $url = $check==2 ? "ingreso&token=$event" : "inicio";
     for ($i=0; $i <count($data) ; $i++) {
       if (empty($data[$i])) {
         $p=1;
@@ -150,7 +153,7 @@ Class UserController{
         if ($result==23000) {
           $return = array(false,"El Documento ya existe","");
         }else{
-          $return = array(true,$msn,"inicio");
+          $return = array(true,$msn,$url);
         }
       }
     }
@@ -167,7 +170,7 @@ Class UserController{
       if (count($repetido[0])>=1) {
         $return = array(false,"El Usuario ya registro visita");
       }else{
-        for ($i=0; $i <count($data) ; $i++) {
+        for ($i=0; $i <2 ; $i++) {
           if (empty($data[$i])) {
             $p=1;
             break;
@@ -176,7 +179,7 @@ Class UserController{
           }
         }
         if ($p==1) {
-          $return = array(false,"Campos Nulos","");
+          $return = array(false,"Campo Nulo","");
         }else{
           $data[2]=randomAlpha('6');
           $data[3]=date('his');
@@ -199,7 +202,7 @@ Class UserController{
       if (count($repetido[0])>=1) {
         $return = array(false,"El Usuario ya registro salida");
       }else{
-        for ($i=0; $i <count($data) ; $i++) {
+        for ($i=0; $i <2 ; $i++) {
           if (empty($data[$i])) {
             $p=1;
             break;
