@@ -66,11 +66,20 @@ if (count($result[0])<=0 && $_SESSION["user"]["rol"]==="E3HDKX3684UTA7DMHFOAA34H
       </div>
       <div class="modal-body">
         <form class="" action="crear-expoMemoria" method="post" enctype="multipart/form-data">
+          <div class="">
+            <label>Nombre de memoria</label>
+          </div>
           <div class="form-group">
             <input type="text" name="data[]" class="form-control inputmodal" placeholder="Nombre" required="">
           </div>
+          <div class="">
+            <label>Sube un archivo menor a 8MG - Extencion unicamente zip o rar</label>
+          </div>
           <div class="form-group">
             <input type="file" name="stand" class="form-control inputmodal" required="">
+          </div>
+          <div class="">
+            <label>Descripcion</label>
           </div>
           <div class="form-group">
             <textarea name="data[]" class="form-control inputmodal textareamodal"></textarea>
