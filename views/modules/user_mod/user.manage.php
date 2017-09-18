@@ -8,14 +8,19 @@
             <tr>
               <th>ID</th>
               <th>NOMBRE</th>
+              <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+              ?>
               <th>DOCUMENTO</th>
               <th>ROL</th>
               <th>CORREO</th>
               <th>CELULAR</th>
+              <?php } ?>
               <th>CARGO</th>
               <th>INSTITUCION</th>
+              <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47"){ ?>
               <th>ESTADO</th>
               <th>ACCIONES</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
@@ -26,12 +31,17 @@
             <tr>
               <td><?php echo $item++; ?></td>
               <td><?php echo $row["use_firstname"]; ?></td>
+              <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+              ?>
               <td><?php echo $row["use_docu"]; ?></td>
               <td><?php echo $row["rol_name"]; ?></td>
               <td><?php echo $row["use_mail"] ?></td>
               <td><?php echo $row["use_cellphone"] ?></td>
+              <?php } ?>
               <td><?php echo $row["use_profession"] ?></td>
               <td><?php echo $row["use_institution"] ?></td>
+              <?php if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+              ?>
               <td><select name="data" onchange="estado('<?php echo $row['acc_token'] ?>',this.value)">
                 <?php
                   $estado = $row["acc_status"]=="Activo" ? "Inactivo" : "Activo";
@@ -43,35 +53,10 @@
               <td>
                 <a onclick="return confirm('Desea Eliminar?')" href="delete-user&token=<?php echo $row['use_code']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
               </td>
+              <?php } ?>
             </tr>
           <?php  }  ?>
           </tbody>
         </table>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div id="modalito" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h1 class="text-center titulomodal">AGREGAR USUARIO</h1>
-      </div>
-      <div class="modal-body">
-        <form class="" action="index.html" method="post">
-          <div class="form-group">
-            <input type="text" name="" class="form-control inputmodal" placeholder="nombre" required="">
-          </div>
-          <div class="form-group">
-            <input type="text" name="" class="form-control inputmodal" placeholder="nombre" required="">
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btncerrarmodal" data-dismiss="modal" name="button">CANCELAR</button>
-        <button type="button" class="btnmodal" name="button">AGREGAR</button>
-      </form>
-      </div>
-    </div>
   </div>
 </div>
