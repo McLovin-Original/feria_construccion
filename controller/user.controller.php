@@ -13,10 +13,42 @@ Class UserController{
     require_once("views/include/footer.php");
   }
   public function gestUser(){
-    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47") {
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk") {
       require_once("views/include/header.php");
       require_once("views/include/dashboard.php");
       require_once("views/modules/user_mod/user.manage.php");
+      require_once("views/include/footer.php");
+    }else{
+      header("Location: inicio");
+    }
+  }
+  public function selectEvent(){
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk") {
+      require_once("views/include/header.php");
+      require_once("views/include/dashboard.php");
+      require_once("views/modules/user_mod/user.evento.php");
+      require_once("views/include/footer.php");
+    }else{
+      header("Location: inicio");
+    }
+  }
+  public function ingresos(){
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk") {
+      $field=$_GET["token"];
+      require_once("views/include/header.php");
+      require_once("views/include/dashboard.php");
+      require_once("views/modules/user_mod/user.ingreso.php");
+      require_once("views/include/footer.php");
+    }else{
+      header("Location: inicio");
+    }
+  }
+  public function salida(){
+    if ($_SESSION["user"]["rol"]==="F34L2P7GPT9RHI37S306OFVI16TI47" || $_SESSION["user"]["rol"]==="rCa779aEMiMe3Okm1UIZfiezSeK6tk") {
+      $field=$_GET["token"];
+      require_once("views/include/header.php");
+      require_once("views/include/dashboard.php");
+      require_once("views/modules/user_mod/user.egreso.php");
       require_once("views/include/footer.php");
     }else{
       header("Location: inicio");
@@ -45,7 +77,7 @@ Class UserController{
       $result = $this->UserM->readUserbyDocument($data);
       $data[1]=$result['use_code'];
       if(count($result[0])<1){
-        $return = array(false,"El documento no existe","");
+        $return = array(falsEe,"El documento no existe","");
       }else{
         $data[0]=password_hash($data[0],PASSWORD_DEFAULT);
         $this->UserM->updateUserByDoc($data);
@@ -119,6 +151,70 @@ Class UserController{
           $return = array(false,"El Documento ya existe","");
         }else{
           $return = array(true,$msn,"inicio");
+        }
+      }
+    }
+    echo json_encode($return);
+  }
+  public function createIngreso(){
+    $data = $_POST["data"];
+    $user = $this->UserM->readUserbyDocument($data);
+    if (count($user[0])<=0) {
+      $return = array(false,"El documento no existe","");
+    }else{
+      $data[0]=$user['use_code'];
+      $repetido=$this->UserM->readIngresoRepetido($data);
+      if (count($repetido[0])>=1) {
+        $return = array(false,"El Usuario ya registro visita");
+      }else{
+        for ($i=0; $i <count($data) ; $i++) {
+          if (empty($data[$i])) {
+            $p=1;
+            break;
+          }else{
+            $p=0;
+          }
+        }
+        if ($p==1) {
+          $return = array(false,"Campos Nulos","");
+        }else{
+          $data[2]=randomAlpha('6');
+          $data[3]=date('his');
+          $data[4]=date('ymd');
+          $this->UserM->createIngreso($data);
+          $return = array(true,"Guardo Con Exito","ingreso&token=$data[1]");
+        }
+      }
+    }
+    echo json_encode($return);
+  }
+  public function createSalida(){
+    $data = $_POST["data"];
+    $user = $this->UserM->readUserbyDocument($data);
+    if (count($user[0])<=0) {
+      $return = array(false,"El documento no existe","");
+    }else{
+      $data[0]=$user['use_code'];
+      $repetido=$this->UserM->readSalidaRepetido($data);
+      if (count($repetido[0])>=1) {
+        $return = array(false,"El Usuario ya registro salida");
+      }else{
+        for ($i=0; $i <count($data) ; $i++) {
+          if (empty($data[$i])) {
+            $p=1;
+            break;
+          }else{
+            $p=0;
+          }
+        }
+        if ($p==1) {
+          $return = array(false,"Campos Nulos","");
+        }else{
+          $data[2]=randomAlpha('6');
+          $data[3]=date('his');
+          $data[4]=date('ymd');
+          $this->UserM->createSalida($data);
+          $return = array(true,"Guardo Con Exito","salida&token=$data[1]");
         }
       }
     }

@@ -1,6 +1,8 @@
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
-    <h1 class="text-center">GESTIONAR SEGURIDAD</h1>
+    <h1 class="text-center">GESTIONAR USUARIOS</h1>
+    <a class="btnprimario col-md-offset-9" style="text-decoration:none; color: white" href="seleccion-evento&token=1">Registrar Ingreso</a>
+    <a class="btnprimario" style="text-decoration:none; color: white" href="seleccion-evento&token=2">Registrar Salida</a>
         <table  id="dataTable" class="table table-striped table-bordered tabla">
           <thead>
             <tr>
