@@ -79,10 +79,16 @@ Class EventController{
     $field = $_GET["token"];
     $result = $this->EventM->readEventByCode($field);
     $name=$result["eve_name"].".png";
-    unlink("views/assets/event_qr/$field/$name");
-    rmdir("views/assets/event_qr/$field");
-    $this->EventM->deleteEvent($field);
-    header("Location: eventos");
+    $msn=$this->EventM->deleteEvent($field);
+    if ($msn==23000) {
+      $msn="Error al eliminar";
+      $url="eventos&msn=$msn";
+    }else{
+      $url="eventos";
+      unlink("views/assets/event_qr/$field/$name");
+      rmdir("views/assets/event_qr/$field");
+    }
+    header("Location: $url");
   }
 
 }

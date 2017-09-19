@@ -23,6 +23,7 @@ RewriteRule ^update-user-status$                index.php?c=user&a=updateStatus
 RewriteRule ^update-user$                       index.php?c=user&a=update
 RewriteRule ^delete-user&token=(.*)$            index.php?c=user&a=delete&token=$1
 RewriteRule ^eventos$                           index.php?c=event
+RewriteRule ^eventos&msn=(.*)$                  index.php?c=event&msn=$1
 RewriteRule ^crear-evento$                      index.php?c=event&a=create
 RewriteRule ^delete-evento&token=(.*)$          index.php?c=event&a=delete&token=$1
 RewriteRule ^dias&token=(.*)$                   index.php?c=event&a=dias&token=$1
