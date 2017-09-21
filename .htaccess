@@ -14,7 +14,7 @@ RewriteRule ^recuperar-pass$                    index.php?c=user&a=recuperarPass
 RewriteRule ^cuenta$                            index.php?c=user&a=updateData
 RewriteRule ^usuarios$                          index.php?c=user&a=gestUser
 RewriteRule ^usuarios&msn=(.*)$                 index.php?c=user&a=gestUser&msn=$1
-RewriteRule ^validar-email$                     index.php?c=user&a=validEmail
+RewriteRule ^validar-login$                     index.php?c=user&a=validLogin
 RewriteRule ^iniciar$                           index.php?c=user&a=signIn
 RewriteRule ^cerrar$                            index.php?c=user&a=close
 RewriteRule ^crear-usuario$                     index.php?c=user&a=create

@@ -42,13 +42,13 @@ $('#dataTable').DataTable({
 });
 
 $("#pas_log").focus(function(){
-    $("#ema_log").siblings("span").remove();
+    $("#labelemalabelema").siblings("span").remove();
     var data = $("#ema_log").val();
     if (data.length > 0) {
-        $.post("validar-email",{data:data},function(response){
+        $.post("validar-login",{data:data},function(response){
             var response = JSON.parse(response);
             if (response == false) {
-              $("#ema_log").after("<span>El Documento No Existe</span>")
+              $("#labelema").after("<span>El Documento No Existe</span>")
               $("#btn_log").attr("disabled",true);
             } else {
               $("#btn_log").attr("disabled",false);
@@ -59,7 +59,7 @@ $("#pas_log").focus(function(){
 
 
 $("#ema_log").focus(function(){
-   $(this).siblings("span").remove();
+   $("#labelema").siblings("span").remove();
    $("#btn_log").attr("disabled",false);
 });
 
@@ -88,28 +88,6 @@ $("#frm_recuperar").submit(function(e){
         alert(data[1]);
       }
     });
-});
-
-$("#reg_sex").focus(function(){
-    $("#reg_email").siblings("span").remove();
-    var data = $("#reg_email").val();
-    if (data.length > 0) {
-        $.post("validar-email",{data:data},function(response){
-            var response = JSON.parse(response);
-            if (response == true) {
-              $("#reg_email").after("<span>El Correo Ya Existe</span>")
-              $("#btn_reg").attr("disabled",true);
-            } else {
-              $("#btn_reg").attr("disabled",false);
-            }
-        });
-    }
-});
-
-
-$("#reg_email").focus(function(){
-   $(this).siblings("span").remove();
-   $("#btn_reg").attr("disabled",false);
 });
 
 $("#reg_email").focus(function(){

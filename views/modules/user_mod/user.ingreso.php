@@ -69,7 +69,7 @@
             <label>Documento</label>
           </div>
           <div class="form-group">
-            <input id="reg_doc" type="text" name="data" class="form-control inputmodal" placeholder="Documento" required="">
+            <input id="reg_doc" type="number" name="data" class="form-control inputmodal" placeholder="Documento" required="">
           </div>
           <div class="">
             <label>Correo</label>

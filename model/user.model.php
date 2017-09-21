@@ -143,7 +143,7 @@ Class UserModel{
     try {
       $sp="CALL readEmail(?)";
       $query=$this->pdo->prepare($sp);
-      $query->execute(array($data[0]));
+      $query->execute(array($data[4]));
       $result=$query->fetch(PDO::FETCH_BOTH);
     } catch (PDOException $e) {
       die($e->getMessage()." ".$e->getLine()." ".$e->getFile());

@@ -23,7 +23,7 @@
           <form id="frm_log" class="" method="post">
             <div class="form-group">
               <input id="ema_log" type="number" class="form-control input1" required="">
-              <label class="label1"><i class="fa fa-envelope" aria-hidden="true"></i> DOCUMENTO</label>
+              <label id="labelema" class="label1"><i class="fa fa-envelope" aria-hidden="true"></i> DOCUMENTO</label>
             </div>
             <div class="form-group">
               <input id="pas_log" type="password" class="form-control input1" required="">

@@ -62,7 +62,7 @@ Class UserController{
       header("Location: dashboard");
     }
   }
-  public function validEmail(){
+  public function validLogin(){
       $data[0] = $_POST["data"];
       $result = $this->UserM->readUserbyDocument($data);
       if(count($result[0])>=1){
@@ -89,7 +89,7 @@ Class UserController{
       $data[0] = $_POST["data"];
       $result = $this->UserM->readUserbyDocument($data);
       if(count($result[0])>=1){
-        $return = array(true,$result['use_code']);
+        $return = array(true,"");
       }else{
         $return = array(false,"");
       }
@@ -123,6 +123,7 @@ Class UserController{
     $data = $_POST["data"];
     $check = $_POST["check"];
     $event = $_POST["cod"];
+    $email = $this->UserM->readUserByEmail($data);
     $url = $check==2 ? "ingreso&token=$event" : "inicio";
     for ($i=0; $i <count($data) ; $i++) {
       if (empty($data[$i])) {
@@ -134,6 +135,8 @@ Class UserController{
     }
     if ($data[10]!==$data[11]) {
       $return = array(false,"Contraseñas Incorrectas","");
+    }elseif (count($email[0])>=1) {
+      $return = array(false,"El correo ya existe");
     }else{
       if ($p==1) {
         $return = array(false,"Campos Nulos","");

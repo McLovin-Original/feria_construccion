@@ -1,6 +1,6 @@
 <div class="container-fluid" id="main-content">
   <div class="content-welcome" id="contentwelcome">
-	  
+
     <?php
     if ($_SESSION["user"]["rol"]=="E3HDKX3684UTA7DMHFOAA34HAK39PM") {
       $code = $_SESSION["user"]["id"];
@@ -16,6 +16,7 @@
       <?php
 	  }
     }else{
+      echo '<h1 class="text-center">SELECCIONE EL STAND</h1>';
       foreach ($this->StandM->readStand() as $row) {
       ?>
       <div class="selectconfe" style="width: 60%;">
