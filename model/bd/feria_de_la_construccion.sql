@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2017 a las 01:10:17
+-- Tiempo de generación: 21-09-2017 a las 19:35:38
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -54,7 +54,7 @@ CREATE TABLE `access` (
 --
 
 INSERT INTO `access` (`acc_token`, `use_code`, `use_mail`, `password`, `acc_status`) VALUES
-('Hpt7AMXiy936A6uR9JxpeGR8d0HPch', 'yxKgMb7eTFMZCndIaapZfiQR7Ir0rH', 'admin@feriadelaconstruccion.co', '$2y$10$g3iQ30xkxmYbt84pHA1Zs.elXYr1LkzWc27gLdiqF.eDi35rLuDqe', 'Activo');
+('ebgN496ir5AH1G6qObstsf4j5cHTdE', 'UNvzGe01nKSnkSfSpzKfYgpGO0TVib', 'admin@feriadelaconstruccion.com', '$2y$10$Xu6KNBoF/313hn1TTCDQR..6zjEmLbj.jXFUx5D3P8aYFKQh8Pt7q', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,9 @@ CREATE TABLE `file_stand` (
 CREATE TABLE `ing_eve` (
   `use_day_code` varchar(60) NOT NULL,
   `day_code` varchar(60) NOT NULL,
-  `use_code` varchar(60) NOT NULL
+  `use_code` varchar(60) NOT NULL,
+  `ing_time` time NOT NULL,
+  `ing_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -211,10 +213,11 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`rol_code`, `rol_name`, `rol_desc`) VALUES
-('ASEV4G5GVCG5A7O38DKS8W2EDDE42A', 'Conferencista', 'Pude adjuntar archivos a las conferencias'),
+('ASEV4G5GVCG5A7O38DKS8W2EDDE42A', 'Conferencista', 'Puede adjuntar archivos a las conferencias'),
 ('E3HDKX3684UTA7DMHFOAA34HAK39PM', 'Expositor', 'Este rol puede gestionar la subida de memorias(archivos) e ingresar las personas que visitaron su stand'),
 ('F34L2P7GPT9RHI37S306OFVI16TI47', 'Administrativo', 'Este rol gestiona todo el aplicativo'),
-('OS7CX80C7QQBLGJV41MB3YY4ZA234O', 'Visitante', 'usuario corriente usa la aplicacion mas no gestiona esta');
+('OS7CX80C7QQBLGJV41MB3YY4ZA234O', 'Visitante', 'usuario corriente usa la aplicacion mas no gestiona esta'),
+('rCa779aEMiMe3Okm1UIZfiezSeK6tk', 'Punto_Registro', 'Este rol es encargado del registro de visitas, usuarios y salidas');
 
 -- --------------------------------------------------------
 
@@ -225,7 +228,9 @@ INSERT INTO `role` (`rol_code`, `rol_name`, `rol_desc`) VALUES
 CREATE TABLE `sal_eve` (
   `use_day_code` varchar(60) NOT NULL,
   `day_code` varchar(60) NOT NULL,
-  `use_code` varchar(60) NOT NULL
+  `use_code` varchar(60) NOT NULL,
+  `sal_time` time NOT NULL,
+  `sal_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -291,7 +296,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`use_code`, `rol_code`, `use_docu`, `use_firstname`, `use_lastname`, `use_cellphone`, `use_gender`, `use_birthdate`, `use_profession`, `use_institution`) VALUES
-('yxKgMb7eTFMZCndIaapZfiQR7Ir0rH', 'F34L2P7GPT9RHI37S306OFVI16TI47', '000000', 'Admin', 'Feria', '0000000', 'MASCULINO', 30, 'Otro', 'Ninguna');
+('UNvzGe01nKSnkSfSpzKfYgpGO0TVib', 'F34L2P7GPT9RHI37S306OFVI16TI47', '00000', 'Admin', 'Feria', '00000000', 'MASCULINO', 20, 'Administrativo', 'SENA');
 
 -- --------------------------------------------------------
 
@@ -472,7 +477,7 @@ ALTER TABLE `conference`
 -- Filtros para la tabla `day`
 --
 ALTER TABLE `day`
-  ADD CONSTRAINT `fk_eve_token` FOREIGN KEY (`eve_code`) REFERENCES `event` (`eve_code`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_eve_token` FOREIGN KEY (`eve_code`) REFERENCES `event` (`eve_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `event`
